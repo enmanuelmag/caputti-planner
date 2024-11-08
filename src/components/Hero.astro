@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+
+import HeroImage from '@assets/home/hero.jpg';
+---
+
+<section class="relative flex flex-col items-center justify-start h-[600px]">
+  <Image
+    src={HeroImage}
+    alt="Hero image"
+    class="w-full h-full object-cover z-10"
+  />
+
+  <div
+    class="absolute z-20 pt-[1rem] bg-gradient-to-b from-[#000000af] to-transparent w-full"
+  >
+    <div>
+      <h1
+        class="text-white text-2xl lg:text-[2rem] font-[100] text-shadow-lg text-center leading-10"
+      >
+        Pariatur ea eiusmod reprehenderit culpa<br />sit reprehenderit est esse
+        nisi in et
+      </h1>
+
+      <p
+        class="text-white text-sm lg:text-base text-shadow-sm text-center mt-4 uppercase"
+      >
+        Ex Lorem sunt cillum sint eiusmod dolore culpa
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .text-shadow-lg {
+    text-shadow: 0 4px 4px #000;
+  }
+  .text-shadow-sm {
+    text-shadow: 0 2px 4px #000000af;
+  }
+</style>
