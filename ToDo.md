@@ -1,0 +1,2 @@
+- [] Parallax on images
+- [] Add a footer

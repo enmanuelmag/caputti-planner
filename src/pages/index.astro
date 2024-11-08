@@ -1,13 +1,19 @@
 ---
-import Hero from '@components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
+
+import Hero from '@components/home/Hero.astro';
+import Description from '@components/home/Description.astro';
+import Services from '@components/home/Services.astro';
 ---
 
 <Layout title="Caputi Festa">
   <main>
     <Hero />
-    <p class="">Description</p>
-    <p class="">Our services (Preview)</p>
+
+    <Description />
+
+    <Services />
+
     <p class="">Testimonials</p>
     <p class="">Featuring colab</p>
     <p class="">Fast contact button</p>

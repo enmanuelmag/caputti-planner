@@ -30,3 +30,13 @@ const { title } = Astro.props;
     font-family: system-ui, sans-serif;
   }
 </style>
+
+<style lang="scss">
+  @import 'webcoreui/styles';
+  @include setup(
+    (
+      fontRegular: '/fonts/Inter-Regular.woff2',
+      fontBold: '/fonts/Inter-Bold.woff2',
+    )
+  );
+</style>

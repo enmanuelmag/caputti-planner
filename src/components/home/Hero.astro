@@ -4,15 +4,13 @@ import { Image } from 'astro:assets';
 import HeroImage from '@assets/home/hero.jpg';
 ---
 
-<section class="relative flex flex-col items-center justify-start h-[600px]">
-  <Image
-    src={HeroImage}
-    alt="Hero image"
-    class="w-full h-full object-cover z-10"
-  />
+<section
+  class="relative flex flex-col items-center justify-start h-[600px] mb-[4rem]"
+>
+  <Image src={HeroImage} alt="Hero image" class="w-full h-full object-cover" />
 
   <div
-    class="absolute z-20 pt-[1rem] bg-gradient-to-b from-[#000000af] to-transparent w-full"
+    class="absolute z-20 pt-[1rem] bg-gradient-to-b from-[#000000da] to-transparen to-[60%] w-full h-[600px]"
   >
     <div>
       <h1
