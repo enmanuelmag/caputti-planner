@@ -1,5 +1,5 @@
 import Autoplay from 'embla-carousel-autoplay';
-import { MantineProvider } from '@mantine/core';
+import { Card, MantineProvider } from '@mantine/core';
 import { Carousel as CarouselLib } from '@mantine/carousel';
 
 import '@mantine/core/styles.css';
@@ -36,22 +36,22 @@ const Carousel = ({ items }: CarouselProps) => {
   return (
     <CarouselLib
       loop
-      height={400}
       controlSize={29}
       withControls={true}
       plugins={[autoplay.current]}
       slideGap="md"
-      slideSize="70%"
+      slideSize="35%"
       controlsOffset="xs"
     >
       {items.map((item, index) => (
-        <CarouselLib.Slide
-          key={`${item.slug}-${index}`}
-          className="rounded-md shadow-lg mx-[1rem] p-[2rem]"
-        >
-          <h2>{item.title}</h2>
-          <p>{item.description}</p>
-          <img src={item.image.src} alt={item.title} />
+        <CarouselLib.Slide key={`${item.slug}-${index}`} className="mx-[1rem]">
+          <Card radius="md" shadow="sm" padding="md" withBorder>
+            <Card.Section className="mb-[1rem]">
+              <img src={item.image.src} alt={item.title} />
+            </Card.Section>
+            <h2 className="prose prose-xl text-center">{item.title}</h2>
+            <p className="prose prose-base text-center">{item.description}</p>
+          </Card>
         </CarouselLib.Slide>
       ))}
     </CarouselLib>
