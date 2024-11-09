@@ -1,7 +1,7 @@
 ---
 title: Service C
 description: Service C is a service that does something.
-image: /images/service-a.png
+image: ./images/service-c.jpg
 ---
 
 Service C is a service that does something.

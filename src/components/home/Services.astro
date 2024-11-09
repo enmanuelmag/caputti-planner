@@ -1,7 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 
-import Card from '@components/services/Card.astro';
 import Carousel from '@components/services/Carousel';
 
 const servicesRaw = await getCollection('services');
@@ -12,6 +11,8 @@ const services = servicesRaw.map((s) => ({
   image: s.data.image,
   slug: s.slug,
 }));
+
+export const prerender = true;
 ---
 
 <section class="relative mb-[4rem]">
@@ -21,5 +22,5 @@ const services = servicesRaw.map((s) => ({
     Nuestros servicios
   </h1>
 
-  <Carousel client:load items={services} />
+  <Carousel client:only items={services} />
 </section>

@@ -1,7 +1,7 @@
 ---
 title: Service D
 description: Service D is a service that does something.
-image: /images/service-a.png
+image: ./images/service-d.jpg
 ---
 
 Service D is a service that does something.

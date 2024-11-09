@@ -1,7 +1,7 @@
 ---
 title: Service A
 description: Service A is a service that does something.
-image: /images/service-a.png
+image: ./images/service-a.jpg
 ---
 
 Service A is a service that does something.
