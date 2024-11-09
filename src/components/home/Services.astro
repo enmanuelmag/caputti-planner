@@ -1,12 +1,17 @@
 ---
-import { Carousel } from 'webcoreui/astro';
 import { getCollection } from 'astro:content';
 
 import Card from '@components/services/Card.astro';
+import Carousel from '@components/services/Carousel';
 
-const services = await getCollection('services');
+const servicesRaw = await getCollection('services');
 
-console.log('Services:', services);
+const services = servicesRaw.map((s) => ({
+  title: s.data.title,
+  description: s.data.description,
+  image: s.data.image,
+  slug: s.slug,
+}));
 ---
 
 <section class="relative mb-[4rem]">
@@ -16,18 +21,5 @@ console.log('Services:', services);
     Nuestros servicios
   </h1>
 
-  <Carousel items={services.length}>
-    {
-      services.map((service) => (
-        <li>
-          <Card
-            slug={service.slug}
-            title={service.data.title}
-            description={service.data.description}
-            image={service.data.image}
-          />
-        </li>
-      ))
-    }
-  </Carousel>
+  <Carousel client:load items={services} />
 </section>
