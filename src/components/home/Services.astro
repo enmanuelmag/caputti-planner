@@ -1,7 +1,7 @@
 ---
-import { getCollection } from 'astro:content';
-
+//import { Carousel } from 'webcoreui/astro';
 import Carousel from '@components/services/Carousel';
+import { getCollection } from 'astro:content';
 
 const servicesRaw = await getCollection('services');
 
@@ -22,5 +22,5 @@ export const prerender = true;
     Nuestros servicios
   </h1>
 
-  <Carousel client:only items={services} />
+  <Carousel client:load items={services} />
 </section>
