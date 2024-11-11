@@ -1,0 +1,31 @@
+---
+import { Button, Sheet, Sidebar, type SidebarProps } from 'webcoreui/astro';
+
+import Icons from '@assets/navbar';
+
+const sidebarProps: SidebarProps = {
+  groups: [
+    {
+      items: [
+        { name: 'Inicio', href: '/', icon: Icons.home },
+        { name: 'Servicios', href: '/services', icon: Icons.services },
+        { name: 'Liss Caputti', href: '/about', icon: Icons.info },
+        { name: 'Contacto', href: '/contact', icon: Icons.contact },
+      ],
+    },
+  ],
+};
+---
+
+<!-- Navbar for Desktop -->
+<nav
+  class="sticky flex top-0 h-[50px] bg-white lg:flex-row justify-center items-center z-50 px-[2rem] gap-x-[2rem] shadow-lg"
+>
+  {
+    sidebarProps.groups[0].items.map((link) => (
+      <a class="link" href={link.href}>
+        {link.name}
+      </a>
+    ))
+  }
+</nav>

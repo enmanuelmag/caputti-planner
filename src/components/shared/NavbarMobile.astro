@@ -1,0 +1,67 @@
+---
+import { Button, Sheet, Sidebar, type SidebarProps } from 'webcoreui/astro';
+
+import Icons from '@assets/navbar';
+
+const sidebarProps: SidebarProps = {
+  groups: [
+    {
+      items: [
+        { name: 'Inicio', href: '/', icon: Icons.home },
+        { name: 'Servicios', href: '/services', icon: Icons.services },
+        { name: 'Liss Caputti', href: '/about', icon: Icons.info },
+        { name: 'Contacto', href: '/contact', icon: Icons.contact },
+      ],
+    },
+  ],
+};
+---
+
+<!-- Navbar for Mobile -->
+<nav
+  class="sticky flex top-0 h-[50px] bg-white flex-row justify-between items-center px-[1rem] z-50 shadow-2xl"
+>
+  <Button class="button">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2"
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+        d="M4 6l16 0"></path><path d="M4 12l16 0"></path><path d="M4 18l16 0"
+      ></path></svg
+    >
+  </Button>
+  <p class="prose prose-lg font-bold">Caputi Festa</p>
+  <div></div>
+</nav>
+
+<Sheet className="sheet class-sidebar" position="left">
+  <Sidebar {...sidebarProps} />
+</Sheet>
+
+<script>
+  import { modal } from 'webcoreui';
+
+  modal({
+    trigger: '.button',
+    modal: '.sheet',
+  });
+</script>
+
+<style is:global>
+  .class-sidebar > aside > ul {
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .class-sidebar > button {
+    height: 24px;
+    width: 24px;
+  }
+</style>

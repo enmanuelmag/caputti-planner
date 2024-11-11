@@ -1,0 +1,17 @@
+---
+interface Props {
+  text: string;
+  index: number;
+}
+
+const { text, index } = Astro.props;
+---
+
+<article class="flex justify-start basis-full lg:basis-1/2 px-[1rem] py-[1rem]">
+  <div class="flex flex-row justify-start items-start">
+    <span class="prose font-bold prose-2xl">{index}/</span>
+    <h2 class="prose prose-lg mb-[1rem]">
+      {text}
+    </h2>
+  </div>
+</article>
