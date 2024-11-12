@@ -46,7 +46,7 @@ const sidebarProps: SidebarProps = {
 <nav
   class="sticky flex top-0 h-[55px] bg-white flex-row justify-between items-center px-[1rem] z-50 shadow-md lg:hidden lg:opacity-0 lg:h-[0px]"
 >
-  <Button class="button-custom-side">
+  <Button class="button-custom-side" id="menu-button">
     <!-- #0d9489 -->
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +76,7 @@ const sidebarProps: SidebarProps = {
 </Sheet>
 
 <script>
-  import { modal } from 'webcoreui';
+  import { modal, closeModal } from 'webcoreui';
 
   modal({
     trigger: '.button-custom-side',
