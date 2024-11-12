@@ -1,7 +1,9 @@
 ---
 import { Button, Sheet, Sidebar, type SidebarProps } from 'webcoreui/astro';
+import { Image } from 'astro:assets';
 
 import Icons from '@assets/navbar';
+import LogoText from '@assets/navbar/logoText.png';
 
 const sidebarProps: SidebarProps = {
   groups: [
@@ -19,13 +21,21 @@ const sidebarProps: SidebarProps = {
 
 <!-- Navbar for Desktop -->
 <nav
-  class="sticky flex top-0 h-[50px] bg-white lg:flex-row justify-center items-center z-50 px-[2rem] gap-x-[2rem] shadow-lg"
+  class="hidden lg:sticky lg:flex top-0 h-[50px] bg-white lg:flex-row justify-between items-center z-50 px-[2rem] shadow-lg"
 >
-  {
-    sidebarProps.groups[0].items.map((link) => (
-      <a class="link" href={link.href}>
-        {link.name}
-      </a>
-    ))
-  }
+  <div class="basis-[10%]">
+    <Image src={LogoText} alt="Logo" class="h-[35px] w-auto" />
+  </div>
+  <div
+    class="flex flex-row justify-center items-center gap-x-[2rem] basis-[80%]"
+  >
+    {
+      sidebarProps.groups[0].items.map((link) => (
+        <a class="link" href={link.href}>
+          {link.name}
+        </a>
+      ))
+    }
+  </div>
+  <div class="basis-[10%]"></div>
 </nav>

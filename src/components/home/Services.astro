@@ -26,7 +26,7 @@ export const prerender = true;
     Nuestros servicios
   </h1>
 
-  <Carousel client:load items={services} />
+  <Carousel client:only items={services} />
 
   <Image
     src={DescriptionImage}

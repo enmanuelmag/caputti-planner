@@ -32,21 +32,25 @@ const Wrapper = (props: CarouselProps) => (
 
 const Carousel = ({ items }: CarouselProps) => {
   const autoplay = React.useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
+    Autoplay({ delay: 4000, stopOnInteraction: true })
   );
 
   return (
     <CarouselLib
       loop
+      align="center"
+      withIndicators
       controlSize={29}
       withControls={false}
       plugins={[autoplay.current]}
-      slideGap="md"
-      slideSize="35%"
-      controlsOffset="xs"
+      slideSize={{ base: '90%', sm: '50%', md: '33%' }}
+      slideGap={{ base: 0, sm: 'md' }}
     >
       {items.map((item, index) => (
-        <CarouselLib.Slide key={`${item.slug}-${index}`} className="mx-[1rem]">
+        <CarouselLib.Slide
+          key={`${item.slug}-${index}`}
+          className="mx-[0.125rem] lg:mx-[1rem]"
+        >
           <Card radius="md" shadow="lg" padding="md" withBorder>
             <Card.Section className="mb-[1rem]">
               <img src={item.image.src} alt={item.title} />
