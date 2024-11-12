@@ -6,14 +6,36 @@ import Icons from '@assets/navbar';
 
 import LogoText from '@assets/navbar/logoText.png';
 
+const currentPath = Astro.url.pathname;
+
 const sidebarProps: SidebarProps = {
   groups: [
     {
       items: [
-        { name: 'Inicio', href: '/', icon: Icons.home },
-        { name: 'Servicios', href: '/services', icon: Icons.services },
-        { name: 'Liss Caputti', href: '/about', icon: Icons.info },
-        { name: 'Contacto', href: '/contact', icon: Icons.contact },
+        {
+          name: 'Inicio',
+          href: '/',
+          icon: Icons.home,
+          active: currentPath === '/',
+        },
+        {
+          name: 'Servicios',
+          href: '/services',
+          icon: Icons.services,
+          active: currentPath === '/services',
+        },
+        {
+          name: 'Liss Caputti',
+          href: '/about',
+          icon: Icons.info,
+          active: currentPath === '/about',
+        },
+        {
+          name: 'Contacto',
+          href: '/contact',
+          icon: Icons.contact,
+          active: currentPath === '/contact',
+        },
       ],
     },
   ],
@@ -24,7 +46,7 @@ const sidebarProps: SidebarProps = {
 <nav
   class="sticky flex top-0 h-[55px] bg-white flex-row justify-between items-center px-[1rem] z-50 shadow-md lg:hidden lg:opacity-0 lg:h-[0px]"
 >
-  <Button class="button">
+  <Button class="button-custom-side">
     <!-- #0d9489 -->
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +71,7 @@ const sidebarProps: SidebarProps = {
   <div class="w-[24px]"></div>
 </nav>
 
-<Sheet className="sheet class-sidebar" position="left">
+<Sheet className="sheet-custom-side class-sidebar" position="left">
   <Sidebar {...sidebarProps} />
 </Sheet>
 
@@ -57,8 +79,8 @@ const sidebarProps: SidebarProps = {
   import { modal } from 'webcoreui';
 
   modal({
-    trigger: '.button',
-    modal: '.sheet',
+    trigger: '.button-custom-side',
+    modal: '.sheet-custom-side',
   });
 </script>
 
