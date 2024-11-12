@@ -24,11 +24,6 @@ interface Props {
 </html>
 
 <style lang="scss" is:global>
-  html {
-    background: #ffffff;
-    scroll-behavior: smooth;
-    font-family: system-ui, sans-serif;
-  }
   @import './webcoreui/styles';
   @include setup(
     (
@@ -41,4 +36,10 @@ interface Props {
       theme: 'light',
     )
   );
+
+  html {
+    background: #ffffff;
+    scroll-behavior: smooth;
+    font-family: system-ui, sans-serif;
+  }
 </style>

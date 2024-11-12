@@ -5,16 +5,16 @@ import HeroImage from '@assets/home/hero.jpg';
 ---
 
 <section
-  class="relative flex flex-col items-center justify-start h-[600px] mb-[4rem] parallax"
+  class="relative flex flex-col items-center justify-start h-auto lg:h-[600px] mb-[2rem] lg:mb-[6rem] parallax"
 >
   <!-- <Image src={HeroImage} alt="Hero image" class="w-full h-full object-cover" /> -->
 
   <div
-    class="absolute z-20 pt-[1rem] bg-gradient-to-b from-[#000000da] to-transparen to-[60%] w-full h-[600px]"
+    class="absolute z-20 pt-[1rem] bg-gradient-to-b from-[#000000ce] to-transparen to-[60%] w-full h-[300px] lg:h-[600px]"
   >
-    <div>
+    <div class="z-[200] flex flex-col justify-center relative">
       <h1
-        class="text-white text-2xl lg:text-[2rem] font-[100] text-shadow-lg text-center leading-10"
+        class="text-white text-2xl lg:text-[2rem] font-[200] text-shadow-lg text-center leading-10"
       >
         Pariatur ea eiusmod reprehenderit culpa<br />sit reprehenderit est esse
         nisi in et
@@ -30,18 +30,33 @@ import HeroImage from '@assets/home/hero.jpg';
 </section>
 
 <style>
+  /* media query for less than lg */
+  @media (max-width: 1023px) {
+    .parallax {
+      min-height: 400px;
+      background-size: cover;
+      background-position: top -20rem center;
+    }
+  }
+
+  /* media query for lg */
+  @media (min-width: 1024px) {
+    .parallax {
+      min-height: 600px;
+      background-position: top;
+      background-size: cover;
+    }
+  }
+
   .parallax {
     /* The image used */
     background-image: url('./../../assets//home/hero.jpg');
 
     /* Set a specific height */
-    min-height: 600px;
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
-    background-position: top;
     background-repeat: no-repeat;
-    background-size: contain;
   }
 
   .text-shadow-lg {
