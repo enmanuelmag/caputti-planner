@@ -1,0 +1,26 @@
+---
+import type { FooterProps } from 'webcoreui/astro';
+import { Footer as FooterLib } from 'webcoreui/astro';
+
+import Logo from '@assets/footer/logo.png';
+
+const footerProps: FooterProps = {
+  columns: [
+    {
+      items: [
+        { name: 'Inicio', href: '/' },
+        { name: 'Servicios', href: '/services' },
+        { name: 'Liss Caputti', href: '/about' },
+        { name: 'Contacto', href: '/contact' },
+      ],
+    },
+  ],
+  subText: `© ${new Date().getFullYear()}. Todos los derechos reservados.`,
+  logo: {
+    width: 175,
+    url: Logo.src,
+  },
+};
+---
+
+<FooterLib {...footerProps} />

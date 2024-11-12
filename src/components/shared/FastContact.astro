@@ -1,0 +1,39 @@
+---
+interface Props {
+  text?: string;
+}
+
+const { text = 'Empecemos' } = Astro.props;
+---
+
+<section class="relative mb-[8rem] flex justify-center">
+  <!-- <a
+    href="/contact"
+    class="blur-light transition-all duration-[500ms] bg-transparent hover:bg-amber-500 text-amber-700 font-semibold py-4 px-6 border rounded prose text-2xl shadow-md border-amber-600 hover:text-white hover:border-transparent hover:shadow-lg"
+    >{text}</a
+  > -->
+  <a
+    href="/contact"
+    class="transition-all duration-[500ms] relative inline-flex items-center justify-center p-[0.215rem] rounded-none group bg-gradient-to-br from-cyan-500 to-teal-400 group-hover:from-cyan-500 group-hover:to-teal-400 focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+  >
+    <span
+      class="transition-all duration-[500ms] relative px-[1.75rem] py-[0.85rem] bg-white rounded-nome group-hover:bg-opacity-0 hover:text-white text-teal-600 prose text-2xl font-semibold"
+    >
+      {text}
+    </span>
+  </a>
+</section>
+
+<style lang="scss">
+  .blur-light {
+    //width: 40px;
+    //height: 40px;
+    //border-radius: 50%;
+    //background-color: #fff;
+    box-shadow:
+    /* inner white */
+      0 0 40px 10px #fff,
+      /* middle magenta */ 0 0 45px 15px rgb(253, 190, 0),
+      /* outer cyan */ 0 0 60px 30px rgb(255, 247, 0);
+  }
+</style>

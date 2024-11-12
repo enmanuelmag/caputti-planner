@@ -1,10 +1,8 @@
 ---
-import { Image } from 'astro:assets';
 
-import DescriptionImage from '@assets/home/description.jpg';
 ---
 
-<section class="relative mb-[4rem]">
+<section class="relative mb-[6rem]">
   <h1
     class="text-2xl lg:text-[2rem] font-[100] text-center leading-10 my-[2rem]"
   >
@@ -22,9 +20,21 @@ import DescriptionImage from '@assets/home/description.jpg';
     </p>
   </div>
 
-  <Image
-    src={DescriptionImage}
-    alt="Description image"
-    class="w-full h-full object-cover"
-  />
+  <!-- <div class="parallax"></div> -->
 </section>
+
+<!-- <style lang="scss">
+  .parallax {
+    /* The image used */
+    background-image: url('./../../assets/home/description.jpg');
+
+    /* Set a specific height */
+    height: 400px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+</style> -->

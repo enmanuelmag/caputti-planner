@@ -5,9 +5,9 @@ import HeroImage from '@assets/home/hero.jpg';
 ---
 
 <section
-  class="relative flex flex-col items-center justify-start h-[600px] mb-[4rem]"
+  class="relative flex flex-col items-center justify-start h-[600px] mb-[4rem] parallax"
 >
-  <Image src={HeroImage} alt="Hero image" class="w-full h-full object-cover" />
+  <!-- <Image src={HeroImage} alt="Hero image" class="w-full h-full object-cover" /> -->
 
   <div
     class="absolute z-20 pt-[1rem] bg-gradient-to-b from-[#000000da] to-transparen to-[60%] w-full h-[600px]"
@@ -30,6 +30,20 @@ import HeroImage from '@assets/home/hero.jpg';
 </section>
 
 <style>
+  .parallax {
+    /* The image used */
+    background-image: url('./../../assets//home/hero.jpg');
+
+    /* Set a specific height */
+    min-height: 600px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
   .text-shadow-lg {
     text-shadow: 0 4px 4px #000;
   }
