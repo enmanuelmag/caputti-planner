@@ -17,3 +17,12 @@ const services = await getCollection('services');
     </section>
   </main>
 </Layout>
+
+<script>
+  import { modal } from 'webcoreui';
+
+  modal({
+    trigger: '.button',
+    modal: '.sheet',
+  });
+</script>
