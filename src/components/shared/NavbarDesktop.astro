@@ -27,11 +27,14 @@ const sidebarProps: SidebarProps = {
     <Image src={LogoText} alt="Logo" class="h-[35px] w-auto" />
   </div>
   <div
-    class="flex flex-row justify-center items-center gap-x-[2rem] basis-[80%]"
+    class="flex flex-row justify-center items-center !gap-x-[3rem] basis-[80%]"
   >
     {
       sidebarProps.groups[0].items.map((link) => (
-        <a class="link" href={link.href}>
+        <a
+          class="link transition-all duration-300 hover:text-teal-600 "
+          href={link.href}
+        >
           {link.name}
         </a>
       ))
