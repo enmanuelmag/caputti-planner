@@ -1,0 +1,64 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+
+interface Props {
+  id: string;
+  idx: number;
+}
+
+const { id, idx } = Astro.props as Props;
+
+const services = await getCollection('services');
+
+const service = services.find((s) => s.slug === id);
+
+if (!service) {
+  throw new Error(`Service with id ${id} not found`);
+}
+
+const { slug, data } = service;
+
+const { title, image } = data;
+
+const { Content } = await render(service);
+---
+
+<article id={slug} class="flex flex-row justify-center !gap-0 py-[2rem]">
+  <div class:list={['basis-1/2 ', idx % 2 === 0 ? 'order-1' : 'order-2']}>
+    <Image
+      src={image}
+      alt={title}
+      class="object-cover h-full w-auto"
+      transition:name={`img-${slug}`}
+    />
+  </div>
+  <div
+    class:list={[
+      'flex flex-col justify-center basis-1/2',
+      idx % 2 === 0 ? 'order-2 pl-[1rem]' : 'order-1',
+    ]}
+  >
+    <h2
+      class="text-2xl lg:text-[2rem] font-[100] leading-10 hover:text-teal-500 transition-colors duration-500 cursor-default"
+    >
+      {title}
+    </h2>
+    <div class="prose font-[300]">
+      <Content />
+    </div>
+  </div>
+</article>
+<!-- <section
+  class="w-full flex flex-col justify-center !gap-0 px-[1rem] my-[2rem] lg:my-[4rem]"
+>
+  {
+    servicesParsed.map((service, idx) => {
+      const { title, image, slug, Content } = service;
+
+      return (
+        
+      );
+    })
+  }
+</section> -->

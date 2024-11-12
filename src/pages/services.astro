@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import { getCollection } from 'astro:content';
+
+import ServiceFeat from '@components/services/Service.astro';
+
+const services = await getCollection('services');
+---
+
+<Layout title="Servicios - Caputi Festa">
+  <main>
+    <section
+      class="w-full flex flex-col justify-center px-0 lg:px-[12rem] my-[2rem] lg:my-[4rem]"
+    >
+      {services.map(({ slug }, idx) => <ServiceFeat id={slug} idx={idx} />)}
+    </section>
+  </main>
+</Layout>
