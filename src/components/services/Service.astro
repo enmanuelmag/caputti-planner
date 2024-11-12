@@ -24,8 +24,16 @@ const { title, image } = data;
 const { Content } = await render(service);
 ---
 
-<article id={slug} class="flex flex-row justify-center !gap-0 py-[2rem]">
-  <div class:list={['basis-1/2 ', idx % 2 === 0 ? 'order-1' : 'order-2']}>
+<article
+  id={slug}
+  class="flex flex-col lg:flex-row justify-center !gap-x-[1rem] lg:!gap-0 lg:py-[2rem]"
+>
+  <div
+    class:list={[
+      'basis-1/2 ',
+      idx % 2 === 0 ? 'order-2 lg:order-1' : 'order-2 lg:order-2',
+    ]}
+  >
     <Image
       src={image}
       alt={title}
@@ -35,8 +43,8 @@ const { Content } = await render(service);
   </div>
   <div
     class:list={[
-      'flex flex-col justify-center basis-1/2',
-      idx % 2 === 0 ? 'order-2 pl-[1rem]' : 'order-1',
+      'flex flex-col justify-center basis-1/2 px-[1rem] lg:px-0',
+      idx % 2 === 0 ? 'order-1 lg:order-2 lg:pl-[1rem]' : 'order-1 lg:order-1',
     ]}
   >
     <h2
@@ -49,16 +57,3 @@ const { Content } = await render(service);
     </div>
   </div>
 </article>
-<!-- <section
-  class="w-full flex flex-col justify-center !gap-0 px-[1rem] my-[2rem] lg:my-[4rem]"
->
-  {
-    servicesParsed.map((service, idx) => {
-      const { title, image, slug, Content } = service;
-
-      return (
-        
-      );
-    })
-  }
-</section> -->
