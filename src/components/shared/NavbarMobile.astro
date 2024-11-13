@@ -78,9 +78,11 @@ const sidebarProps: SidebarProps = {
 <script>
   import { modal } from 'webcoreui';
 
-  modal({
-    trigger: '.button-custom-side',
-    modal: '.sheet-custom-side',
+  document.addEventListener('astro:page-load', () => {
+    modal({
+      trigger: '.button-custom-side',
+      modal: '.sheet-custom-side',
+    });
   });
 </script>
 
