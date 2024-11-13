@@ -9,4 +9,15 @@ const services = defineCollection({
     }),
 });
 
-export const collections = { services };
+const about = defineCollection({
+  schema: ({ image }) =>
+    z.object({
+      order: z.number(),
+      title: z.string(),
+      subtitle: z.string().optional(),
+      image: image().optional(),
+      imagePosition: z.enum(['left', 'right']).optional(),
+    }),
+});
+
+export const collections = { services, about };

@@ -1,0 +1,33 @@
+---
+interface Props {
+  text: string;
+  className?: string;
+}
+
+const { text, className = '' } = Astro.props as Props;
+---
+
+<p class:list={[className, 'divider prose !max-w-full']}>{text}</p>
+
+<style>
+  .divider {
+    display: flex;
+    align-items: center;
+  }
+
+  .divider::before,
+  .divider::after {
+    flex: 1;
+    content: '';
+    padding: 1px;
+    background-color: #cbcbcbb3;
+  }
+
+  .divider::before {
+    margin-inline-end: 20px;
+  }
+
+  .divider::after {
+    margin-inline-start: 20px;
+  }
+</style>

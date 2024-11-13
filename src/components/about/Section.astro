@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+import ImageSection from './ImageSection.astro';
+import TextSection from './TextSection.astro';
+
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props as Props;
+
+const sections = await getCollection('about');
+
+const section = sections.find((s) => s.slug === id);
+
+if (!section) {
+  throw new Error(`Service with id ${id} not found`);
+}
+
+const { title, subtitle, image, imagePosition } = section.data;
+
+const { Content } = await render(section);
+---
+
+{
+  image && imagePosition ? (
+    <ImageSection
+      title={title}
+      subtitle=""
+      image={image}
+      imagePosition={imagePosition}
+      Content={Content}
+    />
+  ) : (
+    <TextSection title={title} subtitle={subtitle} Content={Content} />
+  )
+}
