@@ -1,0 +1,61 @@
+<div
+  class="sticky bottom-0 flex justify-end pr-[1rem] pb-[1rem] lg:pr-[2rem] lg:pb-[2rem] z-[500] go-top opacity-0"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="50"
+    height="50"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="icon icon-tabler icons-tabler-outline icon-tabler-circle-chevron-up"
+  >
+    <circle r="9" cx="12" cy="12" fill="#FFFFFF" fill-opacity="0.75"></circle>
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+      d="M9 13l3 -3l3 3"></path><path
+      d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path></svg
+  >
+</div>
+
+<script>
+  //set display hiddne by default
+  const goTop = document.querySelector('.go-top');
+
+  if (goTop) {
+    window.addEventListener('scroll', () => {
+      const currentClassList = goTop.classList;
+      if (window.scrollY > 200) {
+        currentClassList.remove('opacity-0');
+      } else {
+        currentClassList.add('opacity-0');
+      }
+    });
+
+    goTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    });
+  } else {
+    console.log('GoTop button not found');
+  }
+</script>
+
+<style lang="scss">
+  .go-top {
+    transition: opacity 0.25s;
+
+    svg {
+      transition: stroke 0.25s;
+      stroke: #12a296;
+    }
+
+    svg:hover {
+      stroke: #15c0ac;
+    }
+  }
+</style>

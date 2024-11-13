@@ -11,7 +11,7 @@ const services = await getCollection('services');
 <Layout title="Servicios - Caputi Festa">
   <main>
     <section
-      class="w-full flex flex-col justify-center px-0 lg:px-[12rem] my-[2rem] lg:my-[4rem]"
+      class="w-full flex flex-col justify-center px-0 md:px-[6rem] lg:px-[10rem] my-[2rem] lg:my-[4rem]"
     >
       {services.map(({ slug }, idx) => <ServiceFeat id={slug} idx={idx} />)}
     </section>
