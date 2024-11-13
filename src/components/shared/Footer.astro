@@ -7,11 +7,36 @@ import Logo from '@assets/footer/logo.png';
 const footerProps: FooterProps = {
   columns: [
     {
+      title: 'Caputi Festa',
       items: [
         { name: 'Inicio', href: '/' },
         { name: 'Servicios', href: '/services' },
         { name: 'Liss Caputti', href: '/about' },
         { name: 'Contacto', href: '/contact' },
+      ],
+    },
+    {
+      title: 'Contacto',
+      items: [
+        {
+          name: 'Email',
+          href: 'mailto:info@caputifesta.com?subject=Consulta&body=Hola%20Caputi%20Festa, deseo saber mas información sobre...',
+        },
+        {
+          name: 'Whatsapp',
+          href: 'https://wa.me/+593984707004?text=Hola%20Caputi%20Festa, deseo saber mas información sobre...',
+          target: '_blank',
+        },
+        {
+          name: 'Instagram',
+          href: 'https://www.instagram.com/caputifesta/',
+          target: '_blank',
+        },
+        {
+          name: 'Facebook',
+          href: 'https://www.facebook.com/caputifesta',
+          target: '_blank',
+        },
       ],
     },
   ],
