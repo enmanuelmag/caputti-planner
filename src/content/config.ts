@@ -20,4 +20,11 @@ const about = defineCollection({
     }),
 });
 
-export const collections = { services, about };
+const faqs = defineCollection({
+  schema: z.object({
+    question: z.string(),
+    answer: z.string(),
+  }),
+});
+
+export const collections = { services, about, faqs };

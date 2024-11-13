@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import { Accordion } from 'webcoreui/astro';
+
+import Divider from '@components/shared/Divider.astro';
+
+const faqs = await getCollection('faqs');
+---
+
+<section>
+  <Divider
+    text="Preguntas frecuentes"
+    className="text-2xl lg:text-[2rem] font-[100] text-center leading-10 my-[2rem] hover:text-teal-500 transition-colors duration-500 cursor-default"
+  />
+
+  <Accordion
+    className="px-[1rem] md:px-[2rem] lg:px-[12rem] prose !max-w-full !border-[#DDDDDD] border-[1px] !p-[1rem]"
+    items={faqs.map(({ data: { question, answer } }) => ({
+      title: question,
+      content: answer,
+    }))}
+  />
+</section>

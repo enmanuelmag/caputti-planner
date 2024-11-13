@@ -4,16 +4,17 @@ import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
 import ServiceFeat from '@components/services/Service.astro';
+import FQA from '@components/services/FQA.astro';
 
 const services = await getCollection('services');
 ---
 
 <Layout title="Servicios - Caputi Festa">
-  <main>
-    <section
-      class="w-full flex flex-col justify-center px-0 md:px-[6rem] lg:px-[10rem] my-[2rem] lg:my-[4rem]"
-    >
+  <main class="px-0 md:px-[6rem] lg:px-[10rem]">
+    <section class="w-full flex flex-col justify-center my-[2rem] lg:my-[4rem]">
       {services.map(({ slug }, idx) => <ServiceFeat id={slug} idx={idx} />)}
     </section>
+
+    <FQA />
   </main>
 </Layout>
