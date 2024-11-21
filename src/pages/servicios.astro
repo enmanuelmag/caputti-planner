@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+import { getCollection } from 'astro:content';
+
+import Services from '@components/services/Services.astro';
+import FQA from '@components/services/FQA.astro';
+import FastContact from '@components/shared/FastContact.astro';
+
+const services = await getCollection('services');
+---
+
+<Layout title="Servicios - Caputi Festa">
+  <Services />
+
+  <FQA />
+
+  <FastContact text="Estamos listos para empezar" />
+</Layout>

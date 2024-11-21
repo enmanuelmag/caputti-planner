@@ -5,14 +5,36 @@ import { Image } from 'astro:assets';
 import Icons from '@assets/navbar';
 import LogoText from '@assets/navbar/logoText.png';
 
+const currentPath = Astro.url.pathname;
+
 const sidebarProps: SidebarProps = {
   groups: [
     {
       items: [
-        { name: 'Inicio', href: '/', icon: Icons.home },
-        { name: 'Servicios', href: '/services', icon: Icons.services },
-        { name: 'Liss Caputti', href: '/about', icon: Icons.info },
-        { name: 'Contacto', href: '/contact', icon: Icons.contact },
+        {
+          name: 'Inicio',
+          href: '/',
+          icon: Icons.home,
+          active: currentPath === '/',
+        },
+        {
+          name: 'Servicios',
+          href: '/servicios',
+          icon: Icons.services,
+          active: currentPath === '/servicios',
+        },
+        {
+          name: 'Liss Caputti',
+          href: '/acerca',
+          icon: Icons.info,
+          active: currentPath === '/acerca',
+        },
+        {
+          name: 'Contacto',
+          href: '/contacto',
+          icon: Icons.contact,
+          active: currentPath === '/contacto',
+        },
       ],
     },
   ],
@@ -32,7 +54,10 @@ const sidebarProps: SidebarProps = {
     {
       sidebarProps.groups[0].items.map((link) => (
         <a
-          class="link transition-all duration-300 hover:text-teal-600 "
+          class:list={[
+            'link transition-all duration-300 hover:text-teal-600',
+            link.active && 'text-teal-600 font-semibold',
+          ]}
           href={link.href}
         >
           {link.name}

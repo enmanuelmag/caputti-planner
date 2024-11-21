@@ -1,0 +1,11 @@
+---
+import { getCollection } from 'astro:content';
+
+import ServiceFeat from '@components/services/Service.astro';
+
+const services = await getCollection('services');
+---
+
+<section class="w-full flex flex-col justify-center my-[2rem] lg:my-[6rem]">
+  {services.map(({ slug }, idx) => <ServiceFeat id={slug} idx={idx} />)}
+</section>

@@ -1,0 +1,69 @@
+---
+import Layout from 'src/layouts/Layout.astro';
+
+import Input from '@components/form/Input.astro';
+
+const errors = { yourName: '' };
+
+if (Astro.request.method === 'POST') {
+  try {
+    const data = await Astro.request.formData();
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
+
+<Layout title="Contacto - Caputi Festa">
+  <form
+    class="w-full px-[1rem] md:px-[5rem] lg:px-[10rem] my-[2rem] lg:my-[6rem]"
+  >
+    <section class="flex flex-col gap-[1rem] lg:flex-row">
+      <Input label="Tu nombre" id="your-name" />
+
+      <Input label="Nombre de tu pareja" id="couple-name" />
+    </section>
+
+    <section class="flex flex-col gap-[1rem] lg:flex-row">
+      <Input
+        label="Email"
+        id="email"
+        placeholder="ejemplo@email.com"
+        type="email"
+      />
+
+      <Input label="Teléfono" id="phone" type="tel" />
+    </section>
+
+    <Input label="Lugar de la boda preferido" id="place" type="text" />
+
+    <section class="flex flex-col gap-[1rem] lg:flex-row">
+      <Input label="Cantidad de invitados" id="guests" type="number" />
+
+      <Input
+        label="Presupuesto estimado"
+        id="budget"
+        type="number"
+        helperText="Conocer esta información es muy importante. Asi tendremos una guía de lo que podremos ofrecerte"
+      />
+    </section>
+
+    <Input
+      label="Fecha de la boda"
+      id="date"
+      type="date"
+      pattern="\d{2}-\d{2}-\d{4}"
+    />
+
+    <Input
+      label="Comentarios"
+      id="comments"
+      type="textarea"
+      placeholder="¿Hay algo más que quieras contarnos?"
+    />
+
+    <Input label="¿Cómo nos encontraste?" id="how" type="text" />
+  </form>
+</Layout>
