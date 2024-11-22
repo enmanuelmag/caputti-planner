@@ -7,6 +7,8 @@ import Input from '@components/form/Input.astro';
 import Select from '@components/form/Select.astro';
 import Checkboxes from '@components/form/Checkboxes.astro';
 
+import { FromSchema } from '@customTypes/form';
+
 import { WeddingType, WishList } from '@content/form';
 
 const errors = {
@@ -19,40 +21,40 @@ const errors = {
   budget: '',
   date: '',
   comments: '',
-  how: '',
+  reference: '',
   weddingType: '',
   wishlist: '',
 };
 
 if (Astro.request.method === 'POST') {
   try {
-    const data = await Astro.request.formData();
+    const formData = await Astro.request.formData();
 
-    const yourName = data.get('your-name');
+    const yourName = formData.get('your-name') || '';
 
-    const coupleName = data.get('couple-name');
+    const coupleName = formData.get('couple-name') || '';
 
-    const email = data.get('email');
+    const email = formData.get('email') || '';
 
-    const phone = data.get('phone');
+    const phone = formData.get('phone') || '';
 
-    const place = data.get('place');
+    const place = formData.get('place') || '';
 
-    const guests = data.get('guests');
+    const guests = formData.get('guests') || null;
 
-    const budget = data.get('budget');
+    const budget = formData.get('budget') || null;
 
-    const date = data.get('date');
+    const date = formData.get('date') || '';
 
-    const comments = data.get('comments');
+    const comments = formData.get('comments') || '';
 
-    const how = data.get('how');
+    const reference = formData.get('reference') || '';
 
-    const weddingType = data.get('weddingType');
+    const weddingType = formData.get('weddingType') || '';
 
-    const wishlist = data.getAll('wishlist');
+    const wishlist = formData.getAll('wishlist') || [];
 
-    console.log({
+    const data = {
       yourName,
       coupleName,
       email,
@@ -62,10 +64,22 @@ if (Astro.request.method === 'POST') {
       budget,
       date,
       comments,
-      how,
+      reference,
       weddingType,
       wishlist,
-    });
+    };
+
+    const result = FromSchema.safeParse(data);
+
+    if (!result.success) {
+      result.error.issues.forEach((issue) => {
+        const {
+          path: [key],
+          message,
+        } = issue;
+        errors[key as keyof typeof errors] = message;
+      });
+    }
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);
@@ -80,9 +94,13 @@ if (Astro.request.method === 'POST') {
     class="w-full px-[1rem] md:px-[5rem] lg:px-[10rem] my-[2rem] lg:my-[4rem] flex flex-col !gap-y-[1rem]"
   >
     <section class="flex flex-col gap-[1rem] lg:flex-row">
-      <Input label="Tu nombre" id="your-name" />
+      <Input label="Tu nombre" id="your-name" error={errors.yourName} />
 
-      <Input label="Nombre de tu pareja" id="couple-name" />
+      <Input
+        label="Nombre de tu pareja"
+        id="couple-name"
+        error={errors.coupleName}
+      />
     </section>
 
     <section class="flex flex-col gap-[1rem] lg:flex-row">
@@ -91,21 +109,33 @@ if (Astro.request.method === 'POST') {
         id="email"
         placeholder="ejemplo@email.com"
         type="email"
+        error={errors.email}
       />
 
-      <Input label="Teléfono" id="phone" type="tel" />
+      <Input label="Teléfono" id="phone" type="tel" error={errors.phone} />
     </section>
 
-    <Input label="Lugar de la boda preferido" id="place" type="text" />
+    <Input
+      label="Lugar de la boda preferido"
+      id="place"
+      type="text"
+      error={errors.place}
+    />
 
     <section class="flex flex-col gap-[1rem] lg:flex-row">
-      <Input label="Cantidad de invitados" id="guests" type="number" />
+      <Input
+        label="Cantidad de invitados"
+        id="guests"
+        type="number"
+        error={errors.guests}
+      />
 
       <Input
         label="Presupuesto estimado"
         id="budget"
         type="number"
         helperText="Conocer esta información es muy importante. Asi tendremos una guía de lo que podremos ofrecerte"
+        error={errors.budget}
       />
     </section>
 
@@ -114,6 +144,7 @@ if (Astro.request.method === 'POST') {
       id="date"
       type="date"
       pattern="\d{2}-\d{2}-\d{4}"
+      error={errors.date}
     />
 
     <Input
@@ -121,12 +152,23 @@ if (Astro.request.method === 'POST') {
       id="comments"
       type="textarea"
       placeholder="¿Hay algo más que quieras contarnos?"
+      error={errors.comments}
     />
 
     <section class="flex flex-col gap-[1rem] lg:flex-row">
-      <Input label="¿Cómo nos encontraste?" id="how" type="text" />
+      <Input
+        label="¿Cómo nos encontraste?"
+        id="reference"
+        type="text"
+        error={errors.reference}
+      />
 
-      <Select label="Tipo de boda" id="weddingType" options={WeddingType} />
+      <Select
+        label="Tipo de boda"
+        id="weddingType"
+        options={WeddingType}
+        error={errors.weddingType}
+      />
     </section>
 
     <Checkboxes
