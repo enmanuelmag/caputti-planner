@@ -1,13 +1,71 @@
 ---
-import Layout from 'src/layouts/Layout.astro';
+export const prerender = false;
+
+import LayoutHome from 'src/layouts/LayoutHome.astro';
 
 import Input from '@components/form/Input.astro';
+import Select from '@components/form/Select.astro';
+import Checkboxes from '@components/form/Checkboxes.astro';
 
-const errors = { yourName: '' };
+import { WeddingType, WishList } from '@content/form';
+
+const errors = {
+  yourName: '',
+  coupleName: '',
+  email: '',
+  phone: '',
+  place: '',
+  guests: '',
+  budget: '',
+  date: '',
+  comments: '',
+  how: '',
+  weddingType: '',
+  wishlist: '',
+};
 
 if (Astro.request.method === 'POST') {
   try {
     const data = await Astro.request.formData();
+
+    const yourName = data.get('your-name');
+
+    const coupleName = data.get('couple-name');
+
+    const email = data.get('email');
+
+    const phone = data.get('phone');
+
+    const place = data.get('place');
+
+    const guests = data.get('guests');
+
+    const budget = data.get('budget');
+
+    const date = data.get('date');
+
+    const comments = data.get('comments');
+
+    const how = data.get('how');
+
+    const weddingType = data.get('weddingType');
+
+    const wishlist = data.getAll('wishlist');
+
+    console.log({
+      yourName,
+      coupleName,
+      email,
+      phone,
+      place,
+      guests,
+      budget,
+      date,
+      comments,
+      how,
+      weddingType,
+      wishlist,
+    });
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);
@@ -16,9 +74,10 @@ if (Astro.request.method === 'POST') {
 }
 ---
 
-<Layout title="Contacto - Caputi Festa">
+<LayoutHome title="Contacto - Caputi Festa">
   <form
-    class="w-full px-[1rem] md:px-[5rem] lg:px-[10rem] my-[2rem] lg:my-[6rem]"
+    method="POST"
+    class="w-full px-[1rem] md:px-[5rem] lg:px-[10rem] my-[2rem] lg:my-[4rem] flex flex-col !gap-y-[1rem]"
   >
     <section class="flex flex-col gap-[1rem] lg:flex-row">
       <Input label="Tu nombre" id="your-name" />
@@ -64,6 +123,27 @@ if (Astro.request.method === 'POST') {
       placeholder="¿Hay algo más que quieras contarnos?"
     />
 
-    <Input label="¿Cómo nos encontraste?" id="how" type="text" />
+    <section class="flex flex-col gap-[1rem] lg:flex-row">
+      <Input label="¿Cómo nos encontraste?" id="how" type="text" />
+
+      <Select label="Tipo de boda" id="weddingType" options={WeddingType} />
+    </section>
+
+    <Checkboxes
+      id="wishlist"
+      label="Hagamos el wishlist de tu boda"
+      options={WishList}
+    />
+
+    <button
+      type="submit"
+      class="w-full md:w-fit relative inline-flex mt-[2rem] items-center justify-center p-0.5 overflow-hidden rounded-lg group bg-gradient-to-br from-cyan-600 to-teal-500 group-hover:from-cyan-600 group-hover:to-teal-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300"
+    >
+      <span
+        class="w-full md:w-fit text-lg relative px-10 py-2.5 transition-all ease-in duration-[300] bg-white text-gray-700 hover:text-white rounded-md group-hover:bg-opacity-0"
+      >
+        Enviar formulario
+      </span>
+    </button>
   </form>
-</Layout>
+</LayoutHome>

@@ -1,6 +1,4 @@
 ---
-import { Popover } from 'webcoreui/astro';
-
 import Help from '@assets/home/help.svg?raw';
 
 interface Props {
@@ -46,36 +44,29 @@ const {
     type === 'textarea' ? (
       <textarea
         id={id}
+        name={id}
         required={required}
         placeholder={placeholder}
         rows="6"
         class:list={[
           error ? 'border-red-500' : 'border-gray-200',
-          'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+          'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white',
         ]}
       />
     ) : (
       <input
         id={id}
         type={type}
+        name={id}
         pattern={pattern}
         required={required}
         placeholder={placeholder}
         class:list={[
           error ? 'border-red-500' : 'border-gray-200',
-          'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+          'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white',
         ]}
       />
     )
   }
   {error && <p class="text-red-500 text-xs italic">{error}</p>}
 </div>
-
-<script>
-  import { popover } from 'webcoreui';
-
-  popover({
-    trigger: '.popover-trigger',
-    popover: '.popover',
-  });
-</script>
