@@ -18,14 +18,14 @@ const { id, label, options } = Astro.props;
   >
     {
       options.map((option) => (
-        <li class="w-full border-b border-gray-200 rounded-t-lg">
+        <li class="w-full border-b border-gray-200 rounded-t-lg hover:bg-gray-50">
           <div class="flex items-center ps-3">
             <input
               name={id}
               id={option}
               type="checkbox"
               value={option}
-              class="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 focus:ring-2 "
+              class="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 focus:ring-2 accent-teal-600"
             />
             <label
               for={option}

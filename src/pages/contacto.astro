@@ -1,13 +1,17 @@
 ---
 export const prerender = false;
 
+import { Toast, Icon } from 'webcoreui/astro';
+
 import LayoutHome from 'src/layouts/LayoutHome.astro';
+
+import { FromSchema } from '@customTypes/form';
 
 import Input from '@components/form/Input.astro';
 import Select from '@components/form/Select.astro';
 import Checkboxes from '@components/form/Checkboxes.astro';
 
-import { FromSchema } from '@customTypes/form';
+import { sendEmail } from '@utils/email';
 
 import { WeddingType, WishList } from '@content/form';
 
@@ -79,6 +83,9 @@ if (Astro.request.method === 'POST') {
         } = issue;
         errors[key as keyof typeof errors] = message;
       });
+    } else {
+      sendEmail(result.data);
+      return Astro.redirect('/form/success');
     }
   } catch (error) {
     if (error instanceof Error) {
@@ -179,7 +186,7 @@ if (Astro.request.method === 'POST') {
 
     <button
       type="submit"
-      class="w-full md:w-fit relative inline-flex mt-[2rem] items-center justify-center p-0.5 overflow-hidden rounded-lg group bg-gradient-to-br from-cyan-600 to-teal-500 group-hover:from-cyan-600 group-hover:to-teal-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300"
+      class="button-trigger w-full md:w-fit relative inline-flex mt-[2rem] items-center justify-center p-0.5 overflow-hidden rounded-lg group bg-gradient-to-br from-cyan-600 to-teal-500 group-hover:from-cyan-600 group-hover:to-teal-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300"
     >
       <span
         class="w-full md:w-fit text-lg relative px-10 py-2.5 transition-all ease-in duration-[300] bg-white text-gray-700 hover:text-white rounded-md group-hover:bg-opacity-0"
@@ -188,4 +195,28 @@ if (Astro.request.method === 'POST') {
       </span>
     </button>
   </form>
+
+  <Toast
+    theme="success"
+    position="top-right"
+    className="toast-success"
+    title="Hemos recibido tu solicitud!"
+  >
+    <Icon type="check" slot="icon" />
+    <p class="text-sm">Nos pondremos en contacto contigo lo antes posible.</p>
+  </Toast>
 </LayoutHome>
+
+<script>
+  import { toast } from 'webcoreui';
+
+  const trigger = document.querySelector('.button-trigger');
+
+  console.log('Existe el trigger?', trigger);
+
+  if (trigger) {
+    trigger.addEventListener('click', () => {
+      toast('.toast-success');
+    });
+  }
+</script>

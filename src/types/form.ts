@@ -4,11 +4,11 @@ export const FromSchema = zod.object({
   yourName: zod
     .string()
     .min(1, 'Su nombre no puede estar vacío')
-    .max(10, 'Su nombre no puede tener más de 10 caracteres')
+    .max(60, 'Su nombre no puede tener más de 60 caracteres')
     .trim(),
   coupleName: zod
     .string()
-    .max(10, 'El nombre de la pareja no puede tener más de 10 caracteres')
+    .max(60, 'El nombre de la pareja no puede tener más de 60 caracteres')
     .trim(),
   email: zod.string().email('Ingrese un correo electrónico válido'),
   phone: zod
@@ -31,7 +31,7 @@ export const FromSchema = zod.object({
     .positive('Ingrese un número válido')
     .int('Ingrese un número válido')
     .nullable(),
-  date: zod.string().regex(/^\d{2}\/\d{2}\/\d{4}$/, 'Ingrese una fecha válida'),
+  date: zod.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Ingrese una fecha válida'),
   comments: zod.string().trim().nullable(),
   reference: zod.string().trim().nullable(),
   weddingType: zod.string(),

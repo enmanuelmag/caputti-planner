@@ -13,5 +13,5 @@ export default defineConfig({
       noExternal: ['webcoreui'],
     },
   },
-  output: 'server',
+  output: 'hybrid',
 });
