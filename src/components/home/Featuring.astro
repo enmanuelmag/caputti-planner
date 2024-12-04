@@ -1,35 +1,25 @@
 ---
 import Feature from '@components/featuring/Feature.astro';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 export const prerender = true;
+
+const features = t('featuring.items').split('|');
 ---
 
 <section class="relative mb-[2rem] lg:mb-[6rem] mx-[0.5rem]">
   <h1
     class="text-2xl lg:text-[2rem] font-[100] text-center leading-10 my-[2rem]"
   >
-    Gracias a mi servicio de organización integral de bodas boutique,
-    experimentarás:
+    {t('featuring.title')}
   </h1>
 
   <div
     class="flex flex-row flex-wrap justify-center !gap-0 px-[1rem] lg:px-[16rem]"
   >
-    <Feature
-      index={1}
-      text="Enim cillum enim occaecat aute dolor laborum aute commodo occaecat nulla."
-    />
-    <Feature
-      index={2}
-      text="Enim ut deserunt exercitation ut excepteur. Velit eiusmod irure reprehenderit fugiat velit officia do dolor dolore amet consectetur pariatur."
-    />
-    <Feature
-      index={3}
-      text="Laboris fugiat laborum ad magna. Commodo excepteur magna enim non veniam labore cupidatat aute."
-    />
-    <Feature
-      index={4}
-      text="Nulla amet deserunt exercitation nulla culpa. Velit id culpa est ad enim quis Lorem amet officia do et."
-    />
+    {features.map((feature, index) => <Feature index={index} text={feature} />)}
   </div>
 </section>
