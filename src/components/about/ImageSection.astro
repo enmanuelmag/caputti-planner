@@ -37,13 +37,19 @@ const { title, subtitle, image, imagePosition, Content } = Astro.props as Props;
       ]}
     >
       <h2
+        aria-label={title}
         class="text-2xl lg:text-[2rem] font-[100] leading-10 hover:text-teal-500 transition-colors duration-500 cursor-default"
       >
         {title}
       </h2>
       {
         subtitle && (
-          <p class="text-lg lg:text-xl font-[300] text-gray-500">{subtitle}</p>
+          <p
+            aria-label={subtitle}
+            class="text-lg lg:text-xl font-[300] text-gray-500"
+          >
+            {subtitle}
+          </p>
         )
       }
       <div class="prose">

@@ -7,13 +7,19 @@ const t = useTranslations(lang);
 
 <section class="relative mb-[2rem] lg:mb-[6rem] mx-[0.5rem]">
   <h1
+    id="description-title"
+    aria-label={t('description.title')}
     class="text-2xl lg:text-[2rem] font-[100] text-center leading-10 my-[2rem]"
   >
     {t('description.title')}
   </h1>
 
   <div class="w-full flex justify-center mb-[4rem]">
-    <p class="prose text-center">
+    <p
+      id="description-subtitle"
+      aria-label={t('description.subtitle')}
+      class="prose text-center"
+    >
       {t('description.subtitle')}
     </p>
   </div>

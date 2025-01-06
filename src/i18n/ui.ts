@@ -8,6 +8,8 @@ export const defaultLang = 'sp';
 
 export const ui = {
   sp: {
+    //CONTACT BUTTON
+    'contact.button': 'Estamos listos para empezar',
     //HERO SECTION
     'hero.title':
       'Pariatur ea eiusmod reprehenderit culpa<br />sit reprehenderit est esse',

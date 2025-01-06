@@ -17,12 +17,16 @@ const { title, subtitle, Content } = Astro.props as Props;
     class="flex flex-col justify-center !gap-x-[1rem] px-[1rem] lg:!gap-0 lg:px-0"
   >
     <Divider
+      aria-label={title}
       text={title}
       className="text-2xl lg:text-[2rem] font-[100] text-center leading-10 my-[2rem] hover:text-teal-500 transition-colors duration-500 cursor-default"
     />
     {
       subtitle && (
-        <p class="text-center text-lg lg:text-xl font-[300] text-gray-500">
+        <p
+          aria-label={subtitle}
+          class="text-center text-lg lg:text-xl font-[300] text-gray-500"
+        >
           {subtitle}
         </p>
       )
