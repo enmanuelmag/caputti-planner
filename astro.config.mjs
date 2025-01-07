@@ -14,7 +14,19 @@ export default defineConfig({
   vite: {
     ssr: {
       noExternal: ['webcoreui'],
-      external: ['node:buffer', 'node:fs', 'node:path'],
+      external: [
+        'node:buffer',
+        'node:fs',
+        'node:path',
+        'fs',
+        'path',
+        'events',
+        // 'util',
+        // 'url',
+        // 'dns',
+        //'net',
+        'nodemailer',
+      ],
     },
   },
 
