@@ -3,15 +3,13 @@ export const prerender = false;
 
 import { Toast, Icon } from 'webcoreui/astro';
 
-import LayoutHome from 'src/layouts/LayoutHome.astro';
-
 import { FromSchema } from '@customTypes/form';
+
+import LayoutHome from 'src/layouts/LayoutHome.astro';
 
 import Input from '@components/form/Input.astro';
 import Select from '@components/form/Select.astro';
 import Checkboxes from '@components/form/Checkboxes.astro';
-
-import { sendEmail } from '@utils/email';
 
 import { WeddingType, WishList } from '@content/form';
 
@@ -84,8 +82,19 @@ if (Astro.request.method === 'POST') {
         errors[key as keyof typeof errors] = message;
       });
     } else {
-      sendEmail(result.data);
-      return Astro.redirect('/form/success');
+      const response = await fetch('/api/form', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        console.error('Error al enviar el formulario');
+      } else {
+        return Astro.redirect('/form/success');
+      }
     }
   } catch (error) {
     if (error instanceof Error) {
