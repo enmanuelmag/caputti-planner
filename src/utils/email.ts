@@ -1,37 +1,44 @@
-//import fs from 'fs';
-// import ejs from 'ejs';
-//import { createTransport, type Transporter } from 'nodemailer';
+import ejs from 'ejs';
+import fs from 'node:fs';
+import { createTransport, type Transporter } from 'nodemailer';
 
 import type { FormType } from '@customTypes/form';
 
-export async function sendEmail(options: FormType): Promise<null> {
-  // const transporter = await getEmailTransporter();
-  // return new Promise(async (resolve, reject) => {
-  //   const html = await parseEmailTemplate(options.yourName);
-  //   const from = import.meta.env.SEND_EMAIL_FROM;
-  //   const message = {
-  //     from,
-  //     to: options.email,
-  //     subject: 'Gracias por contactarnos',
-  //     html,
-  //   };
+type ConfigEmails = {
+  emailFrom: string;
+  emailTo: string;
+  resendApiKey: string;
+};
 
-  //   //Email for customer
-  //   await transporter.sendMail(message).catch(reject);
+export async function sendEmail(
+  formData: FormType,
+  config: ConfigEmails
+): Promise<Transporter> {
+  const transporter = await getEmailTransporter(config.resendApiKey);
+  return new Promise(async (resolve, reject) => {
+    const html = await parseEmailTemplate(formData.yourName);
+    const from = config.emailFrom;
+    const message = {
+      from,
+      to: formData.email,
+      subject: 'Gracias por contactarnos',
+      html,
+    };
 
-  //   //Email for admin
-  //   const adminMessage = {
-  //     from,
-  //     subject: 'Nuevo contacto',
-  //     to: import.meta.env.SEND_EMAIL_TO,
-  //     html: parseTextAdminMessage(options),
-  //   };
-  //   await transporter.sendMail(adminMessage).catch(reject);
+    //Email for customer
+    await transporter.sendMail(message).catch(reject);
 
-  //   resolve(transporter);
-  // });
+    //Email for admin
+    const adminMessage = {
+      from,
+      subject: 'Nuevo contacto',
+      to: config.emailTo,
+      html: parseTextAdminMessage(formData),
+    };
+    await transporter.sendMail(adminMessage).catch(reject);
 
-  return null;
+    resolve(transporter);
+  });
 }
 
 function parseTextAdminMessage(options: FormType): string {
@@ -50,32 +57,29 @@ function parseTextAdminMessage(options: FormType): string {
   `;
 }
 
-async function getEmailTransporter(): Promise<null> {
-  return new Promise((resolve, reject) => {
-    const apiKey = import.meta.env.RESEND_API_KEY;
-    if (!apiKey) {
-      throw new Error('Missing Resend configuration');
+async function getEmailTransporter(resendApiKey: string): Promise<Transporter> {
+  return new Promise((resolve) => {
+    if (!resendApiKey) {
+      throw new Error('Missing Resend configuration in .env');
     }
 
-    // const transporter = createTransport({
-    //   port: 465,
-    //   secure: true,
-    //   host: 'smtp.resend.com',
-    //   auth: { user: 'resend', pass: apiKey },
-    // });
+    const transporter = createTransport({
+      port: 465,
+      secure: true,
+      host: 'smtp.resend.com',
+      auth: { user: 'resend', pass: resendApiKey },
+    });
 
-    // resolve(transporter);
-
-    resolve(null);
+    resolve(transporter);
   });
 }
 
 async function parseEmailTemplate(name: string): Promise<string> {
   // Read the raw template file
-  // const rawTemplate = fs.readFileSync(
-  //   `./src/utils/templates/welcome.ejs`,
-  //   'utf8'
-  // );
+  const rawTemplate = fs.readFileSync(
+    `./src/utils/templates/welcome.ejs`,
+    'utf8'
+  );
   // Run the template through EJS to replace variables with parameter values
-  return '';
+  return ejs.render(rawTemplate, { name });
 }

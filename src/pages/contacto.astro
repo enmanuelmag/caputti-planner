@@ -42,9 +42,9 @@ if (Astro.request.method === 'POST') {
 
     const place = formData.get('place') || '';
 
-    const guests = formData.get('guests') || null;
+    const guests = Number(formData.get('guests')) || null;
 
-    const budget = formData.get('budget') || null;
+    const budget = Number(formData.get('budget')) || null;
 
     const date = formData.get('date') || '';
 
@@ -82,13 +82,23 @@ if (Astro.request.method === 'POST') {
         errors[key as keyof typeof errors] = message;
       });
     } else {
-      const response = await fetch('/api/form', {
+      console.log('Making the request');
+
+      const url = Astro.url.toString().replace(/\/contacto/, '');
+
+      const endpoint = `${url}/api/email.json`;
+
+      console.log('Endpoint', endpoint);
+
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
       });
+
+      console.log('Response', response);
 
       if (!response.ok) {
         console.error('Error al enviar el formulario');
