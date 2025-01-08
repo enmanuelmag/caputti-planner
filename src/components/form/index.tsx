@@ -11,7 +11,6 @@ import { WishList } from '@content/form';
 import { FromSchema, type FormType } from '@customTypes/form';
 
 import Checkboxes from './Checkboxes';
-import { Icon } from 'webcoreui/react';
 
 const defaultValues: FormType = {
   guests: 0,

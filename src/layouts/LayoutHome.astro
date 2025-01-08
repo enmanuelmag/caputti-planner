@@ -1,7 +1,5 @@
 ---
-import { Toast, Icon } from 'webcoreui/astro';
-
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import Head from '@components/shared/Head.astro';
 import GoTop from '@components/shared/GoTop.astro';
 import Footer from '@components/shared/Footer.astro';
@@ -20,7 +18,7 @@ const { title } = Astro.props;
 <html lang="es">
   <head>
     <Head title={title} />
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     <NavbarMobile />
