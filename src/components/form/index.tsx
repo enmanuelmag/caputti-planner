@@ -258,19 +258,20 @@ const FormContact = () => {
     </React.Fragment>
   );
 
-  function onSubmit(data: FormType) {
+  async function onSubmit(formData: FormType) {
     setLoading(true);
-    actions
-      .sendEmail(data)
-      .then(() => {
-        form.reset(defaultValues);
-        toast('.toast-success');
-      })
-      .catch((error) => {
-        console.error('Error sending email', error);
-        toast('.toast-error');
-      })
-      .finally(() => setLoading(false));
+
+    const { data, error } = await actions.sendEmail(formData);
+
+    if (data) {
+      toast('success');
+      form.reset();
+    } else {
+      console.error(error);
+      toast('error');
+    }
+
+    setLoading(false);
   }
 };
 
