@@ -1,8 +1,7 @@
-import ejs from 'ejs';
-import fs from 'node:fs';
 import { createTransport, type Transporter } from 'nodemailer';
 
 import type { FormType } from '@customTypes/form';
+import { templateEmail } from './templates/welcome';
 
 type ConfigEmails = {
   emailFrom: string;
@@ -76,10 +75,12 @@ async function getEmailTransporter(resendApiKey: string): Promise<Transporter> {
 
 async function parseEmailTemplate(name: string): Promise<string> {
   // Read the raw template file
-  const rawTemplate = fs.readFileSync(
-    `./src/utils/templates/welcome.ejs`,
-    'utf8'
-  );
-  // Run the template through EJS to replace variables with parameter values
-  return ejs.render(rawTemplate, { name });
+  // const rawTemplate = fs.readFileSync(
+  //   `./src/utils/templates/welcome.ejs`,
+  //   'utf8'
+  // );
+  // // Run the template through EJS to replace variables with parameter values
+  // return ejs.render(rawTemplate, { name });
+
+  return templateEmail.replace('{{name}}', name);
 }
