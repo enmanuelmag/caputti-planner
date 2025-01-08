@@ -1,28 +1,24 @@
 ---
 import LayoutHome from 'src/layouts/LayoutHome.astro';
 
+import { Spinner } from 'webcoreui/astro';
+
 import FormReact from '@components/form';
 ---
 
 <LayoutHome title="Contacto - Caputi Festa">
-  <FormReact client:only="react" />
+  <div class="spinner mt-[3rem] h-full">
+    <Spinner size={128} color="teal" />
+  </div>
+
+  <div class="hidden form">
+    <FormReact client:only="react" />
+  </div>
 </LayoutHome>
 
 <script>
-  // import { toast } from 'webcoreui';
-
-  // const trigger = document.querySelector('.button-trigger');
-
-  // const buttonText = trigger?.querySelector('.button-text');
-
-  // if (trigger && buttonText) {
-  //   trigger.addEventListener('click', () => {
-  //     buttonText.textContent = 'Enviando...';
-
-  //     setTimeout(() => {
-  //       buttonText.textContent = 'Enviar formulario';
-  //       toast('.toast-success');
-  //     }, 3000);
-  //   });
-  // }
+  setTimeout(() => {
+    document.querySelector('.spinner')?.classList.add('hidden');
+    document.querySelector('.form')?.classList.remove('hidden');
+  }, 500);
 </script>
