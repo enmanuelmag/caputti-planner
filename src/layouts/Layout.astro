@@ -25,7 +25,9 @@ const { title } = Astro.props;
     <NavbarMobile />
     <NavbarDesktop />
 
-    <main class="px-0 md:px-[6rem] lg:px-[10rem]">
+    <main
+      class="transition-colors duration-200 px-0 md:px-[6rem] lg:px-[10rem]"
+    >
       <slot />
     </main>
 

@@ -6,8 +6,6 @@ import { sendEmail } from '@utils/email';
 
 export const POST: APIRoute = async ({ request, locals }) => {
   try {
-    console.log('Sending email');
-
     const formData = await request.json();
 
     await sendEmail(formData, {
@@ -15,8 +13,6 @@ export const POST: APIRoute = async ({ request, locals }) => {
       emailFrom: locals.runtime.env.SEND_EMAIL_FROM,
       emailTo: locals.runtime.env.SEND_EMAIL_TO,
     });
-
-    console.log('Email sent');
 
     return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (error) {

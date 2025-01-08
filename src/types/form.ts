@@ -21,14 +21,14 @@ export const FromSchema = zod.object({
     .number({
       message: 'Ingrese un número válido',
     })
-    .positive('Ingrese un número válido')
+    .gte(0)
     .int('Ingrese un número válido')
     .nullable(),
   budget: zod
     .number({
       message: 'Ingrese un número válido',
     })
-    .positive('Ingrese un número válido')
+    .gte(0)
     .int('Ingrese un número válido')
     .nullable(),
   date: zod.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Ingrese una fecha válida'),

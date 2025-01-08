@@ -1,241 +1,28 @@
 ---
-export const prerender = false;
-
-import { Toast, Icon } from 'webcoreui/astro';
-
-import { FromSchema } from '@customTypes/form';
-
 import LayoutHome from 'src/layouts/LayoutHome.astro';
 
-import Input from '@components/form/Input.astro';
-import Select from '@components/form/Select.astro';
-import Checkboxes from '@components/form/Checkboxes.astro';
-
-import { WeddingType, WishList } from '@content/form';
-
-const errors = {
-  yourName: '',
-  coupleName: '',
-  email: '',
-  phone: '',
-  place: '',
-  guests: '',
-  budget: '',
-  date: '',
-  comments: '',
-  reference: '',
-  weddingType: '',
-  wishlist: '',
-};
-
-if (Astro.request.method === 'POST') {
-  try {
-    const formData = await Astro.request.formData();
-
-    const yourName = formData.get('your-name') || '';
-
-    const coupleName = formData.get('couple-name') || '';
-
-    const email = formData.get('email') || '';
-
-    const phone = formData.get('phone') || '';
-
-    const place = formData.get('place') || '';
-
-    const guests = Number(formData.get('guests')) || null;
-
-    const budget = Number(formData.get('budget')) || null;
-
-    const date = formData.get('date') || '';
-
-    const comments = formData.get('comments') || '';
-
-    const reference = formData.get('reference') || '';
-
-    const weddingType = formData.get('weddingType') || '';
-
-    const wishlist = formData.getAll('wishlist') || [];
-
-    const data = {
-      yourName,
-      coupleName,
-      email,
-      phone,
-      place,
-      guests,
-      budget,
-      date,
-      comments,
-      reference,
-      weddingType,
-      wishlist,
-    };
-
-    const result = FromSchema.safeParse(data);
-
-    if (!result.success) {
-      result.error.issues.forEach((issue) => {
-        const {
-          path: [key],
-          message,
-        } = issue;
-        errors[key as keyof typeof errors] = message;
-      });
-    } else {
-      console.log('Making the request');
-
-      const url = Astro.url.toString().replace(/\/contacto/, '');
-
-      const endpoint = `${url}/api/email.json`;
-
-      console.log('Endpoint', endpoint);
-
-      const response = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      console.log('Response', response);
-
-      if (!response.ok) {
-        console.error('Error al enviar el formulario');
-      } else {
-        return Astro.redirect('/form/success');
-      }
-    }
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-  }
-}
+import FormReact from '@components/form';
 ---
 
 <LayoutHome title="Contacto - Caputi Festa">
-  <form
-    method="POST"
-    class="w-full px-[1rem] md:px-[5rem] lg:px-[10rem] my-[2rem] lg:my-[4rem] flex flex-col !gap-y-[1rem]"
-  >
-    <section class="flex flex-col gap-[1rem] lg:flex-row">
-      <Input label="Tu nombre" id="your-name" error={errors.yourName} />
-
-      <Input
-        label="Nombre de tu pareja"
-        id="couple-name"
-        error={errors.coupleName}
-      />
-    </section>
-
-    <section class="flex flex-col gap-[1rem] lg:flex-row">
-      <Input
-        label="Email"
-        id="email"
-        placeholder="ejemplo@email.com"
-        type="email"
-        error={errors.email}
-      />
-
-      <Input label="Teléfono" id="phone" type="tel" error={errors.phone} />
-    </section>
-
-    <Input
-      label="Lugar de la boda preferido"
-      id="place"
-      type="text"
-      error={errors.place}
-    />
-
-    <section class="flex flex-col gap-[1rem] lg:flex-row">
-      <Input
-        label="Cantidad de invitados"
-        id="guests"
-        type="number"
-        error={errors.guests}
-      />
-
-      <Input
-        label="Presupuesto estimado"
-        id="budget"
-        type="number"
-        helperText="Conocer esta información es muy importante. Asi tendremos una guía de lo que podremos ofrecerte"
-        error={errors.budget}
-      />
-    </section>
-
-    <Input
-      label="Fecha de la boda"
-      id="date"
-      type="date"
-      pattern="\d{2}-\d{2}-\d{4}"
-      error={errors.date}
-    />
-
-    <Input
-      label="Comentarios"
-      id="comments"
-      type="textarea"
-      placeholder="¿Hay algo más que quieras contarnos?"
-      error={errors.comments}
-    />
-
-    <section class="flex flex-col gap-[1rem] lg:flex-row">
-      <Input
-        label="¿Cómo nos encontraste?"
-        id="reference"
-        type="text"
-        error={errors.reference}
-      />
-
-      <Select
-        label="Tipo de boda"
-        id="weddingType"
-        options={WeddingType}
-        error={errors.weddingType}
-      />
-    </section>
-
-    <Checkboxes
-      id="wishlist"
-      label="Hagamos el wishlist de tu boda"
-      options={WishList}
-    />
-
-    <button
-      type="submit"
-      class="button-trigger w-full md:w-fit relative inline-flex mt-[2rem] items-center justify-center p-0.5 overflow-hidden rounded-lg group bg-gradient-to-br from-cyan-600 to-teal-500 group-hover:from-cyan-600 group-hover:to-teal-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300"
-    >
-      <span
-        class="w-full md:w-fit text-lg relative px-10 py-2.5 transition-all ease-in duration-[300] bg-white text-gray-700 hover:text-white rounded-md group-hover:bg-opacity-0"
-      >
-        Enviar formulario
-      </span>
-    </button>
-  </form>
-
-  <Toast
-    theme="success"
-    position="top-right"
-    className="toast-success"
-    title="Hemos recibido tu solicitud!"
-  >
-    <Icon type="check" slot="icon" />
-    <p class="text-sm">Nos pondremos en contacto contigo lo antes posible.</p>
-  </Toast>
+  <FormReact client:only="react" />
 </LayoutHome>
 
 <script>
-  import { toast } from 'webcoreui';
+  // import { toast } from 'webcoreui';
 
-  const trigger = document.querySelector('.button-trigger');
+  // const trigger = document.querySelector('.button-trigger');
 
-  console.log('Existe el trigger?', trigger);
+  // const buttonText = trigger?.querySelector('.button-text');
 
-  if (trigger) {
-    trigger.addEventListener('click', () => {
-      toast('.toast-success');
-    });
-  }
+  // if (trigger && buttonText) {
+  //   trigger.addEventListener('click', () => {
+  //     buttonText.textContent = 'Enviando...';
+
+  //     setTimeout(() => {
+  //       buttonText.textContent = 'Enviar formulario';
+  //       toast('.toast-success');
+  //     }, 3000);
+  //   });
+  // }
 </script>
