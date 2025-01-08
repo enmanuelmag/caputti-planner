@@ -28,6 +28,8 @@ const defaultValues: FormType = {
   weddingType: '',
 };
 
+import './form.scss';
+
 const FormContact = () => {
   const [loading, setLoading] = React.useState(false);
 
@@ -202,6 +204,7 @@ const FormContact = () => {
                 {...field}
                 value={field.value ?? ''}
                 subText={form.formState.errors.weddingType?.message}
+                onChange={(e) => field.onChange(e.name)}
               />
             )}
           />
