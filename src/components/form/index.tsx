@@ -31,6 +31,8 @@ const defaultValues: FormType = {
 import './form.scss';
 
 const FormContact = () => {
+  const isMobile = window.innerWidth < 1024;
+
   const [loading, setLoading] = React.useState(false);
 
   const form = useForm<FormType>({
@@ -237,7 +239,7 @@ const FormContact = () => {
       </form>
       <Toast
         theme="success"
-        position="top-right"
+        position={isMobile ? 'top-full' : 'top-right'}
         className="toast-success"
         title="Hemos recibido tu solicitud!"
       >
@@ -247,7 +249,7 @@ const FormContact = () => {
       </Toast>
       <Toast
         theme="alert"
-        position="top-right"
+        position={isMobile ? 'top-full' : 'top-right'}
         className="toast-error"
         title="Hubo un error al enviar tu solicitud"
       >
