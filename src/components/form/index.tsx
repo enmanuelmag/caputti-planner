@@ -264,11 +264,11 @@ const FormContact = () => {
     const { data, error } = await actions.sendEmail(formData);
 
     if (data) {
-      toast('success');
+      toast('.toast-success');
       form.reset();
     } else {
       console.error(error);
-      toast('error');
+      toast('.toast-error');
     }
 
     setLoading(false);
