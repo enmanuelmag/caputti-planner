@@ -257,19 +257,17 @@ const FormContact = () => {
 
   function onSubmit(data: FormType) {
     setLoading(true);
-    // actions
-    //   .sendEmail(data)
-    //   .then(() => {
-    //     form.reset(defaultValues);
-    //     toast('.toast-success');
-    //   })
-    //   .catch(() => toast('.toast-error'))
-    //   .finally(() => setLoading(false));
-    setTimeout(() => {
-      form.reset(defaultValues);
-      toast('.toast-success');
-      setLoading(false);
-    }, 2000);
+    actions
+      .sendEmail(data)
+      .then(() => {
+        form.reset(defaultValues);
+        toast('.toast-success');
+      })
+      .catch((error) => {
+        console.error('Error sending email', error);
+        toast('.toast-error');
+      })
+      .finally(() => setLoading(false));
   }
 };
 
