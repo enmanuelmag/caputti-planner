@@ -6,6 +6,11 @@ import { getCollection } from 'astro:content';
 import Section from '@components/about/Section.astro';
 import FastContact from '@components/shared/FastContact.astro';
 
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const sections = (await getCollection('about')).sort(
   (a, b) => a.data.order - b.data.order
 );
@@ -18,5 +23,5 @@ const sections = (await getCollection('about')).sort(
     {sections.map(({ slug }) => <Section id={slug} />)}
   </section>
 
-  <FastContact text="Estamos listos para empezar" />
+  <FastContact text={t('contact.button')} />
 </Layout>

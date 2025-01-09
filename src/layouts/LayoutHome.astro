@@ -1,9 +1,10 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
-
+import { ClientRouter } from 'astro:transitions';
 import Head from '@components/shared/Head.astro';
 import GoTop from '@components/shared/GoTop.astro';
 import Footer from '@components/shared/Footer.astro';
+
+import 'aos/dist/aos.css';
 
 import NavbarDesktop from '@components/shared/NavbarDesktop.astro';
 import NavbarMobile from '@components/shared/NavbarMobile.astro';
@@ -19,13 +20,13 @@ const { title } = Astro.props;
 <html lang="es">
   <head>
     <Head title={title} />
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     <NavbarMobile />
     <NavbarDesktop />
 
-    <main>
+    <main class="transition-colors duration-200">
       <slot />
     </main>
 
@@ -36,7 +37,9 @@ const { title } = Astro.props;
 </html>
 
 <style lang="scss" is:global>
-  @import './webcoreui/styles';
+  //@import './webcoreui/styles';
+  @use 'webcoreui/styles' as *;
+
   @include setup(
     (
       fontRegular: '/fonts/Inter-Regular.woff2',
@@ -55,3 +58,15 @@ const { title } = Astro.props;
     font-family: system-ui, sans-serif;
   }
 </style>
+
+<script>
+  import AOS from 'aos';
+
+  AOS.init({
+    delay: 100,
+    once: false,
+    offset: 300,
+    duration: 1250,
+    //easing: 'ease-in-cubic',
+  });
+</script>

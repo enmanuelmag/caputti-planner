@@ -1,40 +1,31 @@
 ---
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<section class="relative mb-[2rem] lg:mb-[6rem] mx-[0.5rem]">
+<section
+  data-aos="fade-up"
+  data-aos-offset="0"
+  data-aos-delay="0"
+  class="relative mb-[2rem] lg:mb-[6rem] mx-[0.5rem]"
+>
   <h1
+    id="description-title"
+    aria-label={t('description.title')}
     class="text-2xl lg:text-[2rem] font-[100] text-center leading-10 my-[2rem]"
   >
-    Qui aliquip nulla cupidatat commodo excepteur exercitation
+    {t('description.title')}
   </h1>
 
   <div class="w-full flex justify-center mb-[4rem]">
-    <p class="prose text-center">
-      Esse nisi fugiat ipsum deserunt culpa qui enim cillum sunt laboris ad
-      dolore proident occaecat. Amet velit do deserunt velit laboris. Tempor
-      ullamco deserunt ad velit laboris eiusmod reprehenderit. Voluptate ut
-      nulla excepteur cupidatat. Anim ad in voluptate consequat Lorem aliquip
-      exercitation. Tempor irure dolor voluptate dolore esse tempor aliquip ea
-      aliqua proident duis veniam quis do.
+    <p
+      id="description-subtitle"
+      aria-label={t('description.subtitle')}
+      class="prose text-center"
+    >
+      {t('description.subtitle')}
     </p>
   </div>
-
-  <!-- <div class="parallax"></div> -->
 </section>
-
-<!-- <style lang="scss">
-  .parallax {
-    /* The image used */
-    background-image: url('./../../assets/home/description.jpg');
-
-    /* Set a specific height */
-    height: 400px;
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-</style> -->
