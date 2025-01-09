@@ -5,7 +5,12 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<section class="relative mb-[2rem] lg:mb-[6rem] mx-[0.5rem]">
+<section
+  data-aos="fade-up"
+  data-aos-offset="0"
+  data-aos-delay="0"
+  class="relative mb-[2rem] lg:mb-[6rem] mx-[0.5rem]"
+>
   <h1
     id="description-title"
     aria-label={t('description.title')}
@@ -23,22 +28,4 @@ const t = useTranslations(lang);
       {t('description.subtitle')}
     </p>
   </div>
-
-  <!-- <div class="parallax"></div> -->
 </section>
-
-<!-- <style lang="scss">
-  .parallax {
-    /* The image used */
-    background-image: url('./../../assets/home/description.jpg');
-
-    /* Set a specific height */
-    height: 400px;
-
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: contain;
-  }
-</style> -->

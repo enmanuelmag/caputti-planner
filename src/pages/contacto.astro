@@ -1,24 +1,64 @@
 ---
 import LayoutHome from 'src/layouts/LayoutHome.astro';
 
-import { Spinner } from 'webcoreui/astro';
+import { Spinner, Toast } from 'webcoreui/astro';
 
 import FormReact from '@components/form';
 ---
 
 <LayoutHome title="Contacto - Caputi Festa">
-  <div class="spinner mt-[3rem] h-full">
-    <Spinner size={128} color="teal" />
+  <div
+    data-aos="fade-in"
+    data-aos-offset="0"
+    data-aos-delay="0"
+    class="spinner mt-[6rem] h-full"
+  >
+    <Spinner size={128} color="teal" speed={2} width={3} />
   </div>
 
   <div class="hidden form">
     <FormReact client:only="react" />
   </div>
+
+  <Toast
+    theme="success"
+    position="top-right"
+    className="toast-success"
+    title="Hemos recibido tu solicitud!"
+  >
+    <p class="text-sm">Nos pondremos en contacto contigo lo antes posible.</p>
+  </Toast>
+  <Toast
+    theme="alert"
+    position="top-right"
+    className="toast-error"
+    title="Hubo un error al enviar tu solicitud"
+  >
+    <p class="text-sm">
+      Por favor, intenta de nuevo más tarde o contacta a soporte.
+    </p>
+  </Toast>
 </LayoutHome>
 
 <script>
+  import AOS from 'aos';
+
   setTimeout(() => {
     document.querySelector('.spinner')?.classList.add('hidden');
     document.querySelector('.form')?.classList.remove('hidden');
-  }, 500);
+    const formElement = document.querySelector('.form');
+
+    if (!formElement) return;
+    formElement.setAttribute('data-aos', 'fade-in');
+    formElement.setAttribute('data-aos-offset', '0');
+    formElement.setAttribute('data-aos-delay', '0');
+
+    AOS.init({
+      delay: 100,
+      once: false,
+      offset: 300,
+      duration: 1000,
+      //easing: 'ease-in-cubic',
+    });
+  }, 750);
 </script>

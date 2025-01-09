@@ -236,31 +236,16 @@ const FormContact = () => {
           )}
         </Button>
       </form>
-      <Toast
-        theme="success"
-        position={isMobile ? 'top-full' : 'top-right'}
-        className="toast-success"
-        title="Hemos recibido tu solicitud!"
-      >
-        <p className="text-sm">
-          Nos pondremos en contacto contigo lo antes posible.
-        </p>
-      </Toast>
-      <Toast
-        theme="alert"
-        position={isMobile ? 'top-full' : 'top-right'}
-        className="toast-error"
-        title="Hubo un error al enviar tu solicitud"
-      >
-        <p className="text-sm">
-          Por favor, intenta de nuevo más tarde o contacta a soporte.
-        </p>
-      </Toast>
     </React.Fragment>
   );
 
   async function onSubmit(formData: FormType) {
     setLoading(true);
+
+    // setTimeout(() => {
+    //   toast('.toast-success');
+    //   setLoading(false);
+    // }, 2000);
 
     const { data, error } = await actions.sendEmail(formData);
 

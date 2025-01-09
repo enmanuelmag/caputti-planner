@@ -58,15 +58,15 @@ const Carousel = ({ items }: CarouselProps) => {
             shadow="lg"
             padding="md"
             withBorder
-            href={`/services#${item.slug}`}
+            href={`/servicios#${item.slug}`}
           >
             <Card.Section className="mb-[1rem]">
               <img
                 src={item.image.src}
                 alt={item.title}
-                style={{
-                  viewTransitionName: `img-${item.slug}`,
-                }}
+                // style={{
+                //   viewTransitionName: `img-${item.slug}`,
+                // }}
               />
             </Card.Section>
             <h2 className="prose prose-xl text-center">{item.title}</h2>

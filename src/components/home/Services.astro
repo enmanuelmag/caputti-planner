@@ -23,7 +23,12 @@ const services = servicesRaw.map((s) => ({
 export const prerender = true;
 ---
 
-<section class="relative mb-[2rem] lg:mb-[6rem]">
+<section
+  data-aos="fade-up"
+  data-aos-offset="100"
+  data-aos-delay="0"
+  class="relative mb-[2rem] lg:mb-[6rem]"
+>
   <h1
     id="services-title"
     aria-label={t('services.title')}
