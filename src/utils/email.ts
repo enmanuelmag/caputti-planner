@@ -1,7 +1,6 @@
-import { createTransport, type Transporter } from 'nodemailer';
+import fs from 'node:fs';
 
 import type { FormType } from '@customTypes/form';
-import { templateEmail } from './templates/welcome';
 
 type ConfigEmails = {
   emailFrom: string;
@@ -9,78 +8,73 @@ type ConfigEmails = {
   resendApiKey: string;
 };
 
+const URL = 'https://api.resend.com/emails';
+
 export async function sendEmail(
   formData: FormType,
   config: ConfigEmails
-): Promise<Transporter> {
-  const transporter = await getEmailTransporter(config.resendApiKey);
-  return new Promise(async (resolve, reject) => {
-    const html = await parseEmailTemplate(formData.yourName);
-    const from = config.emailFrom;
-    const message = {
-      from,
-      to: formData.email,
-      subject: 'Gracias por contactarnos',
-      html,
-    };
+): Promise<void> {
+  const { emailFrom: from, emailTo, resendApiKey } = config;
 
-    //Email for customer
-    await transporter.sendMail(message).catch(reject);
+  const messageClient = {
+    from,
+    to: formData.email,
+    subject: 'Gracias por contactarnos',
+    html: parseEmailTemplate(formData.yourName),
+  };
 
-    //Email for admin
-    const adminMessage = {
-      from,
-      subject: 'Nuevo contacto',
-      to: config.emailTo,
-      html: parseTextAdminMessage(formData),
-    };
-    await transporter.sendMail(adminMessage).catch(reject);
+  const promises = [];
 
-    resolve(transporter);
+  promises.push(
+    fetch(URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${resendApiKey}`,
+      },
+      body: JSON.stringify(messageClient),
+    })
+  );
+
+  const adminMessage = {
+    from,
+    to: emailTo,
+    subject: 'Nuevo contacto',
+    html: parseTextAdminMessage(formData),
+  };
+
+  promises.push(
+    fetch(URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${resendApiKey}`,
+      },
+      body: JSON.stringify(adminMessage),
+    })
+  );
+
+  const result = await Promise.allSettled(promises);
+
+  result.forEach((response, idx) => {
+    if (response.status === 'rejected') {
+      console.error(`Error sending ${idx}`, response.reason);
+    }
   });
 }
 
 function parseTextAdminMessage(options: FormType): string {
-  return `
-    Nuevo contacto de ${options.yourName} ${options.email}\n
-    Nombre de la pareja: ${options.coupleName}\n
-    Teléfono: ${options.phone}\n
-    Lugar: ${options.place}\n
-    Número de invitados: ${options.guests || 'No especificado'}\n
-    Presupuesto: ${options.budget}\n
-    Fecha: ${options.date || 'No especificada'}\n
-    Comentarios: ${options.comments}\n
-    Referencia: ${options.reference || 'Ninguna'}\n
-    Tipo de boda: ${options.weddingType || 'No especificado'}\n
-    Lista de deseos: ${options.wishList?.join(', ') || 'Ninguno'}
-  `;
+  const template = fs.readFileSync('./templates/newContact.html', 'utf8');
+
+  return Object.entries(options).reduce(
+    (acc, [key, value]) =>
+      acc.replace(`{{${key}}}`, `${value || 'No especificado'}`),
+    template
+  );
 }
 
-async function getEmailTransporter(resendApiKey: string): Promise<Transporter> {
-  return new Promise((resolve) => {
-    if (!resendApiKey) {
-      throw new Error('Missing Resend configuration in .env');
-    }
-
-    const transporter = createTransport({
-      port: 465,
-      secure: true,
-      host: 'smtp.resend.com',
-      auth: { user: 'resend', pass: resendApiKey },
-    });
-
-    resolve(transporter);
-  });
-}
-
-async function parseEmailTemplate(name: string): Promise<string> {
-  // Read the raw template file
-  // const rawTemplate = fs.readFileSync(
-  //   `./src/utils/templates/welcome.ejs`,
-  //   'utf8'
-  // );
-  // // Run the template through EJS to replace variables with parameter values
-  // return ejs.render(rawTemplate, { name });
+function parseEmailTemplate(name: string): string {
+  const templateEmail = fs.readFileSync('./templates/welcome.html', 'utf8');
 
   return templateEmail.replace('{{name}}', name);
 }
