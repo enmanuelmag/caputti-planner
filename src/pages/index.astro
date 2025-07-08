@@ -27,3 +27,98 @@ const t = useTranslations(lang);
 
   <FastContact text={t('contact.button')} />
 </LayoutHome>
+
+<style lang="scss" is:global>
+  //@import './webcoreui/styles';
+  @use 'webcoreui/styles' as *;
+
+  @include setup(
+    (
+      fontRegular: '/fonts/Inter-Regular.woff2',
+      fontBold: '/fonts/Inter-Bold.woff2',
+      includeResets: false,
+      includeTooltip: true,
+      includeUtilities: true,
+      includeScrollbarStyles: false,
+      theme: 'light',
+    )
+  );
+
+  @font-face {
+    font-family: 'AlexBrush';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/AlexBrush-Regular.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/Inter-Regular.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/Inter-Bold.woff2') format('woff2');
+  }
+
+  html {
+    background: #ffffff;
+    scroll-behavior: smooth;
+    font-family: system-ui, sans-serif;
+  }
+
+  h1 {
+    font-family: 'AlexBrush';
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Inter', sans-serif;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+
+  h4 {
+    font-size: 1.125rem;
+    line-height: 1.2;
+  }
+
+  h5 {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  h6 {
+    font-size: 0.875rem;
+    line-height: 1.2;
+  }
+</style>
+
+<script>
+  import AOS from 'aos';
+
+  AOS.init({
+    delay: 100,
+    once: false,
+    offset: 300,
+    duration: 1250,
+    //easing: 'ease-in-cubic',
+  });
+</script>

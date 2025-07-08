@@ -11,21 +11,46 @@ const t = useTranslations(lang);
   data-aos-delay="0"
   class="relative mb-[2rem] lg:mb-[6rem] mx-[0.5rem]"
 >
-  <h1
-    id="description-title"
-    aria-label={t('description.title')}
+  <h2
+    id="description.title.first"
+    aria-label={t('description.title.first')}
     class="text-2xl lg:text-[2rem] font-[100] text-center leading-10 my-[2rem]"
   >
-    {t('description.title')}
-  </h1>
+    {t('description.title.first')}
+  </h2>
 
-  <div class="w-full flex justify-center mb-[4rem]">
-    <p
-      id="description-subtitle"
-      aria-label={t('description.subtitle')}
-      class="prose text-center"
+  <p
+    id="description.subtitle.first"
+    aria-label={t('description.subtitle.first')}
+    class="text-2xl lg:text-[2rem] font-[100] text-center leading-10 my-[2rem]"
+  >
+    {t('description.subtitle.first')}
+  </p>
+
+  <div class="w-full flex flex-col justify-center items-center mb-[4rem]">
+    <h1
+      id="description.title.second"
+      aria-label={t('description.title.second')}
+      class="text-center font-alexbrush"
     >
-      {t('description.subtitle')}
-    </p>
+      {t('description.title.second')}
+    </h1>
+
+    <div class="flex flex-col justify-center items-center !gap-y-0 w-full">
+      <p
+        id="description.subtitle.second.p1"
+        aria-label={t('description.subtitle.second.p1')}
+        class="prose text-center !max-w-full"
+      >
+        {t('description.subtitle.second.p1')}
+      </p>
+      <p
+        id="description.subtitle.second.p2"
+        aria-label={t('description.subtitle.second.p2')}
+        class="prose text-center"
+      >
+        {t('description.subtitle.second.p2')}
+      </p>
+    </div>
   </div>
 </section>

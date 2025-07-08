@@ -4,6 +4,9 @@ export default {
   //prefix: '',
   theme: {
     extend: {},
+    fontFamily: {
+      alexbrush: ['"AlexBrush"'],
+    },
   },
   plugins: [require('@tailwindcss/typography')],
 };
