@@ -6,6 +6,8 @@ export default {
     extend: {},
     fontFamily: {
       alexbrush: ['"AlexBrush"'],
+      cinzel: ['"Cinzel"'],
+      krub: ['"Krub"'],
     },
   },
   plugins: [require('@tailwindcss/typography')],

@@ -1,25 +1,35 @@
 ---
 import { ui, defaultLang } from '@i18n/ui';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
-import type { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'astro/types';
 
 type TextTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'label';
 
-type TransTextProps = HTMLAttributes<
-  HTMLHeadingElement | HTMLParagraphElement | HTMLSpanElement | HTMLLabelElement
-> & {
-  tag?: TextTag;
+type Props = HTMLAttributes<TextTag> & {
+  tag: TextTag;
   textId: keyof (typeof ui)[typeof defaultLang];
 };
 
-const { tag = 'span', textId, ...props } = Astro.props as TransTextProps;
+const {
+  textId,
+  tag = 'span',
+  class: classProp = '',
+  ...props
+}: Props = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-//! Test this
-const Tag = tag as any;
+const isValidTag = (tag: string): tag is TextTag => {
+  return ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'label'].includes(
+    tag
+  );
+};
+
+const Tag = isValidTag(tag) ? tag : 'span';
 const text = t(textId);
 ---
 
-<Tag aria-label={text} id={textId} {...props}>{text}</Tag>
+<Tag {...props} aria-label={text} id={textId} class:list={['prose', classProp]}
+  >{text}</Tag
+>
