@@ -1,0 +1,25 @@
+---
+import { ui, defaultLang } from '@i18n/ui';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import type { HTMLAttributes } from 'react';
+
+type TextTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'label';
+
+type TransTextProps = HTMLAttributes<
+  HTMLHeadingElement | HTMLParagraphElement | HTMLSpanElement | HTMLLabelElement
+> & {
+  tag?: TextTag;
+  textId: keyof (typeof ui)[typeof defaultLang];
+};
+
+const { tag = 'span', textId, ...props } = Astro.props as TransTextProps;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+//! Test this
+const Tag = tag as any;
+const text = t(textId);
+---
+
+<Tag aria-label={text} id={textId} {...props}>{text}</Tag>
