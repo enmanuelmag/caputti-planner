@@ -50,5 +50,11 @@ export const ui = {
     'featuring.title': 'GRACIAS A NUESTROS SERVICIOS  PODRÁS:',
     'featuring.items':
       'Avanzar con los preparativos de tu boda de manera relajada y eficaz, disfrutando de cada paso del proceso.|Contar con una guía profesional que te ayudará a poner en orden todas tus ideas y resolver tus dudas.|Ahorrar tiempo y esfuerzo, al no tener que dedicar todo tu tiempo a la organización.|Tener la seguridad de que todo saldrá acorde a lo planeado, ya que nosotros nos encargaremos de cada detalle de tu boda para que sea perfecto.|Acceder a una selección exclusiva de proveedores que se ajusten a tu estilo y preferencias, asegurando la calidad y excelencia en cada aspecto del evento.|Disfrutar de un evento memorable sin preocupaciones permitiéndote vivir plenamente cada momento junto a tu pareja y seres queridos.',
+
+    //FOOTER SECTION
+    email: 'contacto@caputifesta.com',
+    phone: '+593 96 422 1777',
+    phoneText: 'Hola Caputi Festa, deseo saber más información sobre...',
+    phoneNumber: '593964221777',
   },
 } as const;

@@ -24,7 +24,7 @@ const sidebarProps: SidebarProps = {
           active: currentPath === '/servicios',
         },
         {
-          name: 'Liss Caputti',
+          name: 'Liss Caputi',
           href: '/acerca',
           icon: Icons.info,
           active: currentPath === '/acerca',
@@ -55,8 +55,8 @@ const sidebarProps: SidebarProps = {
       sidebarProps.groups[0].items.map((link) => (
         <a
           class:list={[
-            'link transition-all duration-300 hover:text-teal-600',
-            link.active && 'text-teal-600 font-semibold',
+            'link transition-all duration-300 hover:text-teal-700 font-cinzel',
+            link.active && 'text-teal-700 font-semibold',
           ]}
           href={link.href}
         >

@@ -39,7 +39,8 @@ const { title } = Astro.props;
   </body>
 </html>
 
-<!-- <style lang="scss" is:global>
+<style lang="scss" is:global>
+  //@import './webcoreui/styles';
   @use 'webcoreui/styles' as *;
 
   @include setup(
@@ -61,12 +62,157 @@ const { title } = Astro.props;
     src: url('/fonts/AlexBrush-Regular.ttf') format('truetype');
   }
 
+  @font-face {
+    font-family: 'Cinzel';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/Cinzel-VariableFont_wght.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Krub';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/Krub-Regular.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/Inter-Regular.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/Inter-Bold.woff2') format('woff2');
+  }
+
   html {
     background: #ffffff;
     scroll-behavior: smooth;
     font-family: system-ui, sans-serif;
   }
-</style> -->
+
+  h1 {
+    font-family: 'AlexBrush';
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Cinzel';
+  }
+
+  //default for sm and xs media queries
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 1.125rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+  h4 {
+    font-size: 0.875rem;
+  }
+  h5 {
+    font-size: 0.75rem;
+  }
+  h6 {
+    font-size: 0.625rem;
+  }
+
+  p {
+    font-family: 'Krub';
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  // md media query
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3rem;
+    }
+    h2 {
+      font-size: 1.125rem;
+    }
+    h3 {
+      font-size: 1rem;
+    }
+    h4 {
+      font-size: 0.875rem;
+    }
+    h5 {
+      font-size: 0.75rem;
+    }
+    h6 {
+      font-size: 0.625rem;
+    }
+  }
+
+  // lg media query
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 3.5rem;
+    }
+    h2 {
+      font-size: 1.25rem;
+    }
+    h3 {
+      font-size: 1.125rem;
+    }
+    h4 {
+      font-size: 1rem;
+    }
+    h5 {
+      font-size: 0.875rem;
+    }
+    h6 {
+      font-size: 0.75rem;
+    }
+  }
+
+  // xl media query
+  @media (min-width: 1280px) {
+    h1 {
+      font-family: 'AlexBrush';
+      font-size: 4.5rem;
+      line-height: 1.2 !important;
+    }
+
+    h2 {
+      font-family: 'Cinzel';
+      font-size: 1.5rem;
+      line-height: 1.2 !important;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      line-height: 1.2 !important;
+    }
+
+    h4 {
+      font-size: 1.125rem;
+      line-height: 1.2 !important;
+    }
+
+    h5 {
+      font-size: 1rem;
+      line-height: 1.2 !important;
+    }
+
+    h6 {
+      font-size: 0.875rem;
+      line-height: 1.2 !important;
+    }
+  }
+</style>
 
 <script>
   import AOS from 'aos';

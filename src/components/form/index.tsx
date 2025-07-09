@@ -1,7 +1,7 @@
 import React from 'react';
 import { toast } from 'webcoreui';
 import { actions } from 'astro:actions';
-import { Spinner, Toast } from 'webcoreui/react';
+import { Spinner } from 'webcoreui/react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input, Select, Textarea, Button } from 'webcoreui/react';
@@ -30,8 +30,6 @@ const defaultValues: FormType = {
 import './form.scss';
 
 const FormContact = () => {
-  const isMobile = window.innerWidth < 1024;
-
   const [loading, setLoading] = React.useState(false);
 
   const form = useForm<FormType>({

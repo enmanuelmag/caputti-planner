@@ -1,4 +1,6 @@
 ---
+import { twMerge } from 'tailwind-merge';
+
 import { ui, defaultLang } from '@i18n/ui';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import type { HTMLAttributes } from 'astro/types';
@@ -19,6 +21,8 @@ type Props = HTMLAttributes<TextTag> & {
   tag: TextTag;
   textId: keyof (typeof ui)[typeof defaultLang];
   href?: string;
+  target?: string;
+  rel?: string;
 };
 
 const {
@@ -69,5 +73,5 @@ const text = t(textId);
   {...props}
   aria-label={text}
   id={textId}
-  class:list={[classList, classProp]}>{text}</Tag
+  class:list={twMerge(classList, classProp)}>{text}</Tag
 >
