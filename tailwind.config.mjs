@@ -4,6 +4,12 @@ export default {
   //prefix: '',
   theme: {
     extend: {},
+    fontFamily: {
+      alexbrush: ['"AlexBrush"'],
+      cinzel: ['"Cinzel"'],
+      krub: ['"Krub"'],
+      sansserif: ['sans-serif'],
+    },
   },
   plugins: [require('@tailwindcss/typography')],
 };

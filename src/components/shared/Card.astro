@@ -1,61 +1,38 @@
 ---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
 interface Props {
-	title: string;
-	body: string;
-	href: string;
+  title: string;
+  body: string;
+  image: ImageMetadata;
+  href: string;
 }
 
-const { href, title, body } = Astro.props;
+const { href, title, body, image } = Astro.props;
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
-<style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 1px;
-		background-color: #23262d;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 7px;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-	}
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: calc(1.5rem - 1px);
-		border-radius: 8px;
-		color: white;
-		background-color: #23262d;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent-light));
-	}
-</style>
+<article
+  class="w-full md:w-[calc(50%-20px)] xl:w-[calc(20%-20px)] flex flex-col !gap-0 cursor-pointer overflow-hidden group min-h-[425px]"
+>
+  <a href={href} class="h-full relative flex flex-col !gap-0">
+    <Image
+      src={image}
+      alt={title}
+      class="flex-shrink-0 object-cover w-full h-[250px] transition-transform duration-500 group-hover:scale-[115%]"
+    />
+
+    <div
+      class="h-full border-4 border-t-0 border-teal-500 py-8 flex flex-col !gap-y-4 z-20 bg-white px-4"
+    >
+      <h2
+        class="text-center group-hover:text-teal-600 transition-colors duration-500"
+      >
+        {title}
+      </h2>
+      <p class="text-center">
+        {body}
+      </p>
+    </div>
+  </a>
+</article>

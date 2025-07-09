@@ -1,8 +1,8 @@
 ---
-title: COORDINACIÓN DEL DÍA
-description: Supervisaremos la ejecución de cada detalle organizado, para que tu día soñado, sea como lo imaginaste
-image: ./images/service-c.jpg
-order: 3
+title: DISEÑO Y DECORACIÓN
+description: Crearemos espacios que reflejen tu estilo único
+image: ./images/service-e.jpg
+order: 5
 ---
 
 Enim incididunt magna ad consectetur **consectetur aliquip elit duis Lorem nostrud cupidatat sint dolor**. Officia laboris incididunt labore velit minim aute exercitation adipisicing consectetur sunt incididunt reprehenderit occaecat. Exercitation tempor nulla dolore in. Lorem voluptate officia commodo pariatur duis sunt ea aliquip deserunt adipisicing esse proident.
