@@ -3,11 +3,22 @@ import { ui, defaultLang } from '@i18n/ui';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import type { HTMLAttributes } from 'astro/types';
 
-type TextTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'label';
+type TextTag =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'p'
+  | 'span'
+  | 'label'
+  | 'a';
 
 type Props = HTMLAttributes<TextTag> & {
   tag: TextTag;
   textId: keyof (typeof ui)[typeof defaultLang];
+  href?: string;
 };
 
 const {
@@ -21,15 +32,42 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const isValidTag = (tag: string): tag is TextTag => {
-  return ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'label'].includes(
-    tag
-  );
+  return [
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'h5',
+    'h6',
+    'p',
+    'span',
+    'label',
+    'a',
+  ].includes(tag);
 };
+
+const proseSize = {
+  h1: 'text-4xl md:text-6xl lg:text-7xl xl:text-8xl',
+  h2: 'text-3xl md:text-4xl lg:text-5xl xl:text-6xl',
+  h3: 'text-2xl md:text-3xl lg:text-4xl xl:text-5xl',
+  h4: 'text-xl md:text-2xl lg:text-3xl xl:text-4xl',
+  h5: 'text-lg md:text-xl lg:text-2xl xl:text-3xl',
+  h6: 'text-base',
+  p: 'text-base',
+  span: 'text-base',
+  label: 'text-base',
+  a: 'text-base',
+};
+
+const classList = proseSize[tag] || 'text-base';
 
 const Tag = isValidTag(tag) ? tag : 'span';
 const text = t(textId);
 ---
 
-<Tag {...props} aria-label={text} id={textId} class:list={['prose', classProp]}
-  >{text}</Tag
+<Tag
+  {...props}
+  aria-label={text}
+  id={textId}
+  class:list={[classList, classProp]}>{text}</Tag
 >

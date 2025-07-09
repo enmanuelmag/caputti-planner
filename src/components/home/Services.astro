@@ -1,27 +1,23 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
-
-import DescriptionImage from '@assets/home/description.jpg';
 
 import Card from '@components/shared/Card.astro';
 
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import TransText from '@components/shared/TransText.astro';
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 
 const servicesRaw = await getCollection('services');
 
-const services = servicesRaw.map((s) => ({
-  title: s.data.title,
-  description: s.data.description,
-  image: s.data.image,
-  slug: s.slug,
-}));
+const services = servicesRaw
+  .map((s) => ({
+    title: s.data.title,
+    description: s.data.description,
+    image: s.data.image,
+    slug: s.slug,
+    order: s.data.order,
+  }))
+  .sort((a, b) => (a.order || 0) - (b.order || 0));
 
-export const prerender = true;
+// export const prerender = true;
 ---
 
 <section
@@ -30,33 +26,24 @@ export const prerender = true;
   data-aos-delay="0"
   class="relative lg:mx-24 xl:mx-56 !gap-y-4 lg:!gap-y-10 flex flex-col"
 >
-  <!-- <h1
-    id="services-title"
-    aria-label={t('services.title')}
-    class="text-2xl lg:text-[2rem] font-[100] text-center leading-10 my-[2rem]"
-  >
-    {t('services.title')}
-  </h1> -->
   <TransText tag="h1" textId="services.title" class="text-center" />
 
-  <!-- <Carousel client:only items={services} /> -->
-
-  <div class="flex flex-row justify-between items-center flex-wrap gap-4">
+  <div class="flex flex-wrap justify-center !gap-4 items-stretch">
     {
       services.map((service) => (
         <Card
           title={service.title}
           body={service.description}
           image={service.image}
-          href={`/services#${service.slug}`}
+          href={`/servicios#${service.slug}`}
         />
       ))
     }
   </div>
 
-  <Image
-    src={DescriptionImage}
-    alt="Description image"
-    class="w-full h-[500px] object-cover mt-[6rem]"
+  <TransText
+    tag="p"
+    textId="start.planing"
+    class="text-center mt-4 underline max-w-full font-semibold font-sansserif !text-xl cursor-pointer"
   />
 </section>

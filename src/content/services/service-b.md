@@ -1,7 +1,8 @@
 ---
-title: Service B
-description: Service B is a service that does something.
+title: ORGANIZACIÓN PARCIAL
+description: Revisaremos tus avances y nos encargaremos de todos los pendientes
 image: ./images/service-b.jpg
+order: 2
 ---
 
 Enim incididunt magna ad consectetur **consectetur aliquip elit duis Lorem nostrud cupidatat sint dolor**. Officia laboris incididunt labore velit minim aute exercitation adipisicing consectetur sunt incididunt reprehenderit occaecat. Exercitation tempor nulla dolore in. Lorem voluptate officia commodo pariatur duis sunt ea aliquip deserunt adipisicing esse proident sunt.

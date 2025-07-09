@@ -10,6 +10,10 @@ export const ui = {
   sp: {
     //CONTACT BUTTON
     'contact.button': 'Estamos listos para empezar',
+    'contact.subtitle': 'Agenda tu primera cita',
+
+    // EMPECEMOS
+    'start.planing': 'Empecemos a planear mi boda',
 
     //HERO SECTION
     'hero.title':
@@ -34,13 +38,17 @@ export const ui = {
 
     //TESTIMONIALS SECTION
     'testimonials.title': 'Testimonios',
-    'testimonials.subtitle':
-      'Esse nisi fugiat ipsum deserunt culpa qui enim cillum sunt laboris addolore proident occaecat. Amet velit do deserunt velit laboris. Temporullamco deserunt ad velit laboris eiusmod reprehenderit. Voluptate utnulla excepteur cupidatat. Anim ad in voluptate consequat Lorem aliquipexercitation. Tempor irure dolor voluptate dolore esse tempor aliquip eaaliqua proident duis veniam quis do.',
+    'testimonials.subtitle.p1':
+      '“Liss hizo de nuestra boda destino una experiencia increíble. Su capacidad para coordinar todos los detalles de principio a fin fue excepcional, lo que nos permitió disfrutar de nuestra boda al máximo sin preocuparnos por nada. Su profesionalismo, atención al detalle y pasión por su trabajo se reflejaron en cada aspecto del evento.',
+    'testimonials.subtitle.p2':
+      'Fue un día inolvidable y todo salió a la perfección gracias a su ayuda!”',
+
+    'testimonials.couple.title': 'Andrea & Juan',
+    'testimonials.more': 'Descubre más testimonios de clientes felices',
 
     //FEATURES SECTION
-    'featuring.title':
-      'Gracias a mi servicio de organización integral de bodas boutique, experimentarás:',
+    'featuring.title': 'GRACIAS A NUESTROS SERVICIOS  PODRÁS:',
     'featuring.items':
-      'Enim cillum enim occaecat aute dolor laborum aute commodo occaecat nulla.|Enim ut deserunt exercitation ut excepteur. Velit eiusmod irure reprehenderit fugiat velit officia do dolor dolore amet consectetur pariatur.|Laboris fugiat laborum ad magna. Commodo excepteur magna enim non veniam labore cupidatat aute.|Nulla amet deserunt exercitation nulla culpa. Velit id culpa est ad enim quis Lorem amet officia do et.',
+      'Avanzar con los preparativos de tu boda de manera relajada y eficaz, disfrutando de cada paso del proceso.|Contar con una guía profesional que te ayudará a poner en orden todas tus ideas y resolver tus dudas.|Ahorrar tiempo y esfuerzo, al no tener que dedicar todo tu tiempo a la organización.|Tener la seguridad de que todo saldrá acorde a lo planeado, ya que nosotros nos encargaremos de cada detalle de tu boda para que sea perfecto.|Acceder a una selección exclusiva de proveedores que se ajusten a tu estilo y preferencias, asegurando la calidad y excelencia en cada aspecto del evento.|Disfrutar de un evento memorable sin preocupaciones permitiéndote vivir plenamente cada momento junto a tu pareja y seres queridos.',
   },
 } as const;

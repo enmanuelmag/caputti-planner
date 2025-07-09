@@ -1,7 +1,8 @@
 ---
-title: Service D
-description: Service D is a service that does something.
+title: BODAS DESTINO
+description: Para quienes sueñan con casarse en las playas de Manabí desde otra ciudad o país
 image: ./images/service-d.jpg
+order: 4
 ---
 
 Enim incididunt magna ad consectetur **consectetur aliquip elit duis Lorem nostrud cupidatat sint dolor**. Officia laboris incididunt labore velit minim aute exercitation adipisicing consectetur sunt incididunt reprehenderit occaecat. Exercitation tempor nulla dolore in. Lorem voluptate officia commodo pariatur duis sunt ea aliquip deserunt adipisicing esse proident.

@@ -1,37 +1,22 @@
 ---
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import HeroCouple from '@assets/hero/couple.jpg';
+import { Image } from 'astro:assets';
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+// lg:mx-24 xl:mx-56
 ---
 
 <section
   data-aos="fade-in"
   data-aos-offset="0"
   data-aos-delay="0"
-  class="relative flex flex-col items-center justify-start h-auto lg:h-[600px] parallax"
+  class="relative !gap-y-4 lg:!gap-y-10 flex flex-col"
 >
-  <div
-    class="absolute z-20 pt-[1rem] bg-gradient-to-b from-[#000000ce] to-transparen to-[60%] w-full h-[300px] lg:h-[600px]"
-  >
-    <div class="z-[200] flex flex-col justify-center relative">
-      <h1
-        id="hero-title"
-        aria-label={t('hero.title')}
-        class="text-white text-2xl lg:text-[2rem] font-[200] text-shadow-lg text-center leading-10"
-      >
-        {t('hero.title')}
-      </h1>
-
-      <p
-        id="hero-subtitle"
-        aria-label={t('hero.subtitle')}
-        class="text-white text-sm lg:text-base text-shadow-sm text-center mt-4 uppercase"
-      >
-        {t('hero.subtitle')}
-      </p>
-    </div>
-  </div>
+  <Image
+    src={HeroCouple}
+    alt="Pareja feliz"
+    loading="eager"
+    class="h-[200px] md:h-[400px] xl:h-[600px] object-cover"
+  />
 </section>
 
 <style>

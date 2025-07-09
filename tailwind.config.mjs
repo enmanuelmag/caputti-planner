@@ -8,6 +8,7 @@ export default {
       alexbrush: ['"AlexBrush"'],
       cinzel: ['"Cinzel"'],
       krub: ['"Krub"'],
+      sansserif: ['sans-serif'],
     },
   },
   plugins: [require('@tailwindcss/typography')],

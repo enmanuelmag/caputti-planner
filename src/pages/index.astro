@@ -1,14 +1,18 @@
 ---
+import { Image } from 'astro:assets';
+
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+
 import LayoutHome from 'src/layouts/LayoutHome.astro';
 
 import Hero from '@components/home/Hero.astro';
-import Description from '@components/home/Description.astro';
 import Services from '@components/home/Services.astro';
-import Testimonials from '@components/home/Testimonials.astro';
 import Featuring from '@components/home/Featuring.astro';
-import FastContact from '@components/shared/FastContact.astro';
+import Description from '@components/home/Description.astro';
+import Testimonials from '@components/home/Testimonials.astro';
 
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import TransText from '@components/shared/TransText.astro';
+import ImageDescription from '@assets/description/description.jpg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -19,13 +23,31 @@ const t = useTranslations(lang);
 
   <Description />
 
+  <Image
+    src={ImageDescription}
+    alt={t('description.subtitle.second.p1')}
+    class="mt-8 h-[200px] md:h-[450px] xl:h-[650px] object-cover"
+  />
+
   <Services />
 
   <Testimonials />
 
   <Featuring />
 
-  <FastContact text={t('contact.button')} />
+  <section
+    class="flex flex-col items-center justify-center !gap-4 mt-16"
+    data-aos="fade-in"
+  >
+    <TransText tag="h1" textId="contact.button" class="!text-6xl" />
+
+    <TransText
+      tag="a"
+      href="/contacto"
+      textId="contact.subtitle"
+      class="text-center prose underline !text-2xl cursor-pointer"
+    />
+  </section>
 </LayoutHome>
 
 <style lang="scss" is:global>
@@ -87,40 +109,119 @@ const t = useTranslations(lang);
 
   h1 {
     font-family: 'AlexBrush';
-    font-size: 4.5rem !important;
-    line-height: 1.2 !important;
   }
 
-  h2 {
-    font-family: 'Cinzel';
-    font-size: 1.5rem !important;
-    line-height: 1.2 !important;
-  }
-
-  h3 {
-    font-size: 1.25rem !important;
-    line-height: 1.2 !important;
-  }
-
-  h4 {
-    font-size: 1.125rem !important;
-    line-height: 1.2 !important;
-  }
-
-  h5 {
-    font-size: 1rem !important;
-    line-height: 1.2 !important;
-  }
-
+  h2,
+  h3,
+  h4,
+  h5,
   h6 {
-    font-size: 0.875rem !important;
-    line-height: 1.2 !important;
+    font-family: 'Cinzel';
+  }
+
+  //default for sm and xs media queries
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 1.125rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+  h4 {
+    font-size: 0.875rem;
+  }
+  h5 {
+    font-size: 0.75rem;
+  }
+  h6 {
+    font-size: 0.625rem;
   }
 
   p {
     font-family: 'Krub';
-    font-size: 1rem !important;
-    line-height: 1.5 !important;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  // md media query
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3rem;
+    }
+    h2 {
+      font-size: 1.125rem;
+    }
+    h3 {
+      font-size: 1rem;
+    }
+    h4 {
+      font-size: 0.875rem;
+    }
+    h5 {
+      font-size: 0.75rem;
+    }
+    h6 {
+      font-size: 0.625rem;
+    }
+  }
+
+  // lg media query
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 3.5rem;
+    }
+    h2 {
+      font-size: 1.25rem;
+    }
+    h3 {
+      font-size: 1.125rem;
+    }
+    h4 {
+      font-size: 1rem;
+    }
+    h5 {
+      font-size: 0.875rem;
+    }
+    h6 {
+      font-size: 0.75rem;
+    }
+  }
+
+  // xl media query
+  @media (min-width: 1280px) {
+    h1 {
+      font-family: 'AlexBrush';
+      font-size: 4.5rem;
+      line-height: 1.2 !important;
+    }
+
+    h2 {
+      font-family: 'Cinzel';
+      font-size: 1.5rem;
+      line-height: 1.2 !important;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      line-height: 1.2 !important;
+    }
+
+    h4 {
+      font-size: 1.125rem;
+      line-height: 1.2 !important;
+    }
+
+    h5 {
+      font-size: 1rem;
+      line-height: 1.2 !important;
+    }
+
+    h6 {
+      font-size: 0.875rem;
+      line-height: 1.2 !important;
+    }
   }
 </style>
 
