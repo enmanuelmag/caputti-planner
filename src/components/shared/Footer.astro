@@ -2,6 +2,8 @@
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
 import InstagramSvg from '@assets/icons/instagram.svg';
+import WhatsAppSvg from '@assets/icons/whatsapp.svg';
+import EmailSvg from '@assets/icons/email.svg';
 
 import TransText from './TransText.astro';
 
@@ -21,7 +23,7 @@ const t = useTranslations(lang);
         tag="a"
         href={`mailto:${t('email')}`}
         textId="email"
-        class="font-krub text-xl"
+        class="font-krub text-xl hover:text-teal-600 transition-all duration-300"
       />
     </div>
 
@@ -35,7 +37,7 @@ const t = useTranslations(lang);
         rel="noopener noreferrer"
         href={`https://wa.me/${t('phoneNumber')}?text=${encodeURI(t('phoneText'))}`}
         textId="phone"
-        class="font-krub text-xl"
+        class="font-krub text-xl hover:text-teal-600 transition-all duration-300"
       />
     </div>
 
@@ -45,7 +47,45 @@ const t = useTranslations(lang);
       <label class="font-cinzel text-lg xl:text-2xl text-center"
         >REDES SOCIALES</label
       >
-      <div></div>
+      <div class="flex flex-row items-center justify-center !gap-x-8">
+        <a
+          href="https://www.instagram.com/caputi_festa/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cursor-pointer"
+          title="Instagram"
+        >
+          <InstagramSvg
+            height={32}
+            width={32}
+            class="cursor-pointer hover:stroke-teal-600 transition-all duration-300"
+          />
+        </a>
+        <a
+          href={`https://wa.me/${t('phoneNumber')}?text=${encodeURI(t('phoneText'))}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="WhatsApp"
+        >
+          <WhatsAppSvg
+            height={32}
+            width={32}
+            class="cursor-pointer hover:stroke-teal-600 transition-all duration-300"
+          />
+        </a>
+        <a
+          href={`mailto:${t('email')}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Email"
+        >
+          <EmailSvg
+            height={32}
+            width={32}
+            class="cursor-pointer hover:stroke-teal-600 transition-all duration-300"
+          />
+        </a>
+      </div>
     </div>
   </div>
 </div>
