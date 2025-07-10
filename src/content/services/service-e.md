@@ -2,6 +2,7 @@
 title: DISEÑO Y DECORACIÓN
 description: Crearemos espacios que reflejen tu estilo único
 image: ./images/service-e.jpg
+imageSection: ./images/service-e-full.jpg
 order: 5
 ---
 

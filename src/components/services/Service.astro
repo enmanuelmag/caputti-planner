@@ -1,5 +1,8 @@
 ---
 import { Image } from 'astro:assets';
+import { Button, Modal } from 'webcoreui/astro';
+import { marked } from 'marked';
+
 import { getCollection, render } from 'astro:content';
 
 interface Props {
@@ -19,9 +22,11 @@ if (!service) {
 
 const { slug, data } = service;
 
-const { title, image } = data;
+const { title, imageSection: image } = data;
 
-const { Content } = await render(service);
+const rawContent = service.body;
+
+const [mainContent = '', modalContent = ''] = rawContent.split('<!--modal-->');
 ---
 
 <article
@@ -29,7 +34,8 @@ const { Content } = await render(service);
   data-aos-offset="0"
   data-aos-delay="0"
   id={slug}
-  class="flex flex-col lg:flex-row justify-center !gap-x-[1rem] lg:!gap-0 lg:py-[2rem]"
+  data-slug={slug}
+  class="flex flex-col lg:flex-row justify-center !gap-x-8 !py-1"
 >
   <div
     class:list={[
@@ -40,7 +46,8 @@ const { Content } = await render(service);
     <Image
       src={image}
       alt={title}
-      class="object-cover h-full w-auto lg:rounded-lg hover:shadow-2xl transition-shadow duration-500"
+      loading="eager"
+      class="object-cover h-[450px] w-auto aspect-video rounded-md shadow-2xl"
       transition:name={`img-${slug}`}
     />
   </div>
@@ -55,8 +62,14 @@ const { Content } = await render(service);
     >
       {title}
     </h2>
-    <div class="prose font-[300]">
-      <Content />
+    <div class="prose font-[300]" set:html={marked.parse(mainContent)}>
+      <!-- <Content /> -->
     </div>
+
+    <Button className={`trigger-${slug}`} theme="flat">Más información</Button>
   </div>
 </article>
+
+<Modal className={`modal-${slug} modal-service`} title={title}>
+  <div class="prose font-[300]" set:html={marked.parse(modalContent)} />
+</Modal>

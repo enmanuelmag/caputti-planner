@@ -6,6 +6,29 @@ import ServiceFeat from '@components/services/Service.astro';
 const services = await getCollection('services');
 ---
 
-<section class="w-full flex flex-col justify-center my-[2rem] lg:my-[6rem]">
+<section class="w-full flex flex-col justify-center my-8 lg:my-16">
   {services.map(({ slug }, idx) => <ServiceFeat id={slug} idx={idx} />)}
 </section>
+
+<style is:global>
+  .modal-service {
+    position: absolute !important;
+  }
+</style>
+
+<script>
+  import { modal } from 'webcoreui';
+
+  document.addEventListener('astro:page-load', () => {
+    document.querySelectorAll('[data-slug]').forEach((el) => {
+      const slug = el.getAttribute('data-slug');
+      modal({
+        trigger: `.trigger-${slug}`,
+        modal: `.modal-${slug}`,
+        onOpen: () => {
+          console.log(`Modal for service ${slug} opened`);
+        },
+      });
+    });
+  });
+</script>
