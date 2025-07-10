@@ -14,7 +14,10 @@ const t = useTranslations(lang);
 <Layout title="Servicios - Caputi Festa">
   <Services />
 
-  <FQA />
+  <!-- <FQA /> -->
 
-  <FastContact text={t('contact.button')} />
+  <FastContact
+    title={t('services.contact.title')}
+    formText={t('services.contact.subtitle')}
+  />
 </Layout>

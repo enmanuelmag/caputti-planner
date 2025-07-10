@@ -11,7 +11,7 @@
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
-    class="icon icon-tabler icons-tabler-outline icon-tabler-circle-chevron-up"
+    class="icon icon-tabler icons-tabler-outline icon-tabler-circle-chevron-up cursor-pointer"
   >
     <circle r="9" cx="12" cy="12" fill="#FFFFFF" fill-opacity="0.75"></circle>
     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
@@ -22,25 +22,27 @@
 
 <script>
   //set display hiddne by default
-  const goTop = document.querySelector('.go-top');
+  document.addEventListener('astro:after-swap', () => {
+    const goTop = document.querySelector('.go-top');
 
-  if (goTop) {
-    window.addEventListener('scroll', () => {
-      const currentClassList = goTop.classList;
-      if (window.scrollY > 300) {
-        currentClassList.remove('opacity-0');
-      } else {
-        currentClassList.add('opacity-0');
-      }
-    });
-
-    goTop.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
+    if (goTop) {
+      window.addEventListener('scroll', () => {
+        const currentClassList = goTop.classList;
+        if (window.scrollY > 300) {
+          currentClassList.remove('opacity-0');
+        } else {
+          currentClassList.add('opacity-0');
+        }
       });
-    });
-  }
+
+      goTop.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      });
+    }
+  });
 </script>
 
 <style lang="scss">

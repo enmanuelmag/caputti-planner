@@ -56,5 +56,17 @@ export const ui = {
     phone: '+593 96 422 1777',
     phoneText: 'Hola Caputi Festa, deseo saber más información sobre...',
     phoneNumber: '593964221777',
+
+    // SERVICES PAGE
+    'services.contact.title':
+      '¿Tienes dudas? revisa nuestra sección de Preguntas frecuentes',
+    'services.contact.subtitle': 'Solicita tu presupuesto personalizado ahora',
+
+    // WEDDING PLANNER PAGE
+    'wedding.help':
+      'Quiero saber todo sobre tu boda y como puedo ayudarte a hacerla memorable',
+    'wedding.contact.title':
+      '¡Contacta conmigo y hagamos juntos Tu sueño realidad!',
+    'wedding.contact.schedule': 'Agenda una reunión',
   },
 } as const;

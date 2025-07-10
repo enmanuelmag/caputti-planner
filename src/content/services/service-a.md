@@ -10,4 +10,16 @@ Este servicio es ideal si ya llevas meses trabajando en la organización de tu b
 
 <!--modal-->
 
-This is in modal
+- Gestión de presupuesto.
+- Búsqueda completa de proveedores y locaciones.
+- Revisión de contratos.
+- Diseño y distribución general del evento.
+- Visita técnica de locaciones.
+- Reuniones programadas con clientes y proveedores.
+- Asesoramiento general para los novios.
+- Elaboración del timing de la ceremonia y programa de recepción.
+- Asistente protocolar de recepción.
+- Confirmación telefónica de asistencia de invitados.
+- Ensayo de ceremonia.
+- Supervisión de montaje.
+- Coordinación completa hasta final de recepción.

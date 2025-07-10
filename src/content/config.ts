@@ -18,7 +18,7 @@ const about = defineCollection({
       title: z.string(),
       subtitle: z.string().optional(),
       image: image().optional(),
-      imagePosition: z.enum(['left', 'right']).optional(),
+      imagePosition: z.enum(['left', 'right', 'center']).optional(),
     }),
 });
 

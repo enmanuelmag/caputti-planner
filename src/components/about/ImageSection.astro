@@ -6,7 +6,7 @@ interface Props {
   title: string;
   subtitle?: string;
   image: ImageMetadata;
-  imagePosition: 'left' | 'right';
+  imagePosition: 'left' | 'right' | 'center';
   Content: AstroComponentFactory;
 }
 
@@ -14,47 +14,82 @@ const { title, subtitle, image, imagePosition, Content } = Astro.props as Props;
 ---
 
 <article data-aos="fade-up" data-aos-offset="0" data-aos-delay="0">
-  <div class="flex flex-col lg:flex-row justify-center !gap-x-[1rem]">
-    <div
-      class:list={[
-        'basis-1/2 ',
-        imagePosition === 'left' ? 'order-2 lg:order-1' : 'order-2 lg:order-2',
-      ]}
-    >
-      <Image
-        src={image}
-        alt={title}
-        class="object-cover h-full w-auto rounded-none lg:rounded-lg hover:shadow-2xl transition-shadow duration-500"
-        transition:name={`img-${title}`}
-      />
-    </div>
-    <div
-      class:list={[
-        'flex flex-col justify-center basis-1/2 px-[1rem] lg:px-0',
-        imagePosition === 'left'
-          ? 'order-1 lg:order-2 lg:pl-[1rem]'
-          : 'order-1 lg:order-1',
-      ]}
-    >
-      <h2
-        aria-label={title}
-        class="text-2xl lg:text-[2rem] font-[100] leading-10 hover:text-teal-500 transition-colors duration-500 cursor-default"
-      >
-        {title}
-      </h2>
-      {
-        subtitle && (
+  {
+    imagePosition !== 'center' && (
+      <div class="flex flex-col lg:flex-row justify-center !gap-x-[1rem]">
+        <div
+          class:list={[
+            'basis-1/2 ',
+            imagePosition === 'left'
+              ? 'order-2 lg:order-1'
+              : 'order-2 lg:order-2',
+          ]}
+        >
+          <Image
+            src={image}
+            alt={title}
+            class="object-cover h-full w-auto rounded-none lg:rounded-lg hover:shadow-2xl transition-shadow duration-500"
+            transition:name={`img-${title}`}
+          />
+        </div>
+        <div
+          class:list={[
+            'flex flex-col justify-center basis-1/2 px-[1rem] lg:px-0',
+            imagePosition === 'left'
+              ? 'order-1 lg:order-2 lg:pl-[1rem]'
+              : 'order-1 lg:order-1',
+          ]}
+        >
+          <h2
+            aria-label={title}
+            class="text-2xl lg:text-6xl font-alexbrush font-[100] leading-10 hover:text-teal-600 transition-colors duration-500 cursor-default"
+          >
+            {title}
+          </h2>
+          {subtitle && (
+            <p
+              aria-label={subtitle}
+              class="text-lg lg:text-xl font-[300] text-gray-500"
+            >
+              {subtitle}
+            </p>
+          )}
+          <div class="prose !font-sansserif">
+            <Content />
+          </div>
+        </div>
+      </div>
+    )
+  }
+  {
+    imagePosition === 'center' && (
+      <div class="flex flex-col justify-center !gap-y-12">
+        <h2
+          aria-label={title}
+          class="text-2xl lg:text-6xl text-center font-alexbrush font-[100] leading-10 hover:text-teal-600 transition-colors duration-500 cursor-default"
+        >
+          {title}
+        </h2>
+        {subtitle && (
           <p
             aria-label={subtitle}
             class="text-lg lg:text-xl font-[300] text-gray-500"
           >
             {subtitle}
           </p>
-        )
-      }
-      <div class="prose">
-        <Content />
+        )}
+        {image && (
+          <Image
+            src={image}
+            alt={title}
+            class="object-cover h-full w-auto rounded-none lg:rounded-lg hover:shadow-2xl transition-shadow duration-500"
+            transition:name={`img-${title}`}
+          />
+        )}
+        <div class="prose !font-sansserif !max-w-full">
+          <Content />
+        </div>
       </div>
-    </div>
-  </div>
+    )
+  }
 </article>

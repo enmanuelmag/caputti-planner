@@ -10,9 +10,22 @@ const services = await getCollection('services');
   {services.map(({ slug }, idx) => <ServiceFeat id={slug} idx={idx} />)}
 </section>
 
-<style is:global>
+<style is:global lang="scss">
   .modal-service {
-    position: absolute !important;
+    max-width: unset !important;
+    width: fit-content;
+    padding-inline: 2rem !important;
+    padding-right: 3.5rem !important;
+
+    strong {
+      font-family: 'AlexBrush', cursive;
+      font-size: 2.5rem !important;
+    }
+
+    .modal-content {
+      max-height: 80vh;
+      overflow-y: auto;
+    }
   }
 </style>
 

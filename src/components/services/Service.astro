@@ -2,8 +2,9 @@
 import { Image } from 'astro:assets';
 import { Button, Modal } from 'webcoreui/astro';
 import { marked } from 'marked';
+import { capitalize } from '@utils/string';
 
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 interface Props {
   id: string;
@@ -35,7 +36,7 @@ const [mainContent = '', modalContent = ''] = rawContent.split('<!--modal-->');
   data-aos-delay="0"
   id={slug}
   data-slug={slug}
-  class="flex flex-col lg:flex-row justify-center !gap-x-8 !py-1"
+  class="flex flex-col lg:flex-row justify-center !gap-x-8 !py-1 group"
 >
   <div
     class:list={[
@@ -58,7 +59,7 @@ const [mainContent = '', modalContent = ''] = rawContent.split('<!--modal-->');
     ]}
   >
     <h2
-      class="text-2xl lg:text-[2rem] font-[100] leading-10 hover:text-teal-500 transition-colors duration-500 cursor-default"
+      class="text-2xl lg:text-[2rem] font-[100] leading-10 group-hover:text-teal-600 transition-colors duration-500 cursor-default"
     >
       {title}
     </h2>
@@ -66,10 +67,22 @@ const [mainContent = '', modalContent = ''] = rawContent.split('<!--modal-->');
       <!-- <Content /> -->
     </div>
 
-    <Button className={`trigger-${slug}`} theme="flat">Más información</Button>
+    {
+      Boolean(modalContent.length) && (
+        <Button className={`trigger-${slug}`} theme="flat">
+          Más información
+        </Button>
+      )
+    }
   </div>
 </article>
 
-<Modal className={`modal-${slug} modal-service`} title={title}>
-  <div class="prose font-[300]" set:html={marked.parse(modalContent)} />
+<Modal
+  className={`modal-${slug} modal-service`}
+  title={`Los servicios de ${capitalize(title)} incluyen:`}
+>
+  <div
+    class="modal-content prose font-[300]"
+    set:html={marked.parse(modalContent)}
+  />
 </Modal>

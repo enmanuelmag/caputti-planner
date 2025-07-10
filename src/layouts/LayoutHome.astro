@@ -76,6 +76,13 @@ const { title } = Astro.props;
   }
 
   @font-face {
+    font-family: 'Krub-Bold';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/Krub-Bold.ttf') format('truetype');
+  }
+
+  @font-face {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
@@ -210,6 +217,23 @@ const { title } = Astro.props;
       font-size: 0.875rem;
       line-height: 1.2 !important;
     }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  span,
+  a,
+  p {
+    transition: color 0.3s ease-in-out;
+  }
+
+  strong {
+    font-weight: 700 !important;
+    font-family: 'Krub-Bold ' !important;
   }
 </style>
 
