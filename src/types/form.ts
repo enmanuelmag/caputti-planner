@@ -11,6 +11,8 @@ export const FromSchema = zod.object({
     .max(60, 'El nombre de la pareja no puede tener más de 60 caracteres')
     .trim(),
   email: zod.string().email('Ingrese un correo electrónico válido'),
+  services: zod.array(zod.string()).min(1, 'Seleccione al menos un servicio'),
+  eventType: zod.string().min(1, 'Seleccione un tipo de evento'),
   phone: zod
     .string()
     .min(9, 'Ingrese un número de teléfono válido')
@@ -34,8 +36,11 @@ export const FromSchema = zod.object({
   date: zod.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Ingrese una fecha válida'),
   comments: zod.string().trim().nullable(),
   reference: zod.string().trim().nullable(),
-  weddingType: zod.string(),
+  // weddingType: zod.string(),
   wishList: zod.array(zod.string()).nullable().optional(),
+  otherWhishList: zod
+    .string()
+    .max(200, 'El campo no puede tener más de 200 caracteres'),
 });
 
 export type FormType = zod.infer<typeof FromSchema>;

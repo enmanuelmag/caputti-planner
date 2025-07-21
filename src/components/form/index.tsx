@@ -2,7 +2,7 @@ import React from 'react';
 import { toast } from 'webcoreui';
 import { actions } from 'astro:actions';
 import { Spinner } from 'webcoreui/react';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm, Controller, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input, Select, Textarea, Button } from 'webcoreui/react';
 
@@ -24,7 +24,9 @@ const defaultValues: FormType = {
   phone: '',
   place: '',
   reference: '',
-  weddingType: '',
+  eventType: '',
+  services: [],
+  otherWhishList: '',
 };
 
 import './form.scss';
@@ -35,6 +37,10 @@ const FormContact = () => {
   const form = useForm<FormType>({
     defaultValues,
     resolver: zodResolver(FromSchema),
+  });
+
+  const { wishList: wishListWatch = [] } = useWatch({
+    control: form.control,
   });
 
   return (
@@ -99,18 +105,45 @@ const FormContact = () => {
           />
         </section>
 
-        <Controller
-          control={form.control}
-          name="place"
-          render={({ field }) => (
-            <Input
-              type="text"
-              label="Lugar preferido de la boda"
-              {...field}
-              subText={form.formState.errors.place?.message}
-            />
-          )}
-        />
+        <section className="flex flex-col gap-[1rem] lg:flex-row">
+          <Controller
+            control={form.control}
+            name="eventType"
+            render={({ field }) => (
+              <Select
+                label="Tipo de evento"
+                itemGroups={[
+                  {
+                    items: [
+                      { name: 'Quinceañera' },
+                      { name: 'Boda Civil' },
+                      { name: 'Boda Eclesiástica' },
+                      { name: 'Boda Civil y Eclesiástica' },
+                      { name: 'Otro' },
+                    ],
+                  },
+                ]}
+                {...field}
+                value={field.value ?? ''}
+                subText={form.formState.errors.eventType?.message}
+                onChange={(e) => field.onChange(e.name)}
+              />
+            )}
+          />
+
+          <Controller
+            control={form.control}
+            name="place"
+            render={({ field }) => (
+              <Input
+                type="text"
+                label="Lugar preferido"
+                {...field}
+                subText={form.formState.errors.place?.message}
+              />
+            )}
+          />
+        </section>
 
         <section className="flex flex-col gap-[1rem] lg:flex-row">
           <Controller
@@ -121,7 +154,7 @@ const FormContact = () => {
                 type="number"
                 label="Número de invitados"
                 {...field}
-                value={field.value ?? 0}
+                value={field.value || undefined}
                 subText={form.formState.errors.guests?.message}
                 onChange={(e) => {
                   field.onChange(parseInt(e.target.value, 10));
@@ -138,7 +171,7 @@ const FormContact = () => {
                 type="number"
                 label="Presupuesto estimado"
                 {...field}
-                value={field.value ?? 0}
+                value={field.value || undefined}
                 subText={form.formState.errors.budget?.message}
                 onChange={(e) => {
                   field.onChange(parseInt(e.target.value, 10));
@@ -154,7 +187,7 @@ const FormContact = () => {
           render={({ field }) => (
             <Input
               type="date"
-              label="Fecha de la boda"
+              label="Fecha estimada"
               {...field}
               subText={form.formState.errors.date?.message}
             />
@@ -174,41 +207,6 @@ const FormContact = () => {
           )}
         />
 
-        <section className="flex flex-col gap-[1rem] lg:flex-row">
-          <Controller
-            control={form.control}
-            name="reference"
-            render={({ field }) => (
-              <Input
-                type="text"
-                label="¿Cómo se enteró de nosotros?"
-                {...field}
-                value={field.value ?? ''}
-                subText={form.formState.errors.reference?.message}
-              />
-            )}
-          />
-
-          <Controller
-            control={form.control}
-            name="weddingType"
-            render={({ field }) => (
-              <Select
-                label="Tipo de boda"
-                itemGroups={[
-                  {
-                    items: [{ name: 'Religiosa' }, { name: 'Civil' }],
-                  },
-                ]}
-                {...field}
-                value={field.value ?? ''}
-                subText={form.formState.errors.weddingType?.message}
-                onChange={(e) => field.onChange(e.name)}
-              />
-            )}
-          />
-        </section>
-
         <Controller
           control={form.control}
           name="wishList"
@@ -219,6 +217,36 @@ const FormContact = () => {
               label="Lista de deseos"
               values={field.value ?? []}
               onChange={field.onChange}
+            />
+          )}
+        />
+
+        {wishListWatch?.includes('Otros') && (
+          <Controller
+            control={form.control}
+            name="otherWhishList"
+            render={({ field }) => (
+              <Input
+                type="text"
+                {...field}
+                placeholder="Especifique los otros servicios deseados"
+                value={field.value ?? ''}
+                subText={form.formState.errors.otherWhishList?.message}
+              />
+            )}
+          />
+        )}
+
+        <Controller
+          control={form.control}
+          name="reference"
+          render={({ field }) => (
+            <Input
+              type="text"
+              label="¿Cómo se enteró de nosotros?"
+              {...field}
+              value={field.value ?? ''}
+              subText={form.formState.errors.reference?.message}
             />
           )}
         />
@@ -244,6 +272,10 @@ const FormContact = () => {
     //   toast('.toast-success');
     //   setLoading(false);
     // }, 2000);
+
+    if (!formData.wishList?.includes('Otros')) {
+      formData.otherWhishList = '';
+    }
 
     const { data, error } = await actions.sendEmail(formData);
 
