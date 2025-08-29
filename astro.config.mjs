@@ -20,7 +20,7 @@ export default defineConfig({
         '@mantine/hooks',
         '@mantine/carousel',
       ],
-      external: ['node:buffer', 'node:fs', 'node:path'],
+      external: ['node:buffer', 'node:path'],
     },
     define: {
       global: 'globalThis',

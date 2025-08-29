@@ -1,6 +1,6 @@
-import fs from 'node:fs';
-
 import type { FormType } from '@customTypes/form';
+import { templateEmail } from './templates/welcome';
+import { newContactTemplate } from './templates/newContact';
 
 type ConfigEmails = {
   emailFrom: string;
@@ -64,17 +64,25 @@ export async function sendEmail(
 }
 
 function parseTextAdminMessage(options: FormType): string {
-  const template = fs.readFileSync('./templates/newContact.html', 'utf8');
+  const template = newContactTemplate;
 
-  return Object.entries(options).reduce(
-    (acc, [key, value]) =>
-      acc.replace(`{{${key}}}`, `${value || 'No especificado'}`),
-    template
-  );
+  return Object.entries(options).reduce((acc, [key, value]) => {
+    let displayValue = 'No especificado';
+
+    if (value !== null && value !== undefined) {
+      if (Array.isArray(value)) {
+        displayValue = value.length > 0 ? value.join(', ') : 'No especificado';
+      } else {
+        displayValue = String(value);
+      }
+    }
+
+    return acc.replace(`{{${key}}}`, displayValue);
+  }, template);
 }
 
 function parseEmailTemplate(name: string): string {
-  const templateEmail = fs.readFileSync('./templates/welcome.html', 'utf8');
+  const template = templateEmail;
 
-  return templateEmail.replace('{{name}}', name);
+  return template.replace('{{name}}', name);
 }
