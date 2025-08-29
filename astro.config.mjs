@@ -13,11 +13,24 @@ export default defineConfig({
 
   vite: {
     ssr: {
-      noExternal: ['webcoreui'],
-      external: ['node:buffer', 'node:fs', 'node:path'],
+      noExternal: [
+        'webcoreui',
+        'aos',
+        '@mantine/core',
+        '@mantine/hooks',
+        '@mantine/carousel',
+      ],
+      external: ['node:buffer', 'node:path'],
+    },
+    define: {
+      global: 'globalThis',
     },
   },
 
   output: 'server',
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    platformProxy: {
+      enabled: true,
+    },
+  }),
 });

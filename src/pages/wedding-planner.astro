@@ -5,11 +5,7 @@ import { getCollection } from 'astro:content';
 
 import Section from '@components/about/Section.astro';
 
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import TransText from '@components/shared/TransText.astro';
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 
 const sections = (await getCollection('about')).sort(
   (a, b) => a.data.order - b.data.order

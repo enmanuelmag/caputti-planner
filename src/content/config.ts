@@ -29,4 +29,11 @@ const faqs = defineCollection({
   }),
 });
 
-export const collections = { services, about, faqs };
+const form = defineCollection({
+  type: 'content',
+  schema: z.object({
+    // Empty schema for auto-generated form collection
+  }),
+});
+
+export const collections = { services, about, faqs, form };
