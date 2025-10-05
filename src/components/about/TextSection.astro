@@ -1,14 +1,16 @@
 ---
 import Divider from '@components/shared/Divider.astro';
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
+import { twMerge } from 'tailwind-merge';
 
 interface Props {
   title: string;
   subtitle?: string;
+  align?: 'left' | 'right' | 'center' | 'justify';
   Content: AstroComponentFactory;
 }
 
-const { title, subtitle, Content } = Astro.props as Props;
+const { title, subtitle, Content, align } = Astro.props as Props;
 ---
 
 <article data-aos="fade-up" data-aos-offset="0" data-aos-delay="0">
@@ -30,7 +32,16 @@ const { title, subtitle, Content } = Astro.props as Props;
         </p>
       )
     }
-    <div class="prose text-center !max-w-full">
+    <div
+      class:list={[
+        'prose text-center',
+        align === 'left' && 'text-left',
+        align === 'right' && 'text-right',
+        align === 'center' && 'text-center',
+        align === 'justify' && 'text-justify',
+        '!max-w-full',
+      ]}
+    >
       <Content />
     </div>
   </div>

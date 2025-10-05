@@ -4,6 +4,7 @@ title: Hola!
 subtitle: Organizadora de eventos 
 image: ./images/about-me.jpg
 imagePosition: right
+textAlign: justify
 ---
 
 Soy Lissette, la mente y el corazón de Caputi Festa. Si estás aquí, es porque buscas que tu boda sea más que un evento: sea una **celebración única**, un reflejo auténtico de tu amor y tus sueños. Y justo eso es lo que amo hacer.

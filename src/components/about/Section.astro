@@ -17,7 +17,7 @@ if (!section) {
   throw new Error(`Service with id ${id} not found`);
 }
 
-const { title, subtitle, image, imagePosition } = section.data;
+const { title, subtitle, image, imagePosition, textAlign } = section.data;
 
 const { Content } = await render(section);
 ---
@@ -30,8 +30,14 @@ const { Content } = await render(section);
       image={image}
       imagePosition={imagePosition}
       Content={Content}
+      align={textAlign}
     />
   ) : (
-    <TextSection title={title} subtitle={subtitle} Content={Content} />
+    <TextSection
+      title={title}
+      subtitle={subtitle}
+      Content={Content}
+      align={textAlign}
+    />
   )
 }

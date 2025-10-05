@@ -14,26 +14,33 @@ const sections = (await getCollection('about')).sort(
 
 <Layout title="Servicios - Caputi Festa">
   <section
-    class="w-full flex flex-col justify-center px-0 md:px-[6rem] lg:px-[10rem] my-[2rem] !gap-y-[4rem]"
+    class="w-full flex flex-col justify-center px-0 md:px-[2rem] lg:px-[4rem] my-[2rem] !gap-y-[4rem]"
   >
     {sections.map(({ slug }) => <Section id={slug} />)}
   </section>
 
   <!-- <FastContact text={t('contact.button')} /> -->
 
-  <div class="flex flex-col items-center justify-center !gap-8 mt-16">
-    <TransText tag="p" textId="wedding.help" class="text-center !text-2xl" />
+  <div
+    class="flex flex-col items-center justify-center !gap-8 mt-16 px-0 md:px-[2rem] lg:px-[4rem]"
+  >
+    <TransText
+      tag="p"
+      textId="wedding.help"
+      class="text-center !text-xl hover:text-teal-600 cursor-default"
+    />
 
     <TransText
       tag="h2"
       textId="wedding.contact.title"
-      class="text-center !text-2xl"
+      class="text-center !text-2xl hover:text-teal-600 cursor-default"
     />
 
     <TransText
-      tag="p"
+      tag="a"
+      href="/contacto"
       textId="wedding.contact.schedule"
-      class="text-center !text-2xl underline"
+      class="text-center !text-2xl underline hover:text-teal-600 cursor-pointer"
     />
   </div>
 </Layout>

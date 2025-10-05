@@ -1,22 +1,25 @@
 ---
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import { Image } from 'astro:assets';
+import { twMerge } from 'tailwind-merge';
 
 interface Props {
   title: string;
   subtitle?: string;
   image: ImageMetadata;
   imagePosition: 'left' | 'right' | 'center';
+  align?: 'left' | 'right' | 'center' | 'justify';
   Content: AstroComponentFactory;
 }
 
-const { title, subtitle, image, imagePosition, Content } = Astro.props as Props;
+const { title, subtitle, image, imagePosition, Content, align } =
+  Astro.props as Props;
 ---
 
 <article data-aos="fade-up" data-aos-offset="0" data-aos-delay="0">
   {
     imagePosition !== 'center' && (
-      <div class="flex flex-col lg:flex-row justify-center !gap-x-[1rem]">
+      <div class="flex flex-col lg:flex-row justify-center !gap-x-[2rem]">
         <div
           class:list={[
             'basis-1/2 ',
@@ -54,7 +57,15 @@ const { title, subtitle, image, imagePosition, Content } = Astro.props as Props;
               {subtitle}
             </p>
           )}
-          <div class="prose !font-sansserif">
+          <div
+            class={twMerge(
+              'prose !font-sansserif',
+              align === 'left' ? `!text-left` : '',
+              align === 'right' ? `!text-right` : '',
+              align === 'center' ? `!text-center` : '',
+              align === 'justify' ? `!text-justify` : ''
+            )}
+          >
             <Content />
           </div>
         </div>
@@ -86,7 +97,15 @@ const { title, subtitle, image, imagePosition, Content } = Astro.props as Props;
             transition:name={`img-${title}`}
           />
         )}
-        <div class="prose !font-sansserif !max-w-full">
+        <div
+          class={twMerge(
+            'prose !font-sansserif !max-w-full',
+            align === 'left' ? `!text-left` : '',
+            align === 'right' ? `!text-right` : '',
+            align === 'center' ? `!text-center` : '',
+            align === 'justify' ? `!text-justify` : ''
+          )}
+        >
           <Content />
         </div>
       </div>
