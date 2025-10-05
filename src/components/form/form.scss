@@ -2,3 +2,19 @@
 input + div {
   color: #ef4444 !important;
 }
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.label-custom {
+  color: #333333;
+  font-size: 16px;
+  font-family: system-ui, sans-serif;
+}

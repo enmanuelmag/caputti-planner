@@ -15,8 +15,13 @@ const idxNumber =
 
 <article class="flex justify-start basis-full lg:basis-1/2 px-[1rem] py-[1rem]">
   <div class="flex flex-row justify-start items-start">
-    <p id={`feature-${idxNumber}`} aria-label={text} class="!text-2xl">
-      <span class="prose !font-bold !prose-2xl font-sansserif"
+    <p
+      id={`feature-${idxNumber}`}
+      aria-label={text}
+      class="!text-justify text-sm md:text-base lg:text-lg xl:text-xl hover:text-teal-600 transition-colors duration-300 cursor-default"
+    >
+      <span
+        class="!font-bold font-sansserif hover:text-teal-600 transition-colors duration-300"
         >0{idxNumber}.</span
       >
       {text}

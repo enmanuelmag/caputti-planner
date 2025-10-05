@@ -3,7 +3,9 @@ import { getCollection } from 'astro:content';
 
 import ServiceFeat from '@components/services/Service.astro';
 
-const services = await getCollection('services');
+const services = (await getCollection('services')).sort(
+  (a, b) => a.data.order - b.data.order
+);
 ---
 
 <section class="w-full flex flex-col justify-center my-8 lg:my-16">

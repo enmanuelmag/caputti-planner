@@ -3,11 +3,11 @@ import { defineCollection, z } from 'astro:content';
 const services = defineCollection({
   schema: ({ image }) =>
     z.object({
+      order: z.number(),
       title: z.string(),
       description: z.string(),
       image: image(),
       imageSection: image(),
-      order: z.number().optional(),
     }),
 });
 

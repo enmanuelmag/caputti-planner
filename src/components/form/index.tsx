@@ -4,7 +4,7 @@ import { actions } from 'astro:actions';
 import { Spinner } from 'webcoreui/react';
 import { useForm, Controller, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Input, Select, Textarea, Button } from 'webcoreui/react';
+import { Input, Select, Textarea, Button, Icon } from 'webcoreui/react';
 
 import { WishList } from '@content/form';
 
@@ -167,16 +167,24 @@ const FormContact = () => {
             control={form.control}
             name="budget"
             render={({ field }) => (
-              <Input
-                type="number"
-                label="Presupuesto estimado"
-                {...field}
-                value={field.value || undefined}
-                subText={form.formState.errors.budget?.message}
-                onChange={(e) => {
-                  field.onChange(parseInt(e.target.value, 10));
-                }}
-              />
+              <label className="flex w-full flex-col !gap-0 mb-[5px]">
+                <div className="flex items-center align-middle !gap-2">
+                  <div className="label-custom">Presupuesto estimado</div>
+                  <span data-tooltip="Conocer esta información es muy importante para nosotros, así tendremos una guía de todo lo que podemos ofrecerte de acuerdo al rubro que tienen planificado invertir en su boda. (Especifica USD)">
+                    <Icon type="info" size={16} />
+                  </span>
+                </div>
+                <Input
+                  type="number"
+                  // label="Presupuesto estimado"
+                  {...field}
+                  value={field.value || undefined}
+                  subText={form.formState.errors.budget?.message}
+                  onChange={(e) => {
+                    field.onChange(parseInt(e.target.value, 10));
+                  }}
+                />
+              </label>
             )}
           />
         </section>
@@ -185,12 +193,19 @@ const FormContact = () => {
           control={form.control}
           name="date"
           render={({ field }) => (
-            <Input
-              type="date"
-              label="Fecha estimada"
-              {...field}
-              subText={form.formState.errors.date?.message}
-            />
+            <label className="flex w-full flex-col !gap-0 mb-[5px]">
+              <div className="flex items-center align-middle !gap-2">
+                <div className="label-custom">Fecha estimada</div>
+                <span data-tooltip="Si no tienes una fecha definida, puedes ayudarnos con una fecha tentativa, indicandonos mes y año">
+                  <Icon type="info" size={16} />
+                </span>
+              </div>
+              <Input
+                type="date"
+                {...field}
+                subText={form.formState.errors.date?.message}
+              />
+            </label>
           )}
         />
 
@@ -214,7 +229,7 @@ const FormContact = () => {
             <Checkboxes
               id="wishList"
               options={WishList}
-              label="Lista de deseos"
+              label="Selecciona los proveedores para tu evento"
               values={field.value ?? []}
               onChange={field.onChange}
             />
