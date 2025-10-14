@@ -14,13 +14,11 @@ const features = t('featuring.items').split('|');
 <section
   data-aos="fade-up"
   data-aos-offset="10"
-  class="relative flex flex-col items-center"
+  class="relative mx-4 lg:mx-16 xl:mx-44 flex flex-col items-center"
 >
   <TransText tag="h2" textId="featuring.title" class="text-center" />
 
-  <div
-    class="flex flex-row flex-wrap justify-center !gap-0 px-4 xl:px-52 2xl:px-80"
-  >
+  <div class="flex flex-row flex-wrap justify-center !gap-0">
     {
       features.map((feature, index) => (
         <Feature index={index} text={feature} total={features.length} />

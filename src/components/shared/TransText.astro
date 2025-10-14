@@ -19,7 +19,8 @@ type TextTag =
 
 type Props = HTMLAttributes<TextTag> & {
   tag: TextTag;
-  textId: keyof (typeof ui)[typeof defaultLang];
+  textId?: keyof (typeof ui)[typeof defaultLang];
+  literal?: string;
   href?: string;
   target?: string;
   rel?: string;
@@ -27,6 +28,7 @@ type Props = HTMLAttributes<TextTag> & {
 
 const {
   textId,
+  literal,
   tag = 'span',
   class: classProp = '',
   ...props
@@ -57,8 +59,8 @@ const proseSize = {
   h4: 'text-base lg:text-lg xl:text-xl 2xl:text-2xl',
   h5: 'text-base lg:text-lg xl:text-xl 2xl:text-2xl',
   h6: 'text-base',
-  label: 'text-xs md:text-sm lg:text-base',
-  span: 'text-xs md:text-sm lg:text-base',
+  label: 'text-sm md:text-sm lg:text-base',
+  span: 'text-sm md:text-sm lg:text-base',
   a: 'text-sm md:text-sm lg:text-base hover:text-teal-600 transition-colors duration-500 cursor-pointer',
   p: 'text-sm md:text-sm lg:text-base',
 };
@@ -66,7 +68,7 @@ const proseSize = {
 const classList = proseSize[tag] || 'text-base';
 
 const Tag = isValidTag(tag) ? tag : 'span';
-const text = t(textId);
+const text = textId ? t(textId) : literal || '';
 ---
 
 <Tag

@@ -14,7 +14,7 @@ const { href, title, body, image } = Astro.props;
 ---
 
 <article
-  class="w-full flex flex-col !gap-0 cursor-pointer overflow-hidden group rounded-xl shadow-lg service-card" 
+  class="w-full flex flex-col !gap-0 cursor-pointer overflow-hidden group rounded-xl shadow-lg service-card"
 >
   <a href={href} class="h-full relative flex flex-col !gap-0 rounded-xl">
     <Image
@@ -39,27 +39,27 @@ const { href, title, body, image } = Astro.props;
 </article>
 
 <style lang="scss">
-@media (min-width: 1000px) {
-  .service-card {
-    flex-basis: calc(100% - 20px);
+  @media (min-width: 1000px) {
+    .service-card {
+      flex-basis: calc(100% - 20px);
+    }
   }
-}
 
-@media (min-width: 1280px){
-  .service-card {
-    flex-basis: calc(50% - 20px);
+  @media (min-width: 1280px) {
+    .service-card {
+      flex-basis: calc(33.33% - 20px);
+    }
   }
-}
 
-@media (min-width: 1920px) {
-  .service-card {
-    flex-basis: calc(33.33% - 20px);
+  @media (min-width: 1920px) {
+    .service-card {
+      flex-basis: calc(33.33% - 20px);
+    }
   }
-}
 
-@media (min-width: 2560px) {
-  .service-card {
-    flex-basis: calc(20% - 20px);
+  @media (min-width: 2560px) {
+    .service-card {
+      flex-basis: calc(20% - 20px);
+    }
   }
-}
 </style>

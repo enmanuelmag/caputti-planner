@@ -1,4 +1,6 @@
 ---
+import TransText from '@components/shared/TransText.astro';
+
 interface Props {
   text: string;
   index: number;
@@ -20,13 +22,13 @@ const idxNumber =
     <p
       id={`feature-${idxNumber}`}
       aria-label={text}
-      class="!text-justify text-sm md:text-base lg:text-lg xl:text-xl hover:text-teal-600 transition-colors duration-300 cursor-default"
+      class="!text-justify hover:text-teal-600 transition-colors duration-300 cursor-default"
     >
-      <span
-        class="!font-bold font-sansserif hover:text-teal-600 transition-colors duration-300"
-        >0{idxNumber}.</span
-      >
-      {text}
+      <TransText
+        tag="span"
+        literal={`0${idxNumber}. ${text}`}
+        class="font-krub hover:text-teal-600 transition-colors duration-300"
+      />
     </p>
   </div>
 </article>
