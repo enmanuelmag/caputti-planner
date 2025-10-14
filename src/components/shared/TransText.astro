@@ -51,16 +51,16 @@ const isValidTag = (tag: string): tag is TextTag => {
 };
 
 const proseSize = {
-  h1: 'text-3xl md:text-3xl lg:text-4xl xl:text-5xl',
-  h2: 'text-lg md:text-3xl lg:text-4xl xl:text-5xl',
-  h3: 'text-lg md:text-2xl lg:text-3xl xl:text-4xl',
-  h4: 'text-base md:text-1xl lg:text-2xl xl:text-3xl',
-  h5: 'text-base md:text-xl lg:text-1xl xl:text-2xl',
+  h1: 'text-3xl lg:text-3xl xl:text-4xl 2xl:text-5xl',
+  h2: 'text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl',
+  h3: 'text-lg lg:text-xl xl:text-2xl 2xl:text-3xl',
+  h4: 'text-base lg:text-lg xl:text-xl 2xl:text-2xl',
+  h5: 'text-base lg:text-lg xl:text-xl 2xl:text-2xl',
   h6: 'text-base',
   label: 'text-xs md:text-sm lg:text-base',
   span: 'text-xs md:text-sm lg:text-base',
-  a: 'text-xs md:text-sm lg:text-base hover:text-teal-600 transition-colors duration-500 cursor-pointer',
-  p: 'text-xs md:text-sm lg:text-base',
+  a: 'text-sm md:text-sm lg:text-base hover:text-teal-600 transition-colors duration-500 cursor-pointer',
+  p: 'text-sm md:text-sm lg:text-base',
 };
 
 const classList = proseSize[tag] || 'text-base';
