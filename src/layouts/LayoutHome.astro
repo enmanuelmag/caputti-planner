@@ -9,6 +9,7 @@ import 'aos/dist/aos.css';
 
 import NavbarDesktop from '@components/shared/NavbarDesktop.astro';
 import NavbarMobile from '@components/shared/NavbarMobile.astro';
+import FooterMobile from '@components/shared/FooterMobile.astro';
 
 interface Props {
   title: string;
@@ -36,6 +37,7 @@ const { title } = Astro.props;
     <GoTop />
 
     <Footer />
+    <FooterMobile />
 
     <AosInit client:load />
   </body>
