@@ -11,11 +11,15 @@ export const prerender = true;
 const features = t('featuring.items').split('|');
 ---
 
-<section data-aos="fade-up" data-aos-offset="10" class="relative flex flex-col items-center !gap-12">
+<section
+  data-aos="fade-up"
+  data-aos-offset="10"
+  class="relative flex flex-col items-center !gap-12"
+>
   <TransText tag="h2" textId="featuring.title" class="text-center !text-3xl" />
 
   <div
-    class="flex flex-row flex-wrap justify-center !gap-0 px-4 lg:px-52 xl:px-96"
+    class="flex flex-row flex-wrap justify-center !gap-0 px-4 xl:px-52 2xl:px-80"
   >
     {
       features.map((feature, index) => (
