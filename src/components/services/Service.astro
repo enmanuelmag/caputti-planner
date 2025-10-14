@@ -40,7 +40,7 @@ const [mainContent = '', modalContent = ''] = rawContent.split('<!--modal-->');
 >
   <div
     class:list={[
-      'basis-1/2 ',
+      'basis-1/2 justify-center flex items-center',
       idx % 2 === 0 ? 'order-2 lg:order-1' : 'order-2 lg:order-2',
     ]}
   >
@@ -48,22 +48,25 @@ const [mainContent = '', modalContent = ''] = rawContent.split('<!--modal-->');
       src={image}
       alt={title}
       loading="eager"
-      class="object-cover h-[450px] w-auto aspect-video rounded-md shadow-2xl"
+      class="object-cover w-auto aspect-video rounded-md shadow-2xl image-service"
       transition:name={`img-${slug}`}
     />
   </div>
   <div
     class:list={[
-      'flex flex-col justify-center basis-1/2 px-[1rem] lg:px-0',
+      'flex flex-col justify-center basis-1/2 px-[1rem] lg:px-0 !gap-2',
       idx % 2 === 0 ? 'order-1 lg:order-2 lg:pl-[2rem]' : 'order-1 lg:order-1',
     ]}
   >
     <h2
-      class="text-2xl lg:text-[2rem] font-[100] leading-10 group-hover:text-teal-600 transition-colors duration-500 cursor-default"
+      class="font-[100] leading-10 group-hover:text-teal-600 transition-colors duration-500 cursor-default text-center"
     >
       {title}
     </h2>
-    <div class="prose font-[300]" set:html={marked.parse(mainContent)}>
+    <div
+      class="prose font-[300] text-justify !max-w-full"
+      set:html={marked.parse(mainContent)}
+    >
       <!-- <Content /> -->
     </div>
 
@@ -86,3 +89,39 @@ const [mainContent = '', modalContent = ''] = rawContent.split('<!--modal-->');
     set:html={marked.parse(modalContent)}
   />
 </Modal>
+
+<style lang="scss">
+  .image-service {
+    height: 250px;
+  }
+
+  @media (min-width: 640px) {
+    .image-service {
+      height: 250px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .image-service {
+      height: 275px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .image-service {
+      height: 300px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .image-service {
+      height: 350px;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .image-service {
+      height: 400px;
+    }
+  }
+</style>
