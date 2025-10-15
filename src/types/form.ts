@@ -11,7 +11,12 @@ export const FromSchema = zod.object({
     .max(60, 'El nombre de la pareja no puede tener más de 60 caracteres')
     .trim(),
   email: zod.string().email('Ingrese un correo electrónico válido'),
-  services: zod.array(zod.string()).min(1, 'Seleccione al menos un servicio'),
+  services: zod.string().min(1, 'Seleccione al menos un servicio'),
+  otherServices: zod
+    .string()
+    .max(200, 'El campo no puede tener más de 200 caracteres')
+    .optional()
+    .nullable(),
   eventType: zod.string().min(1, 'Seleccione un tipo de evento'),
   phone: zod
     .string()

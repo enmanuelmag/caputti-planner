@@ -1,7 +1,7 @@
 import { Checkbox } from 'webcoreui/react';
 
 type Props = {
-  label: string;
+  label?: string;
   id: string;
   options: string[];
   values: string[];
@@ -13,10 +13,12 @@ function Checkboxes(props: Props) {
 
   return (
     <div className="w-full">
-      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-        {label}
-      </label>
-      <ul className="text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg">
+      {label && (
+        <label className="block tracking-wide text-gray-700 text-base mb-2">
+          {label}
+        </label>
+      )}
+      <ul className="text-sm font-normal text-gray-900 bg-white border border-gray-200 rounded-lg">
         {options.map((option, idx) => (
           <Checkbox
             label={option}

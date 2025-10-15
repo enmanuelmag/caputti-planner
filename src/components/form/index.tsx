@@ -15,7 +15,6 @@ import Checkboxes from './Checkboxes';
 const defaultValues: FormType = {
   guests: 0,
   budget: 0,
-  wishList: [],
   yourName: '',
   comments: '',
   coupleName: '',
@@ -25,7 +24,9 @@ const defaultValues: FormType = {
   place: '',
   reference: '',
   eventType: '',
-  services: [],
+  services: '',
+  otherServices: '',
+  wishList: [],
   otherWhishList: '',
 };
 
@@ -39,9 +40,10 @@ const FormContact = () => {
     resolver: zodResolver(FromSchema),
   });
 
-  const { wishList: wishListWatch = [] } = useWatch({
-    control: form.control,
-  });
+  const { wishList: wishListWatch = [], services: servicesWatch = '' } =
+    useWatch({
+      control: form.control,
+    });
 
   return (
     <React.Fragment>
@@ -54,12 +56,19 @@ const FormContact = () => {
             control={form.control}
             name="yourName"
             render={({ field }) => (
-              <Input
-                type="text"
-                label="Su nombre"
-                {...field}
-                subText={form.formState.errors.yourName?.message}
-              />
+              <label className="flex w-full flex-col !gap-0 mb-[5px]">
+                <div className="flex items-center align-middle !gap-1">
+                  <div className="label-custom">Tu nombre</div>
+                  <span className="text-red-600">*</span>
+                </div>
+                <Input
+                  type="text"
+                  required
+                  // label="Tu nombre *"
+                  {...field}
+                  subText={form.formState.errors.yourName?.message}
+                />
+              </label>
             )}
           />
 
@@ -69,7 +78,7 @@ const FormContact = () => {
             render={({ field }) => (
               <Input
                 type="text"
-                label="Nombre de su pareja"
+                label="Nombre de tu pareja"
                 {...field}
                 subText={form.formState.errors.coupleName?.message}
               />
@@ -82,12 +91,17 @@ const FormContact = () => {
             control={form.control}
             name="email"
             render={({ field }) => (
-              <Input
-                type="email"
-                label="Email"
-                {...field}
-                subText={form.formState.errors.email?.message}
-              />
+              <label className="flex w-full flex-col !gap-0 mb-[5px]">
+                <div className="flex items-center align-middle !gap-1">
+                  <div className="label-custom">Email</div>
+                  <span className="text-red-600">*</span>
+                </div>
+                <Input
+                  type="email"
+                  {...field}
+                  subText={form.formState.errors.email?.message}
+                />
+              </label>
             )}
           />
 
@@ -95,12 +109,17 @@ const FormContact = () => {
             control={form.control}
             name="phone"
             render={({ field }) => (
-              <Input
-                type="tel"
-                label="Teléfono"
-                {...field}
-                subText={form.formState.errors.phone?.message}
-              />
+              <label className="flex w-full flex-col !gap-0 mb-[5px]">
+                <div className="flex items-center align-middle !gap-1">
+                  <div className="label-custom">Teléfono</div>
+                  <span className="text-red-600">*</span>
+                </div>
+                <Input
+                  type="tel"
+                  {...field}
+                  subText={form.formState.errors.phone?.message}
+                />
+              </label>
             )}
           />
         </section>
@@ -108,26 +127,83 @@ const FormContact = () => {
         <section className="flex flex-col gap-[1rem] lg:flex-row">
           <Controller
             control={form.control}
+            name="services"
+            render={({ field }) => (
+              <label className="flex w-full flex-col !gap-0 mb-[5px]">
+                <div className="flex items-center align-middle !gap-1">
+                  <div className="label-custom">
+                    Servicio(s) que necesitas contratar
+                  </div>
+                  <span className="text-red-600">*</span>
+                </div>
+                <Select
+                  itemGroups={[
+                    {
+                      items: [
+                        { name: 'Cumpleaños' },
+                        { name: 'Quincerañera' },
+                        { name: 'Boda Civil' },
+                        { name: 'Boda Eclesiástica' },
+                        { name: 'Boda Civil y Eclesiástica' },
+                        { name: 'Corporativo' },
+                        { name: 'Otro' },
+                      ],
+                    },
+                  ]}
+                  {...field}
+                  value={field.value ?? ''}
+                  subText={form.formState.errors.eventType?.message}
+                  onChange={(e) => field.onChange(e.name)}
+                />
+              </label>
+            )}
+          />
+        </section>
+
+        {servicesWatch?.includes('Otro') && (
+          <Controller
+            control={form.control}
+            name="otherServices"
+            render={({ field }) => (
+              <Input
+                type="text"
+                {...field}
+                placeholder="Especifique los otros servicios deseados"
+                value={field.value ?? ''}
+                subText={form.formState.errors.otherServices?.message}
+              />
+            )}
+          />
+        )}
+
+        <section className="flex flex-col gap-[1rem] lg:flex-row">
+          <Controller
+            control={form.control}
             name="eventType"
             render={({ field }) => (
-              <Select
-                label="Tipo de evento"
-                itemGroups={[
-                  {
-                    items: [
-                      { name: 'Quinceañera' },
-                      { name: 'Boda Civil' },
-                      { name: 'Boda Eclesiástica' },
-                      { name: 'Boda Civil y Eclesiástica' },
-                      { name: 'Otro' },
-                    ],
-                  },
-                ]}
-                {...field}
-                value={field.value ?? ''}
-                subText={form.formState.errors.eventType?.message}
-                onChange={(e) => field.onChange(e.name)}
-              />
+              <label className="flex w-full flex-col !gap-0 mb-[5px]">
+                <div className="flex items-center align-middle !gap-1">
+                  <div className="label-custom">Tipo de evento</div>
+                  <span className="text-red-600">*</span>
+                </div>
+                <Select
+                  itemGroups={[
+                    {
+                      items: [
+                        { name: 'Quinceañera' },
+                        { name: 'Boda Civil' },
+                        { name: 'Boda Eclesiástica' },
+                        { name: 'Boda Civil y Eclesiástica' },
+                        { name: 'Otro' },
+                      ],
+                    },
+                  ]}
+                  {...field}
+                  value={field.value ?? ''}
+                  subText={form.formState.errors.eventType?.message}
+                  onChange={(e) => field.onChange(e.name)}
+                />
+              </label>
             )}
           />
 
@@ -150,16 +226,23 @@ const FormContact = () => {
             control={form.control}
             name="guests"
             render={({ field }) => (
-              <Input
-                type="number"
-                label="Número de invitados"
-                {...field}
-                value={field.value || undefined}
-                subText={form.formState.errors.guests?.message}
-                onChange={(e) => {
-                  field.onChange(parseInt(e.target.value, 10));
-                }}
-              />
+              <label className="flex w-full flex-col !gap-0 mb-[5px]">
+                <div className="flex items-center align-middle !gap-2">
+                  <div className="label-custom">¿Cuántos invitados esperas</div>
+                  <span data-tooltip="Este dato es muy importante para nosotros, ya que nos ayudará a brindarte una mejor asesoría y recomendaciones de proveedores acorde al tamaño de tu evento">
+                    *
+                  </span>
+                </div>
+                <Input
+                  type="number"
+                  {...field}
+                  value={field.value || undefined}
+                  subText={form.formState.errors.guests?.message}
+                  onChange={(e) => {
+                    field.onChange(parseInt(e.target.value, 10));
+                  }}
+                />
+              </label>
             )}
           />
 
@@ -168,9 +251,13 @@ const FormContact = () => {
             name="budget"
             render={({ field }) => (
               <label className="flex w-full flex-col !gap-0 mb-[5px]">
-                <div className="flex items-center align-middle !gap-2">
+                <div className="flex items-center align-middle !gap-1">
                   <div className="label-custom">Presupuesto estimado</div>
-                  <span data-tooltip="Conocer esta información es muy importante para nosotros, así tendremos una guía de todo lo que podemos ofrecerte de acuerdo al rubro que tienen planificado invertir en su boda. (Especifica USD)">
+                  <span className="text-red-600">*</span>
+                  <span
+                    className="ml-1"
+                    data-tooltip="Conocer esta información es muy importante para nosotros, así tendremos una guía de todo lo que podemos ofrecerte de acuerdo al rubro que tienen planificado invertir en tu boda. (Específica en USD)"
+                  >
                     <Icon type="info" size={16} />
                   </span>
                 </div>
@@ -194,9 +281,13 @@ const FormContact = () => {
           name="date"
           render={({ field }) => (
             <label className="flex w-full flex-col !gap-0 mb-[5px]">
-              <div className="flex items-center align-middle !gap-2">
+              <div className="flex items-center align-middle !gap-1">
                 <div className="label-custom">Fecha estimada</div>
-                <span data-tooltip="Si no tienes una fecha definida, puedes ayudarnos con una fecha tentativa, indicandonos mes y año">
+                <span className="text-red-600">*</span>
+                <span
+                  className="ml-1"
+                  data-tooltip="Si no tienes una fecha definida, puedes ayudarnos con una fecha tentativa, indicandonos mes y año"
+                >
                   <Icon type="info" size={16} />
                 </span>
               </div>
@@ -211,28 +302,22 @@ const FormContact = () => {
 
         <Controller
           control={form.control}
-          name="comments"
-          render={({ field }) => (
-            <Textarea
-              label="Comentarios"
-              {...field}
-              value={field.value ?? ''}
-              subText={form.formState.errors.comments?.message}
-            />
-          )}
-        />
-
-        <Controller
-          control={form.control}
           name="wishList"
           render={({ field }) => (
-            <Checkboxes
-              id="wishList"
-              options={WishList}
-              label="Selecciona los proveedores para tu evento"
-              values={field.value ?? []}
-              onChange={field.onChange}
-            />
+            <label className="flex flex-col !gap-0 mb-[5px]">
+              <div className="flex items-center align-middle !gap-1">
+                <div className="label-custom">
+                  Selecciona los proveedores para tu evento
+                </div>
+                <span className="text-red-600">*</span>
+              </div>
+              <Checkboxes
+                id="wishList"
+                options={WishList}
+                values={field.value ?? []}
+                onChange={field.onChange}
+              />
+            </label>
           )}
         />
 
@@ -244,13 +329,26 @@ const FormContact = () => {
               <Input
                 type="text"
                 {...field}
-                placeholder="Especifique los otros servicios deseados"
+                placeholder="Especifique los otros proveedores deseados"
                 value={field.value ?? ''}
                 subText={form.formState.errors.otherWhishList?.message}
               />
             )}
           />
         )}
+
+        <Controller
+          control={form.control}
+          name="comments"
+          render={({ field }) => (
+            <Textarea
+              label="Comentarios"
+              {...field}
+              value={field.value ?? ''}
+              subText={form.formState.errors.comments?.message}
+            />
+          )}
+        />
 
         <Controller
           control={form.control}

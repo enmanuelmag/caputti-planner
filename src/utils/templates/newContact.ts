@@ -54,6 +54,14 @@ export const newContactTemplate = `<!DOCTYPE html>
           <span class="text-lg text-gray-700">{{eventType}}</span>
         </div>
         <div>
+          <span class="text-lg text-gray-800 font-semibold">Servicios:</span>
+          <span class="text-lg text-gray-700">{{services}}</span>
+        </div>
+        <div>
+          <span class="text-lg text-gray-800 font-semibold">Otros servicios:</span>
+          <span class="text-lg text-gray-700">{{otherServices}}</span>
+        </div>
+        <div>
           <span class="text-lg text-gray-800 font-semibold"
             >Lista de deseos:</span
           >
