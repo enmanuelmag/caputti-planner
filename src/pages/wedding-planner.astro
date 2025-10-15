@@ -14,7 +14,7 @@ const sections = (await getCollection('about')).sort(
 
 <Layout title="Servicios - Caputi Festa">
   <section
-    class="w-full flex flex-col justify-center px-0 md:px-[2rem] lg:px-[4rem] my-[2rem] !gap-y-[4rem]"
+    class="w-full flex flex-col justify-center my-[2rem] !gap-y-[4rem] wedding-planner"
   >
     {sections.map(({ slug }) => <Section id={slug} />)}
   </section>
@@ -44,3 +44,24 @@ const sections = (await getCollection('about')).sort(
     />
   </div>
 </Layout>
+
+<style lang="scss">
+  // px-0 md:px-[2rem] lg:px-[4rem] xl:px-[8rem] 3xl:px-[16rem]
+  .wedding-planner {
+    @media (max-width: 1279px) {
+      padding-inline: 0;
+    }
+
+    @media (min-width: 1280px) {
+      padding-inline: 1rem;
+    }
+
+    @media (min-width: 1920px) {
+      padding-inline: 4rem;
+    }
+
+    @media (min-width: 2560px) {
+      padding-inline: 20rem;
+    }
+  }
+</style>
