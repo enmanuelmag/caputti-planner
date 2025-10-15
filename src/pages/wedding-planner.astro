@@ -1,11 +1,18 @@
 ---
-import Layout from '../layouts/Layout.astro';
-
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 
-import Section from '@components/about/Section.astro';
+import Layout from '../layouts/Layout.astro';
 
+import Section from '@components/about/Section.astro';
 import TransText from '@components/shared/TransText.astro';
+
+import LissCaputiBlack from '@assets/wedding/liss caputi negro.png';
+
+import EC202512511 from '@assets/wedding/EC-2025-13152-1.png';
+import EC20251251 from '@assets/wedding/EC-2025-13152.png';
+import Instituto from '@assets/wedding/instituto.png';
+import Protocol from '@assets/wedding/protocolo.png';
 
 const sections = (await getCollection('about')).sort(
   (a, b) => a.data.order - b.data.order
@@ -43,25 +50,86 @@ const sections = (await getCollection('about')).sort(
       class="text-center !text-2xl underline hover:text-teal-600 cursor-pointer"
     />
   </div>
+
+  <div class="flex flex-col justify-center items-center pt-16 !gap-16">
+    <Image
+      src={LissCaputiBlack}
+      alt="Liss Caputi logo"
+      class="max-w-[300px] xl:max-w-[400px]"
+    />
+
+    <div
+      class="flex flex-row xl:flex-row justify-center align-middle gap-2 certifications flex-wrap"
+    >
+      <div class="basis-[calc(50%-20px)] xl:basis-[calc(25%-20px)]">
+        <Image
+          src={Instituto}
+          alt="Miembro del instituto de excelencia"
+          class="h-auto object-contain"
+        />
+      </div>
+
+      <div class="basis-[calc(50%-20px)] xl:basis-[calc(25%-20px)]">
+        <Image
+          src={Protocol}
+          alt="Miembro de protocolo y eventos"
+          class="h-auto object-contain"
+        />
+      </div>
+
+      <div class="basis-[calc(50%-20px)] xl:basis-[calc(25%-20px)]">
+        <Image
+          src={EC202512511}
+          alt="Certificado de calidad y excelencia 2025"
+          class="h-auto object-contain"
+        />
+      </div>
+      <div class="basis-[calc(50%-20px)] xl:basis-[calc(25%-20px)]">
+        <Image
+          src={EC20251251}
+          alt="Certificado de calidad y excelencia 2025"
+          class="h-auto object-contain"
+        />
+      </div>
+    </div>
+  </div>
+
+  <style lang="scss">
+    // px-0 md:px-[2rem] lg:px-[4rem] xl:px-[8rem] 3xl:px-[16rem]
+    .wedding-planner {
+      @media (max-width: 1279px) {
+        padding-inline: 0;
+      }
+
+      @media (min-width: 1280px) {
+        padding-inline: 1rem;
+      }
+
+      @media (min-width: 1920px) {
+        padding-inline: 4rem;
+      }
+
+      @media (min-width: 2560px) {
+        padding-inline: 20rem;
+      }
+    }
+
+    .certifications {
+      @media (max-width: 1279px) {
+        padding-inline: 1rem;
+      }
+
+      @media (min-width: 1280px) {
+        padding-inline: 4rem;
+      }
+
+      @media (min-width: 1920px) {
+        padding-inline: 8rem;
+      }
+
+      @media (min-width: 2560px) {
+        padding-inline: 26rem;
+      }
+    }
+  </style>
 </Layout>
-
-<style lang="scss">
-  // px-0 md:px-[2rem] lg:px-[4rem] xl:px-[8rem] 3xl:px-[16rem]
-  .wedding-planner {
-    @media (max-width: 1279px) {
-      padding-inline: 0;
-    }
-
-    @media (min-width: 1280px) {
-      padding-inline: 1rem;
-    }
-
-    @media (min-width: 1920px) {
-      padding-inline: 4rem;
-    }
-
-    @media (min-width: 2560px) {
-      padding-inline: 20rem;
-    }
-  }
-</style>
