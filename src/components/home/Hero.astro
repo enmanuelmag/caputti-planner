@@ -15,7 +15,7 @@ import { Image } from 'astro:assets';
     src={HeroCouple}
     alt="Pareja feliz organizada por Caputi Festa"
     loading="eager"
-    class="h-[200px] md:h-[250px] xl:h-[450px] object-cover"
+    class="object-cover w-full hero-image"
   />
 </section>
 
@@ -49,5 +49,27 @@ import { Image } from 'astro:assets';
   }
   .text-shadow-sm {
     text-shadow: 0 2px 4px #000000af;
+  }
+
+  .hero-image {
+    height: 200px;
+  }
+
+  @media (min-width: 768px) {
+    .hero-image {
+      height: 250px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .hero-image {
+      height: 450px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .hero-image {
+      height: 800px;
+    }
   }
 </style>

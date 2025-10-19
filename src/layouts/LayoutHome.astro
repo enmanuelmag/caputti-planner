@@ -29,12 +29,12 @@ const { title } = Astro.props;
     <NavbarDesktop />
 
     <main
-      class="transition-colors duration-200 !gap-y-14 xl:!gap-y-20 flex flex-col"
+      class="transition-colors duration-200 !gap-y-14 xl:!gap-y-16 flex flex-col"
     >
       <slot />
     </main>
 
-    <GoTop />
+    <GoTop client:load />
 
     <Footer />
     <FooterMobile />

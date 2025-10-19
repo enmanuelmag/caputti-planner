@@ -22,6 +22,8 @@ export const ui = {
 
     //DESCRIPTION SECTION
     'description.title.first': 'BODAS Y EVENTOS | MANABI-ECUADOR',
+    'description.title.first.1.mobile': 'BODAS Y EVENTOS',
+    'description.title.first.2.mobile': 'MANABI-ECUADOR',
     'description.subtitle.first':
       'Creamos para ti eventos perfectos y recuerdos únicos de momentos inolvidables',
 
