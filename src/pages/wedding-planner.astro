@@ -13,6 +13,7 @@ import EC202512511 from '@assets/wedding/EC-2025-13152-1.png';
 import EC20251251 from '@assets/wedding/EC-2025-13152.png';
 import Instituto from '@assets/wedding/instituto.png';
 import Protocol from '@assets/wedding/protocolo.png';
+import CertAtlatins from '@assets/wedding/cert-atlatins.jpg';
 
 const sections = (await getCollection('about')).sort(
   (a, b) => a.data.order - b.data.order
@@ -92,6 +93,8 @@ const sections = (await getCollection('about')).sort(
         />
       </div>
     </div>
+
+    <Image src={CertAtlatins} alt="Certificado Atlatins" class="w-[175px]" />
   </div>
 
   <style lang="scss">
