@@ -25,11 +25,13 @@ const { title } = Astro.props;
     <Head title={title} />
     <ClientRouter />
   </head>
-  <body>
+  <body class="min-h-screen w-full flex flex-col">
     <NavbarMobile />
     <NavbarDesktop />
 
-    <main class="transition-colors duration-200 mx-4 lg:mx-44 2xl:mx-96">
+    <main
+      class="transition-colors duration-200 mx-4 lg:mx-44 2xl:mx-96 flex-grow"
+    >
       <slot />
     </main>
 

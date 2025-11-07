@@ -1,0 +1,38 @@
+---
+import Layout from 'src/layouts/Layout.astro';
+import FAQ from 'src/components/faq/index.tsx';
+
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import type { defaultLang, ui } from '@i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const totalQuestions = 13;
+
+const faqItems = Array.from({ length: totalQuestions }, (_, i) => {
+  const questionId = `question.${i + 1}`;
+  const answerId = `answer.${i + 1}`;
+
+  return {
+    title: t(questionId as keyof (typeof ui)[typeof defaultLang]),
+    content: t(answerId as keyof (typeof ui)[typeof defaultLang]),
+  };
+});
+---
+
+<Layout title="FAQ - Caputi Festa">
+  <section class="w-full flex flex-col justify-center my-8 lg:my-16">
+    <FAQ client:only="react" items={faqItems} />
+  </section>
+</Layout>
+
+<style lang="scss" is:global>
+  .accordion-list button {
+    font-weight: 400;
+    font-size: 1.125rem !important;
+  }
+</style>
+<script>
+  import {} from 'webcoreui';
+</script>
