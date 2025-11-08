@@ -13,10 +13,11 @@ const t = useTranslations(lang);
 <Layout title="Servicios - Caputi Festa">
   <Services />
 
-  <!-- <FQA /> -->
-
-  <FastContact
-    title={t('services.contact.title')}
-    formText={t('services.contact.subtitle')}
-  />
+  <div class="mt-16 lg:mt-32">
+    <FastContact
+      title={t('services.contact.title')}
+      hrefTitle="/faq"
+      formText={t('services.contact.subtitle')}
+    />
+  </div>
 </Layout>

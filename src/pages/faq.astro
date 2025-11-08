@@ -4,6 +4,7 @@ import FAQ from 'src/components/faq/index.tsx';
 
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 import type { defaultLang, ui } from '@i18n/ui';
+import FastContact from '@components/shared/FastContact.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -25,12 +26,24 @@ const faqItems = Array.from({ length: totalQuestions }, (_, i) => {
   <section class="w-full flex flex-col justify-center my-8 lg:my-16">
     <FAQ client:only="react" items={faqItems} />
   </section>
+
+  <div class="mt-16 lg:mt-24">
+    <FastContact formText={t('services.contact.subtitle')} />
+  </div>
 </Layout>
 
 <style lang="scss" is:global>
+  .accordion-list li {
+    padding-block: 1.25rem;
+  }
+
   .accordion-list button {
-    font-weight: 400;
+    font-family: 'Krub';
     font-size: 1.125rem !important;
+  }
+
+  .accordion-list div {
+    font-family: 'Inter', sans-serif;
   }
 </style>
 <script>

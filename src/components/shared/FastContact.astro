@@ -1,19 +1,32 @@
 ---
 interface Props {
   title?: string;
+  hrefTitle?: string;
   formText?: string;
 }
 
-const { title, formText } = Astro.props;
+const { title, hrefTitle, formText } = Astro.props;
 ---
 
-<section data-aos="fade-in" class="relative flex flex-col justify-center">
+<section
+  data-aos="fade-in"
+  data-aos-offset="50"
+  class="relative flex flex-col justify-center"
+>
   {
     title && (
       <div class="flex flex-col items-center justify-center !gap-4 my-2">
-        <h1 class="text-center text-3xl md:text-4xl lg:text-5xl font-bold mb-4 cursor-pointer hover:text-teal-600">
-          {title}
-        </h1>
+        {hrefTitle ? (
+          <a id="fast-contact" href={hrefTitle} aria-label={title} class="">
+            <h1 class="text-2xl lg:text-5xl text-center hover:text-teal-600 transition-colors duration-300">
+              {title}
+            </h1>
+          </a>
+        ) : (
+          <h1 class="text-2xl lg:text-5xl text-center hover:text-teal-600 transition-colors duration-300">
+            {title}
+          </h1>
+        )}
       </div>
     )
   }
@@ -25,7 +38,7 @@ const { title, formText } = Astro.props;
           id="fast-contact"
           href="/contacto"
           aria-label={formText}
-          class="font-cinzel underline text-xl lg:text-2xl text-center cursor-pointer hover:text-teal-600 transition-colors duration-300"
+          class="font-cinzel underline text-lg lg:text-2xl text-center cursor-pointer hover:text-teal-600 transition-colors duration-300"
         >
           {formText}
         </a>

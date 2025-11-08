@@ -49,9 +49,9 @@ export const ui = {
     'testimonials.more': 'Descubre más testimonios de clientes felices',
 
     //FEATURES SECTION
-    'featuring.title': 'GRACIAS A NUESTROS SERVICIOS  PODRÁS:',
+    'featuring.title': 'GRACIAS A NUESTROS SERVICIOS PODRÁS:',
     'featuring.items':
-      'Avanzar con los preparativos de tu boda de manera relajada y eficaz, disfrutando de cada paso del proceso.\nContar con una guía profesional que te ayudará a poner en orden todas tus ideas y resolver tus dudas.\nAhorrar tiempo y esfuerzo, al no tener que dedicar todo tu tiempo a la organización.\nTener la seguridad de que todo saldrá acorde a lo planeado, ya que nosotros nos encargaremos de cada detalle de tu boda para que sea perfecto.\nAcceder a una selección exclusiva de proveedores que se ajusten a tu estilo y preferencias, asegurando la calidad y excelencia en cada aspecto del evento.\nDisfrutar de un evento memorable sin preocupaciones permitiéndote vivir plenamente cada momento junto a tu pareja y seres queridos.',
+      'Avanzar con los preparativos de tu boda de manera relajada y eficaz, disfrutando de cada paso del proceso.|Contar con una guía profesional que te ayudará a poner en orden todas tus ideas y resolver tus dudas.|Ahorrar tiempo y esfuerzo, al no tener que dedicar todo tu tiempo a la organización.|Tener la seguridad de que todo saldrá acorde a lo planeado, ya que nosotros nos encargaremos de cada detalle de tu boda para que sea perfecto.|Acceder a una selección exclusiva de proveedores que se ajusten a tu estilo y preferencias, asegurando la calidad y excelencia en cada aspecto del evento.|Disfrutar de un evento memorable sin preocupaciones permitiéndote vivir plenamente cada momento junto a tu pareja y seres queridos.',
 
     //FOOTER SECTION
     email: 'contacto@caputifesta.com',
@@ -79,7 +79,7 @@ export const ui = {
       'Si bien somos especialistas en bodas y es nuestro servicio más solicitado, también nos apasiona organizar todo tipo de celebraciones. Esto incluye quinceañeras, eventos corporativos, fiestas privadas y más. Si tienes otra celebración en mente, ¡no dudes en contactarnos para conocer cómo podemos ayudarte!',
 
     'question.2':
-      '¿Qué tipo de bodas organizan (íntimas, grandes, temáticas, etc.)?',
+      '¿Qué tipo de bodas organizan? (íntimas, grandes, temáticas, etc)',
     'answer.2':
       'Nos especializamos en bodas de todo tipo y tamaño, desde ceremonias íntimas y elopements, hasta grandes celebraciones y bodas temáticas personalizadas. Nos encanta el desafío de crear eventos que reflejen la esencia de cada pareja, sea cual sea su estilo. ¡Cuéntanos tu visión!',
 
