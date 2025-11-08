@@ -1,0 +1,21 @@
+# Robots.txt para Caputi Festa
+# Permite que los motores de búsqueda rastreen todo el contenido
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /*.json$
+
+# Específicamente para Google
+User-agent: Googlebot
+Allow: /
+
+# Específicamente para Bing
+User-agent: Bingbot
+Allow: /
+
+# Sitemap
+Sitemap: https://caputifesta.com/sitemap.xml
+
+# Crawl-delay para respetar recursos del servidor
+Crawl-delay: 1

@@ -1,49 +1,88 @@
 ---
 interface Props {
   title: string;
+  description?: string;
+  keywords?: string;
+  ogImage?: string;
+  ogType?: string;
+  canonical?: string;
 }
 
-const { title = 'Caputi Festiva' } = Astro.props;
+const {
+  title = 'Caputi Festa - Wedding Planner en Manta, Manabí',
+  description = 'Caputi Festa es tu wedding planner en Manta, Manabí. Organizamos bodas, eventos corporativos y celebraciones personalizadas con profesionalismo y dedicación. Contáctanos para tu consulta gratuita.',
+  keywords = 'wedding planner Manta, organizadora de bodas Manabí, Liss Caputi, planificación de bodas, eventos corporativos Ecuador',
+  ogImage = 'https://caputifesta.com/og-image.png',
+  ogType = 'website',
+  canonical = Astro.url.pathname,
+} = Astro.props;
+
+const siteUrl = 'https://caputifesta.com';
+const canonicalUrl = new URL(canonical, siteUrl).href;
 ---
 
+<!-- Charset y Viewport -->
 <meta charset="UTF-8" />
-<meta name="title" content={title} />
-<meta
-  name="description"
-  content="Liss Caputi. Organizadora de bodas y eventos"
-/>
-<meta
-  name="keywords"
-  content="Liss Caputi, Bodas, Eventos, Organizadora, Caputi Festiva"
-/>
-<meta name="robots" content="index, follow" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="language" content="Spanish" />
-<meta name="author" content="Enmanuel Magallanes Pinargote" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://metatags.io/" />
-<meta property="og:title" content="Caputi Festiva" />
-<meta
-  property="og:description"
-  content="Liss Caputi. Organizadora de bodas y eventos"
-/>
-<meta property="og:image" content="/logoImage.png" />
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://metatags.io/" />
-<meta property="twitter:title" content="Caputi Festiva" />
-<meta
-  property="twitter:description"
-  content="Liss Caputi. Organizadora de bodas y eventos"
-/>
-<meta property="twitter:image" content="/logoImage.png" />
-
-<link rel="icon" href="/logoImage.ico" />
-
-<meta name="viewport" content="width=device-width" />
-<meta name="generator" content={Astro.generator} />
-
+<!-- Información Básica -->
 <title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="keywords" content={keywords} />
+<meta name="author" content="Liss Caputi - Caputi Festa" />
+<meta name="creator" content="Enmanuel Magallanes Pinargote" />
+<meta name="language" content="es" />
+<meta
+  name="robots"
+  content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+/>
+
+<!-- Canonical URL para evitar contenido duplicado -->
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Elementos de Seguridad y Rastreo -->
+<meta name="generator" content={Astro.generator} />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<!-- Open Graph / Facebook - para compartir en redes sociales -->
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={siteUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Caputi Festa" />
+<meta property="og:locale" content="es_ES" />
+
+<!-- Twitter Card - para compartir en Twitter/X -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={siteUrl} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={ogImage} />
+<meta property="twitter:creator" content="@caputifesta" />
+
+<!-- Información de Contacto Estructurada -->
+<meta name="contact" content="contacto@caputifesta.com" />
+<meta name="phone" content="+593 96 422 1777" />
+
+<!-- Geolocalización -->
+<meta name="geo.region" content="EC-MN" />
+<meta name="geo.placename" content="Manta, Manabí" />
+<meta name="geo.position" content="-0.945919;-80.737113" />
+<meta name="ICBM" content="-0.945919, -80.737113" />
+
+<!-- Favicon y Iconos -->
+<link rel="icon" href="/logoImage.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="/logoImage.png" />
+<link rel="shortcut icon" href="/logoImage.ico" />
+
+<!-- Preconexiones para optimizar recursos externos -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+
+<!-- Theme Color para navegadores móviles -->
+<meta name="theme-color" content="#0d9489" />

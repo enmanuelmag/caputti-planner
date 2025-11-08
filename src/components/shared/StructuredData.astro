@@ -1,0 +1,155 @@
+---
+// Archivo para incluir en el Head.astro como componente
+// Este archivo contiene los schemas JSON-LD para SEO estructurado
+---
+
+<!-- Schema.org - Organización -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Caputi Festa",
+    "alternateName": "Liss Caputi Wedding Planner",
+    "url": "https://caputifesta.com",
+    "logo": "https://caputifesta.com/logoImage.png",
+    "description": "Wedding planner profesional en Manta, Manabí. Organizamos bodas, eventos corporativos y celebraciones personalizadas.",
+    "telephone": "+593964221777",
+    "email": "contacto@caputifesta.com",
+    "priceRange": "$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Manta",
+      "addressLocality": "Manta",
+      "addressRegion": "Manabí",
+      "postalCode": "",
+      "addressCountry": "EC"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "-0.945919",
+      "longitude": "-80.737113"
+    },
+    "sameAs": [
+      "https://www.instagram.com/caputifesta",
+      "https://wa.me/593964221777"
+    ],
+    "areaServed": {
+      "@type": "City",
+      "name": "Manta",
+      "containedIn": {
+        "@type": "State",
+        "name": "Manabí",
+        "containedIn": {
+          "@type": "Country",
+          "name": "Ecuador"
+        }
+      }
+    },
+    "serviceType": [
+      "Wedding Planning",
+      "Event Organization",
+      "Corporate Events",
+      "Party Planning"
+    ]
+  }
+</script>
+
+<!-- Schema.org - Persona (Liss Caputi) -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Liss Caputi",
+    "jobTitle": "Wedding Planner",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Caputi Festa"
+    },
+    "url": "https://caputifesta.com",
+    "image": "https://caputifesta.com/logoImage.png",
+    "sameAs": ["https://www.instagram.com/caputifesta"]
+  }
+</script>
+
+<!-- Schema.org - Testimonios (agregados) -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AggregateOffer",
+    "offers": [
+      {
+        "@type": "Offer",
+        "url": "https://caputifesta.com/servicios",
+        "name": "Coordinación del Día",
+        "description": "Coordinación completa durante tu evento"
+      },
+      {
+        "@type": "Offer",
+        "url": "https://caputifesta.com/servicios",
+        "name": "Organización Parcial",
+        "description": "Organización de aspectos específicos de tu boda"
+      },
+      {
+        "@type": "Offer",
+        "url": "https://caputifesta.com/servicios",
+        "name": "Organización Total",
+        "description": "Organización completa de tu evento desde el inicio"
+      }
+    ]
+  }
+</script>
+
+<!-- Schema.org - FAQPage -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Solo organizan bodas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Si bien somos especialistas en bodas y es nuestro servicio más solicitado, también nos apasiona organizar todo tipo de celebraciones. Esto incluye quinceañeras, eventos corporativos, fiestas privadas y más."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué tipo de bodas organizan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nos especializamos en bodas de todo tipo y tamaño, desde ceremonias íntimas y elopements, hasta grandes celebraciones y bodas temáticas personalizadas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Ofrecen servicios para bodas de destino?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "¡Absolutamente! Aunque estamos basados en Manta, tenemos experiencia en la planificación de bodas de destino en diversas localidades de Manabí."
+        }
+      }
+    ]
+  }
+</script>
+
+<!-- Schema.org - Reseñas de clientes (ejemplo) -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    "author": {
+      "@type": "Person",
+      "name": "Andrea & Juan"
+    },
+    "datePublished": "2024-01-01",
+    "description": "Liss hizo de nuestra boda destino una experiencia increíble. Su capacidad para coordinar todos los detalles de principio a fin fue excepcional.",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "5",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "reviewBody": "Fue un día inolvidable y todo salió a la perfección gracias a su ayuda!"
+  }
+</script>

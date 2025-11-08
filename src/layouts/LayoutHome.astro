@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from 'astro:transitions';
 import Head from '@components/shared/Head.astro';
+import StructuredData from '@components/shared/StructuredData.astro';
 import GoTop from '@components/shared/GoTop.astro';
 import Footer from '@components/shared/Footer.astro';
 import AosInit from '@components/shared/AosInit.tsx';
@@ -22,6 +23,7 @@ const { title } = Astro.props;
 <html lang="es">
   <head>
     <Head title={title} />
+    <StructuredData />
     <ClientRouter />
   </head>
   <body>
