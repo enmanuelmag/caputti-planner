@@ -6,7 +6,7 @@ imageSection: ./images/service-b-full.jpg
 order: 2
 ---
 
-Este servicio está pensado para parejas que ya han planeado por completo su boda y solo necesitan apoyo en la coordinación final el día de la boda. Estaremos allí para asegurarnos de que todo salga según lo planeado y manejar cualquier imprevisto, para que puedan disfrutar de su boda sin preocupaciones.
+Este servicio es ideal si ya llevas meses trabajando en la organización de tu boda, has definido algunos aspectos clave y necesitas orientación para identificar y gestionar los elementos pendientes que garanticen un desenlace exitoso. En este servicio, también verificamos que los avances realizados estén en sintonía con la visión que tienes para tu evento, asegurándonos de que todo se ajuste a tus expectativas para que tu boda sea tan mágica como la soñaste. Por último, estaremos a tu lado para coordinar y supervisar cada detalle el día de la celebración del matrimonio.
 
 <!--modal-->
 

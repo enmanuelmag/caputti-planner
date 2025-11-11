@@ -20,14 +20,14 @@ const { href, title, body, image } = Astro.props;
     <Image
       src={image}
       alt={title}
-      class="flex-shrink-0 object-cover w-full h-[250px] transition-transform duration-500 group-hover:scale-[115%]"
+      class="flex-shrink-0 object-cover w-full h-[250px] transition-transform duration-500 group-hover:scale-[110%] z-10"
     />
 
     <div
-      class="h-full border-4 border-t-0 border-teal-500 py-8 flex flex-col !gap-y-4 z-20 bg-white px-4 rounded-b-xl"
+      class="h-full border-4 border-t-0 border-caputi py-8 flex flex-col !gap-y-4 z-20 bg-white px-4 rounded-b-xl"
     >
       <h2
-        class="text-center group-hover:text-teal-600 transition-colors duration-500 sm:text-base md:text-lg lg:text-xl"
+        class="text-center group-hover:text-caputi transition-colors duration-500 sm:text-base md:text-lg lg:text-xl"
       >
         {title}
       </h2>

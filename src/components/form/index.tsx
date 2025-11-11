@@ -1,10 +1,16 @@
 import React from 'react';
 import { toast } from 'webcoreui';
 import { actions } from 'astro:actions';
-import { Spinner } from 'webcoreui/react';
-import { useForm, Controller, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Input, Select, Textarea, Button, Icon } from 'webcoreui/react';
+import { useForm, Controller, useWatch } from 'react-hook-form';
+import {
+  Spinner,
+  Input,
+  Select,
+  Textarea,
+  Button,
+  Icon,
+} from 'webcoreui/react';
 
 import { WishList } from '@content/form';
 
@@ -158,25 +164,7 @@ const FormContact = () => {
               </label>
             )}
           />
-        </section>
 
-        {servicesWatch?.includes('Otro') && (
-          <Controller
-            control={form.control}
-            name="otherServices"
-            render={({ field }) => (
-              <Input
-                type="text"
-                {...field}
-                placeholder="Especifique los otros servicios deseados"
-                value={field.value ?? ''}
-                subText={form.formState.errors.otherServices?.message}
-              />
-            )}
-          />
-        )}
-
-        <section className="flex flex-col gap-[1rem] lg:flex-row">
           <Controller
             control={form.control}
             name="eventType"
@@ -202,6 +190,48 @@ const FormContact = () => {
                   value={field.value ?? ''}
                   subText={form.formState.errors.eventType?.message}
                   onChange={(e) => field.onChange(e.name)}
+                />
+              </label>
+            )}
+          />
+        </section>
+
+        {servicesWatch?.includes('Otro') && (
+          <Controller
+            control={form.control}
+            name="otherServices"
+            render={({ field }) => (
+              <Input
+                type="text"
+                {...field}
+                placeholder="Especifique los otros servicios deseados"
+                value={field.value ?? ''}
+                subText={form.formState.errors.otherServices?.message}
+              />
+            )}
+          />
+        )}
+
+        <section className="flex flex-col gap-[1rem] lg:flex-row">
+          <Controller
+            control={form.control}
+            name="date"
+            render={({ field }) => (
+              <label className="flex w-full flex-col !gap-0 mb-[5px]">
+                <div className="flex items-center align-middle !gap-1">
+                  <div className="label-custom">Fecha estimada</div>
+                  <span className="text-red-600">*</span>
+                  <span
+                    className="ml-1"
+                    data-tooltip="Si no tienes una fecha definida, puedes ayudarnos con una fecha tentativa, indicandonos mes y año"
+                  >
+                    <Icon type="info" size={16} />
+                  </span>
+                </div>
+                <Input
+                  type="date"
+                  {...field}
+                  subText={form.formState.errors.date?.message}
                 />
               </label>
             )}
@@ -278,30 +308,6 @@ const FormContact = () => {
 
         <Controller
           control={form.control}
-          name="date"
-          render={({ field }) => (
-            <label className="flex w-full flex-col !gap-0 mb-[5px]">
-              <div className="flex items-center align-middle !gap-1">
-                <div className="label-custom">Fecha estimada</div>
-                <span className="text-red-600">*</span>
-                <span
-                  className="ml-1"
-                  data-tooltip="Si no tienes una fecha definida, puedes ayudarnos con una fecha tentativa, indicandonos mes y año"
-                >
-                  <Icon type="info" size={16} />
-                </span>
-              </div>
-              <Input
-                type="date"
-                {...field}
-                subText={form.formState.errors.date?.message}
-              />
-            </label>
-          )}
-        />
-
-        <Controller
-          control={form.control}
           name="wishList"
           render={({ field }) => (
             <label className="flex flex-col !gap-0 mb-[5px]">
@@ -364,14 +370,18 @@ const FormContact = () => {
           )}
         />
 
-        <Button
-          className="mt-[0.5rem] w-full !bg-teal-600 hover:!bg-teal-700 !text-white"
-          type="submit"
-        >
+        <Button className="mt-[0.5rem] w-full contact-button" type="submit">
           {loading ? (
             <Spinner color="white" width={42} size={30} />
           ) : (
-            <span className="my-[0.35rem]">Enviar solicitud</span>
+            <span
+              className="my-[0.35rem] text-white"
+              style={{
+                color: '#fff',
+              }}
+            >
+              Enviar solicitud
+            </span>
           )}
         </Button>
       </form>

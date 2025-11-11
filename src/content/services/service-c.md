@@ -6,7 +6,7 @@ imageSection: ./images/service-c.jpg
 order: 3
 ---
 
-Manabí es el escenario perfecto para las parejas que sueñan con casarse frente al mar. Manta, su ciudad más destacada, ofrece la combinación ideal entre la vida de playa y las comodidades urbanas: hoteles, aeropuerto internacional, gastronomía, servicios y conectividad en un solo lugar. Además, sus playas vírgenes brindan entornos íntimos y espectaculares para bodas inolvidables. Organizamos cada detalle para que tus invitados y tú, vivan una experiencia mágica desde el primer momento.
+Este servicio está pensado para parejas que ya han planeado por completo su boda y solo necesitan apoyo en la coordinación final el día de la boda. Estaremos allí para asegurarnos de que todo salga según lo planeado y manejar cualquier imprevisto, para que puedan disfrutar de su boda sin preocupaciones. 
 
 <!--modal-->
 

@@ -6,7 +6,7 @@ imageSection: ./images/service-a-full.jpg
 order: 1
 ---
 
-Este servicio es ideal si ya llevas meses trabajando en la organización de tu boda, has definido algunos aspectos clave y necesitas orientación para identificar y gestionar los elementos pendientes que garanticen un desenlace exitoso. En este servicio, también verificamos que los avances realizados estén en sintonía con la visión que tienes para tu evento, asegurándonos de que todo se ajuste a tus expectativas para que tu boda sea tan mágica como la soñaste. Por último, estaremos a tu lado para coordinar y supervisar cada detalle el día de la celebración del matrimonio.
+Nuestro servicio estrella es perfecto para ti si te acabas de comprometer y no tienes ni idea por donde empezar a planificar tu boda. Desde que contratas nuestros servicios te acompañaremos en cada etapa del proceso de planeación, guiándote y asesorándote en todos los aspectos, desde el manejo del presupuesto hasta la selección de tus proveedores, diseño de concepto y estilo etc. de esta forma podrás maximizar tu tiempo y los recursos invertidos de forma eficiente. Finalmente, te acompañaremos durante el gran día, desde los preparativos hasta que el final del evento, permitiendo así que tu única tarea, sea la de disfrutar sin estrés. 
 
 <!--modal-->
 

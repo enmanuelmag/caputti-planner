@@ -10,6 +10,9 @@ export default {
       krub: ['"Krub"'],
       sansserif: ['sans-serif'],
     },
+    colors: {
+      caputi: '#00bdc5',
+    },
   },
   plugins: [require('@tailwindcss/typography')],
 };

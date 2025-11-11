@@ -23,7 +23,7 @@ const t = useTranslations(lang);
         tag="a"
         href={`mailto:${t('email')}`}
         textId="email"
-        class="font-krub text-xl hover:text-teal-600 transition-all duration-300"
+        class="font-krub text-xl hover:text-caputi transition-all duration-300"
       />
     </div>
 
@@ -37,7 +37,7 @@ const t = useTranslations(lang);
         rel="noopener noreferrer"
         href={`https://wa.me/${t('phoneNumber')}?text=${encodeURI(t('phoneText'))}`}
         textId="phone"
-        class="font-krub text-xl hover:text-teal-600 transition-all duration-300"
+        class="font-krub text-xl hover:text-caputi transition-all duration-300"
       />
     </div>
 
@@ -58,7 +58,7 @@ const t = useTranslations(lang);
           <InstagramSvg
             height={32}
             width={32}
-            class="cursor-pointer hover:stroke-teal-600 transition-all duration-300"
+            class="cursor-pointer hover:stroke-caputi transition-all duration-300"
           />
         </a>
         <a
@@ -70,7 +70,7 @@ const t = useTranslations(lang);
           <WhatsAppSvg
             height={32}
             width={32}
-            class="cursor-pointer hover:stroke-teal-600 transition-all duration-300"
+            class="cursor-pointer hover:stroke-caputi transition-all duration-300"
           />
         </a>
         <a
@@ -82,10 +82,21 @@ const t = useTranslations(lang);
           <EmailSvg
             height={32}
             width={32}
-            class="cursor-pointer hover:stroke-teal-600 transition-all duration-300"
+            class="cursor-pointer hover:stroke-caputi transition-all duration-300"
           />
         </a>
       </div>
     </div>
+  </div>
+
+  <div class="flex w-full pt-8 pb-12 justify-center">
+    <p class="text-center">
+      Fotografías por: Adrian Padilla <a
+        href="https://www.instagram.com/bodasadrian_/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="cursor-pointer font-bold text-caputi">@bodasadrian_</a
+      >
+    </p>
   </div>
 </div>
