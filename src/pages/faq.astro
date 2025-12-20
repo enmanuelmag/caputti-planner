@@ -33,24 +33,24 @@ const faqItems = Array.from({ length: totalQuestions }, (_, i) => {
 </Layout>
 
 <style lang="scss" is:global>
-  .accordion-list li {
-    padding-block: 1.25rem;
-  }
+  .accordion-list {
+    li {
+      padding-block: 1.25rem;
+    }
 
-  .accordion-list button {
-    font-family: 'Krub';
-    font-size: 1.125rem !important;
-  }
+    button {
+      font-family: 'Krub';
+      font-size: 1.125rem !important;
+    }
 
-  .accordion-list button:hover {
-    color: #00bdc5;
-    transition: color 0.3s ease;
-  }
+    button:hover {
+      color: #00bdc5;
+      transition: color 0.3s ease;
+    }
 
-  .accordion-list div {
-    font-family: 'Inter', sans-serif;
+    div {
+      font-family: 'Inter', sans-serif;
+      text-align: justify;
+    }
   }
 </style>
-<script>
-  import {} from 'webcoreui';
-</script>

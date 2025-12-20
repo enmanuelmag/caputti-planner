@@ -24,11 +24,13 @@ const services = servicesRaw
   data-aos="fade-up"
   data-aos-offset="10"
   data-aos-delay="0"
-  class="relative mx-4 lg:mx-16 xl:mx-44 !gap-y-4 lg:!gap-y-10 flex flex-col"
+  class="relative mx-4 lg:mx-16 xl:mx-44 !gap-y-4 lg:!gap-y-10 flex flex-col items-center"
 >
   <TransText tag="h1" textId="services.title" class="text-center" />
 
-  <div class="flex flex-wrap justify-center !gap-4 items-stretch">
+  <div
+    class="flex flex-wrap justify-center !gap-4 items-stretch max-w-[1600px]"
+  >
     {
       services.map((service) => (
         <Card

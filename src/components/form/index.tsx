@@ -53,6 +53,30 @@ const FormContact = () => {
 
   return (
     <React.Fragment>
+      <div className="w-full flex flex-col items-center mt-16 px-[1rem] md:px-[5rem] lg:px-[10rem]">
+        <div className="w-full flex flex-col items-center sm:max-w-[700px] 2xl:max-w-[1000px]">
+          <h2 className="text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
+            ¡HABLEMOS!
+          </h2>
+          <p className="text-sm md:text-sm lg:text-base text-justify">
+            ¡Nos encantaría saber de ti! Si tienes alguna pregunta o comentario,
+            no dudes en contactarnos por correo electrónico o WhatsApp.
+          </p>
+          <p className="text-sm md:text-sm lg:text-base text-justify">
+            Si necesitas una cotización o agendar una reunión, te invitamos a
+            completar nuestro formulario. Este paso es clave para que podamos
+            entender mejor tus necesidades y podamos preparar una primera
+            reunión productiva. Una vez que recibamos tu información, nos
+            pondremos en contacto contigo a la brevedad para coordinar los
+            detalles.
+          </p>
+          <p className="text-sm md:text-sm lg:text-base text-justify">
+            ¡Estamos emocionados de empezar a crear contigo un día que
+            recordarás por el resto de tu vida!
+          </p>
+        </div>
+      </div>
+
       <form
         className="w-full px-[1rem] md:px-[5rem] lg:px-[10rem] my-[2rem] lg:my-[4rem] flex flex-col !gap-y-[1rem]"
         onSubmit={form.handleSubmit((data) => onSubmit(data))}
@@ -146,12 +170,12 @@ const FormContact = () => {
                   itemGroups={[
                     {
                       items: [
-                        { name: 'Cumpleaños' },
-                        { name: 'Quincerañera' },
-                        { name: 'Boda Civil' },
-                        { name: 'Boda Eclesiástica' },
-                        { name: 'Boda Civil y Eclesiástica' },
-                        { name: 'Corporativo' },
+                        { name: 'Organización total' },
+                        { name: 'Organización parcial' },
+                        { name: 'Coordinación del día' },
+                        { name: 'Boda destino' },
+                        { name: 'Diseño y decoración' },
+                        { name: 'Asesoría personalizada' },
                         { name: 'Otro' },
                       ],
                     },
@@ -178,10 +202,13 @@ const FormContact = () => {
                   itemGroups={[
                     {
                       items: [
+                        { name: 'Cumpleaños' },
                         { name: 'Quinceañera' },
+                        { name: 'Pedida de mano' },
                         { name: 'Boda Civil' },
                         { name: 'Boda Eclesiástica' },
                         { name: 'Boda Civil y Eclesiástica' },
+                        { name: 'Corporativo' },
                         { name: 'Otro' },
                       ],
                     },
