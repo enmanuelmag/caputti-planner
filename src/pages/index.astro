@@ -23,11 +23,18 @@ const t = useTranslations(lang);
 
   <Description />
 
-  <Image
-    src={ImageDescription}
-    alt={t('description.subtitle.second.p1')}
-    class="h-[200px] md:h-[450px] xl:h-[650px] object-cover"
-  />
+  <section
+    data-aos="fade-up"
+    data-aos-offset="10"
+    data-aos-delay="0"
+    class="relative flex flex-col items-center"
+  >
+    <Image
+      src={ImageDescription}
+      alt={t('description.subtitle.second.p1')}
+      class="w-full h-[200px] md:h-[450px] xl:h-[700px] object-cover object-center"
+    />
+  </section>
 
   <Services />
 
