@@ -61,25 +61,25 @@
       });
     }
   });
-  // const goTop = document.querySelector('.go-top');
+  const goTop = document.querySelector('.go-top');
 
-  // if (goTop) {
-  //   window.addEventListener('scroll', (w) => {
-  //     const currentClassList = goTop.classList;
-  //     if (window.pageYOffset > 300) {
-  //       currentClassList.remove('opacity-0');
-  //     } else {
-  //       currentClassList.add('opacity-0');
-  //     }
-  //   });
+  if (goTop) {
+    window.addEventListener('scroll', (w) => {
+      const currentClassList = goTop.classList;
+      if (window.pageYOffset > 300) {
+        currentClassList.remove('opacity-0');
+      } else {
+        currentClassList.add('opacity-0');
+      }
+    });
 
-  //   goTop.addEventListener('click', () => {
-  //     window.scrollTo({
-  //       top: 0,
-  //       behavior: 'smooth',
-  //     });
-  //   });
-  // }
+    goTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    });
+  }
 </script>
 
 <style lang="scss">
