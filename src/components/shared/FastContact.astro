@@ -33,7 +33,7 @@ const { title, hrefTitle, formText } = Astro.props;
 
   {
     formText && (
-      <div class="flex flex-col items-center justify-center ">
+      <div class="flex flex-col items-center justify-center fast-contact-button">
         <a
           id="fast-contact"
           href="/contacto"
@@ -58,5 +58,30 @@ const { title, hrefTitle, formText } = Astro.props;
       0 0 40px 10px #fff,
       /* middle magenta */ 0 0 45px 15px rgb(253, 190, 0),
       /* outer cyan */ 0 0 60px 30px rgb(255, 247, 0);
+  }
+
+  .fast-contact-button {
+    cursor: pointer;
+    padding-inline: 1.5rem;
+    padding-block: 0.5rem;
+    align-self: center;
+    width: fit-content;
+    border: 3px solid #00bdc5;
+    border-radius: 0.5rem;
+    transition: all 0.4s ease-out;
+
+    a {
+      color: #00bdc5;
+      text-decoration: none;
+    }
+
+    &:hover {
+      background-color: #00bdc5;
+      border-color: #00bdc5;
+
+      a {
+        color: #ffffff;
+      }
+    }
   }
 </style>
