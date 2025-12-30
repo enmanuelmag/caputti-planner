@@ -13,6 +13,7 @@ import Testimonials from '@components/home/Testimonials.astro';
 
 import TransText from '@components/shared/TransText.astro';
 import ImageDescription from '@assets/description/description.jpg';
+import FastContact from '@components/shared/FastContact.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -49,12 +50,14 @@ const t = useTranslations(lang);
   >
     <TransText tag="h1" textId="contact.button" class="" />
 
-    <TransText
+    <!-- <TransText
       tag="a"
       href="/contacto"
       textId="contact.subtitle"
       class="text-center prose underline !text-2xl cursor-pointer"
-    />
+    /> -->
+
+    <FastContact formText={t('contact.subtitle')} />
   </section>
 </LayoutHome>
 
