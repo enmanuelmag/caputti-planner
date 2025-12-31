@@ -6,6 +6,8 @@ import FastContact from '@components/shared/FastContact.astro';
 
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
 
+export const prerender = true;
+
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
