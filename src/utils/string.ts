@@ -3,7 +3,7 @@ export const capitalize = (str: string, onlyFirst = false): string => {
     return '';
   }
   if (onlyFirst) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
   return str
     .split(' ')

@@ -397,7 +397,10 @@ const FormContact = () => {
           )}
         />
 
-        <Button className="mt-[0.5rem] w-full contact-button" type="submit">
+        <Button
+          className="mt-[0.5rem] w-full contact-button font-cinzel !text-lg lg:!text-xl"
+          type="submit"
+        >
           {loading ? (
             <Spinner color="white" width={42} size={30} />
           ) : (

@@ -18,7 +18,7 @@ function Checkboxes(props: Props) {
           {label}
         </label>
       )}
-      <ul className="text-sm font-normal text-gray-900 bg-[#ffffff] border !border-gray-100 rounded-lg">
+      <ul className="text-sm font-normal text-gray-900 bg-[#ffffff] border !border-gray-200 rounded-lg">
         {options.map((option, idx) => (
           <Checkbox
             label={option}

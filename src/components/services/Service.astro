@@ -70,7 +70,10 @@ const [mainContent = '', modalContent = ''] = rawContent.split('<!--modal-->');
 
     {
       Boolean(modalContent.length) && (
-        <Button className={`trigger-${slug}`} theme="flat">
+        <Button
+          className={`trigger-${slug} !text-[#374151] font-[200]`}
+          theme="flat"
+        >
           Más información
         </Button>
       )
@@ -80,7 +83,7 @@ const [mainContent = '', modalContent = ''] = rawContent.split('<!--modal-->');
 
 <Modal
   className={`modal-${slug} modal-service`}
-  title={`Los servicios de ${capitalize(title)} incluyen:`}
+  title={`${capitalize(title, true)} incluye:`}
 >
   <div
     class="modal-content prose font-[300]"
