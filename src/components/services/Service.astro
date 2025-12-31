@@ -66,9 +66,7 @@ const [mainContent = '', modalContent = ''] = rawContent.split('<!--modal-->');
     <div
       class="prose font-[300] text-justify !max-w-full"
       set:html={marked.parse(mainContent)}
-    >
-      <!-- <Content /> -->
-    </div>
+    />
 
     {
       Boolean(modalContent.length) && (

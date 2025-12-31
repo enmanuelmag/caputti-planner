@@ -20,24 +20,6 @@
   >
 </div>
 
-<!-- <style lang="scss">
-  .go-top {
-    svg {
-      width: 45px;
-      height: 45px;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .go-top {
-      svg {
-        width: 50px;
-        height: 50px;
-      }
-    }
-  }
-</style> -->
-
 <script>
   //set display hiddne by default
   document.addEventListener('astro:after-swap', () => {
@@ -64,7 +46,7 @@
   const goTop = document.querySelector('.go-top');
 
   if (goTop) {
-    window.addEventListener('scroll', (w) => {
+    window.addEventListener('scroll', () => {
       const currentClassList = goTop.classList;
       if (window.pageYOffset > 300) {
         currentClassList.remove('opacity-0');

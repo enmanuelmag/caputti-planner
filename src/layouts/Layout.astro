@@ -26,12 +26,15 @@ const { title } = Astro.props;
     <Head title={title} />
     <StructuredData />
     <ClientRouter />
+    <!-- <script type="module" src="/src/scripts/view-transitions.ts"></script> -->
   </head>
+
   <body class="min-h-screen w-full flex flex-col !gap-0">
     <NavbarMobile />
     <NavbarDesktop />
 
     <main
+      id="content"
       class="relative transition-colors duration-200 mx-4 lg:mx-44 2xl:mx-96 flex-grow"
     >
       <slot />

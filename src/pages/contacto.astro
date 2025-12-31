@@ -1,21 +1,12 @@
 ---
 import LayoutHome from 'src/layouts/LayoutHome.astro';
 
-import { Spinner, Toast } from 'webcoreui/astro';
+import { Toast } from 'webcoreui/astro';
 
 import FormReact from '@components/form';
 ---
 
 <LayoutHome title="Contacto - Caputi Festa">
-  <!-- <div
-    data-aos="fade-in"
-    data-aos-offset="0"
-    data-aos-delay="0"
-    class="spinner mt-[6rem] h-full"
-  >
-    <Spinner size={128} color="teal" speed={2} width={3} />
-  </div> -->
-
   <div class="form">
     <FormReact client:only="react" />
   </div>

@@ -27,12 +27,13 @@ const sections = (await getCollection('about')).sort(
 
 <Layout title="Servicios - Caputi Festa">
   <section
+    data-aos="fade-up"
+    data-aos-offset="0"
+    data-aos-delay="0"
     class="w-full flex flex-col justify-center my-[2rem] !gap-y-[4rem] wedding-planner"
   >
     {sections.map(({ slug }) => <Section id={slug} />)}
   </section>
-
-  <!-- <FastContact text={t('contact.button')} /> -->
 
   <div
     class="flex flex-col items-center justify-center !gap-8 mt-16 px-0 md:px-[2rem] lg:px-[4rem]"
@@ -48,13 +49,6 @@ const sections = (await getCollection('about')).sort(
       textId="wedding.contact.title"
       class="text-center !text-2xl cursor-default"
     />
-
-    <!-- <TransText
-      tag="a"
-      href="/contacto"
-      textId="wedding.contact.schedule"
-      class="text-center !text-2xl underline cursor-pointer"
-    /> -->
 
     <FastContact formText={t('wedding.contact.schedule')} />
   </div>

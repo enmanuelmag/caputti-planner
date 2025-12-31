@@ -1,0 +1,33 @@
+:root {
+  --vt-duration: 360ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+::view-transition-old(#content) {
+  animation: vt-fade-out var(--vt-duration) ease both;
+}
+::view-transition-new(#content) {
+  animation: vt-fade-in var(--vt-duration) ease both;
+}
+@keyframes vt-fade-out {
+  to {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
