@@ -5,18 +5,18 @@ interface Props {
   text: string;
   index: number;
   total: number;
-  isMobile?: boolean;
 }
 
-const { text, index: idx, total, isMobile } = Astro.props;
+const { text, index: idx, total } = Astro.props;
 
 const index = idx + 1;
 
-const idxNumber = isMobile
-  ? index
-  : index % 2 === 0
-    ? total / 2 + index / 2
-    : Math.floor(index / 2 + 1);
+// Desktop: números alternantes en dos columnas
+const idxNumber =
+  index % 2 === 0 ? total / 2 + index / 2 : Math.floor(index / 2 + 1);
+
+// Mobile: números secuenciales (1, 2, 3, ...)
+const sequentialNumber = idx + 1;
 ---
 
 <article
@@ -28,10 +28,17 @@ const idxNumber = isMobile
       aria-label={text}
       class="!text-justify hover:text-caputi transition-colors duration-300 cursor-default"
     >
+      {/* Mobile: número secuencial */}
+      <TransText
+        tag="span"
+        literal={`0${sequentialNumber}. ${text}`}
+        class="lg:hidden font-krub hover:text-caputi transition-colors duration-300"
+      />
+      {/* Desktop: número alternante */}
       <TransText
         tag="span"
         literal={`0${idxNumber}. ${text}`}
-        class="font-krub hover:text-caputi transition-colors duration-300"
+        class="hidden lg:inline font-krub hover:text-caputi transition-colors duration-300"
       />
     </p>
   </div>

@@ -9,11 +9,6 @@ const t = useTranslations(lang);
 export const prerender = true;
 
 const features = t('featuring.items').split('|');
-
-const isMobile = Astro.request.headers
-  .get('user-agent')
-  ?.toLowerCase()
-  .includes('mobile');
 ---
 
 <section
@@ -26,12 +21,7 @@ const isMobile = Astro.request.headers
   <div class="flex flex-row flex-wrap justify-center !gap-0">
     {
       features.map((feature, index) => (
-        <Feature
-          index={index}
-          text={feature}
-          total={features.length}
-          isMobile={isMobile}
-        />
+        <Feature index={index} text={feature} total={features.length} />
       ))
     }
   </div>
