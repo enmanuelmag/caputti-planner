@@ -16,11 +16,7 @@ const { href, title, body, image } = Astro.props;
 <article
   class="w-full flex flex-col !gap-0 cursor-pointer overflow-hidden group rounded-xl shadow-lg service-card"
 >
-  <a
-    href={href}
-    data-astro-prefetch
-    class="h-full relative flex flex-col !gap-0 rounded-xl"
-  >
+  <a href={href} class="h-full relative flex flex-col !gap-0 rounded-xl">
     <Image
       src={image}
       alt={title}

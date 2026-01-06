@@ -10,10 +10,10 @@ import cloudflare from '@astrojs/cloudflare';
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react()],
-  prefetch: {
-    prefetchAll: true,
-    defaultStrategy: 'viewport',
-  },
+  // prefetch: {
+  //   prefetchAll: true,
+  //   defaultStrategy: 'viewport',
+  // },
   vite: {
     ssr: {
       noExternal: [
