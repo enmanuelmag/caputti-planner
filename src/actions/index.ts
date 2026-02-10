@@ -4,12 +4,13 @@ import { Resend } from 'resend';
 import { FromSchema } from '@customTypes/form';
 import { buildEmails } from '@utils/email';
 
+console.log('API PRESENT', Boolean(import.meta.env.RESEND_API_KEY))
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
 export const server = {
   sendEmail: defineAction({
     input: FromSchema,
-    handler: async (input, context) => {
+    handler: async (input) => {
 
       const { adminMessage, clientMessage } = await buildEmails(input, {
         adminEmail: 'contacto@caputifesta.com',
