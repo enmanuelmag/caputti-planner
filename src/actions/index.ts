@@ -20,18 +20,15 @@ export const server = {
 
       const results = await Promise.allSettled(sendPromises);
 
-      let success = true;
-
       results.forEach((result, index) => {
         if (result.status === 'fulfilled') {
-          console.log(`Email ${index + 1} enviado con éxito:`, result.value);
+          console.log(`Email ${index + 1} enviado con éxito:`, result.value.data, result.value.error);
         } else {
-          console.error(`Error al enviar el email ${index + 1}:`, result.reason);
-          success = false;
+          console.error(`Error al enviar el email ${index + 1}:`, result.reason, result.reason)
         }
       });
 
-      return { success };
+      return { success: true };
     },
   }),
 };
