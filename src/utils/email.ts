@@ -12,14 +12,14 @@ export async function buildEmails(formData: FormType, config: ConfigEmails) {
   const { adminEmail } = config;
 
   const clientMessage = {
-    from: 'Caputifesta <onboarding@resend.dev>',
+    from: 'Caputifesta <noreply@soporte.caputifesta.com>',
     to: formData.email,
     subject: '¡Gracias por contactarnos!',
     html: parseEmailTemplate(formData.yourName),
   };
 
   const adminMessage = {
-    from: 'Caputifesta <onboarding@resend.dev>',
+    from: 'Caputifesta <noreply@soporte.caputifesta.com>',
     to: adminEmail,
     subject: 'Nuevo contacto',
     html: parseTextAdminMessage(formData),
