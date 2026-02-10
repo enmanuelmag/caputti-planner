@@ -1,19 +1,36 @@
 import { defineAction } from 'astro:actions';
+import { Resend } from 'resend';
 
 import { FromSchema } from '@customTypes/form';
-import { sendEmail } from '@utils/email';
+import { buildEmails } from '@utils/email';
+
+const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
 export const server = {
   sendEmail: defineAction({
     input: FromSchema,
     handler: async (input, context) => {
-      await sendEmail(input, {
-        emailFrom: context.locals.runtime.env.SEND_EMAIL_FROM,
-        emailTo: context.locals.runtime.env.SEND_EMAIL_TO,
-        resendApiKey: context.locals.runtime.env.RESEND_API_KEY,
+
+      const { adminMessage, clientMessage } = await buildEmails(input, {
+        adminEmail: 'contacto@caputifesta.com',
       });
 
-      return { success: true };
+      const sendPromises = [resend.emails.send(clientMessage), resend.emails.send(adminMessage)];
+
+      const results = await Promise.allSettled(sendPromises);
+
+      let success = true;
+
+      results.forEach((result, index) => {
+        if (result.status === 'fulfilled') {
+          console.log(`Email ${index + 1} enviado con éxito:`, result.value);
+        } else {
+          console.error(`Error al enviar el email ${index + 1}:`, result.reason);
+          success = false;
+        }
+      });
+
+      return { success };
     },
   }),
 };

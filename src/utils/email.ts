@@ -3,64 +3,29 @@ import { templateEmail } from './templates/welcome';
 import { newContactTemplate } from './templates/newContact';
 
 type ConfigEmails = {
-  emailFrom: string;
-  emailTo: string;
-  resendApiKey: string;
+  adminEmail: string;
 };
 
 const URL = 'https://api.resend.com/emails';
 
-export async function sendEmail(
-  formData: FormType,
-  config: ConfigEmails
-): Promise<void> {
-  const { emailFrom: from, emailTo, resendApiKey } = config;
+export async function buildEmails(formData: FormType, config: ConfigEmails) {
+  const { adminEmail } = config;
 
-  const messageClient = {
-    from,
+  const clientMessage = {
+    from: 'Caputifesta <onboarding@resend.dev>',
     to: formData.email,
-    subject: 'Gracias por contactarnos',
+    subject: '¡Gracias por contactarnos!',
     html: parseEmailTemplate(formData.yourName),
   };
 
-  const promises = [];
-
-  promises.push(
-    fetch(URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${resendApiKey}`,
-      },
-      body: JSON.stringify(messageClient),
-    })
-  );
-
   const adminMessage = {
-    from,
-    to: emailTo,
+    from: 'Caputifesta <onboarding@resend.dev>',
+    to: adminEmail,
     subject: 'Nuevo contacto',
     html: parseTextAdminMessage(formData),
   };
 
-  promises.push(
-    fetch(URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${resendApiKey}`,
-      },
-      body: JSON.stringify(adminMessage),
-    })
-  );
-
-  const result = await Promise.allSettled(promises);
-
-  result.forEach((response, idx) => {
-    if (response.status === 'rejected') {
-      console.error(`Error sending ${idx}`, response.reason);
-    }
-  });
+  return { clientMessage, adminMessage };
 }
 
 function parseTextAdminMessage(options: FormType): string {

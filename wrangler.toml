@@ -1,10 +1,5 @@
 compatibility_date = "2024-07-09"
 
-[vars]
-SEND_EMAIL_TO = "enmanuelmag@cardor.dev"
-SEND_EMAIL_FROM = "onboarding@resend.dev"
-RESEND_API_KEY = "re_jSRCVPNw_4ggSGnDa4DZoUgsrMxsjRHwM"
-
 [[kv_namespaces]]
 binding = "SESSION"
 id = "50bc83fe58d949ecaa5352f4cca3245f"
