@@ -4,13 +4,13 @@ import { Resend } from 'resend';
 import { FromSchema } from '@customTypes/form';
 import { buildEmails } from '@utils/email';
 
-console.log('API PRESENT', Boolean(import.meta.env.RESEND_API_KEY))
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
+import { RESEND_API_KEY } from "astro:env/server";
 
 export const server = {
   sendEmail: defineAction({
     input: FromSchema,
     handler: async (input) => {
+      const resend = new Resend(RESEND_API_KEY);
 
       const { adminMessage, clientMessage } = await buildEmails(input, {
         adminEmail: 'contacto@caputifesta.com',
